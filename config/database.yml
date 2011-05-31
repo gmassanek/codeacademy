@@ -14,7 +14,7 @@ development:
   database: ecosystem_development
   pool: 5
   username: ecosystem
-  password:
+  password: ecosystem01
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -40,7 +40,7 @@ test:
   database: ecosystem_test
   pool: 5
   username: ecosystem
-  password:
+  password: ecosystem01
 
 production:
   adapter: postgresql
@@ -48,4 +48,4 @@ production:
   database: ecosystem_production
   pool: 5
   username: ecosystem
-  password:
+  password: ecosystem01

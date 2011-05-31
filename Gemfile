@@ -7,6 +7,15 @@ gem 'rails', '3.0.7'
 
 gem 'pg'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.4"
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'fabrication'
+  gem 'ffaker'
+  gem 'haml'
+end
 # Use unicorn as the web server
 # gem 'unicorn'
 
