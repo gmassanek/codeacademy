@@ -10,11 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110530212056) do
+ActiveRecord::Schema.define(:version => 20110601012626) do
 
   create_table "nodes", :force => true do |t|
     t.string   "title"
-    t.string   "ecosystem"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
