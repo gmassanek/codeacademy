@@ -1,3 +1,5 @@
+- unless flash[:notice].nil?
+  %p= flash[:notice]
 %h1= @node.title
 %h2= @node.description
 %h3= @node.id
