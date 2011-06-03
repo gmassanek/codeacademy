@@ -6,6 +6,8 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'dynamic_form'
+gem 'haml'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
@@ -14,7 +16,6 @@ group :test, :development do
   gem 'launchy'
   gem 'fabrication'
   gem 'ffaker'
-  gem 'haml'
 end
 # Use unicorn as the web server
 # gem 'unicorn'

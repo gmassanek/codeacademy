@@ -45,6 +45,7 @@ GEM
     configuration (1.2.0)
     culerity (0.2.15)
     diff-lcs (1.1.2)
+    dynamic_form (1.1.4)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fabrication (0.9.5)
@@ -119,6 +120,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  dynamic_form
   fabrication
   ffaker
   guard-rspec
