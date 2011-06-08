@@ -2,18 +2,18 @@
 %html
 %head
   %title Ruby Ecosystem
-  = stylesheet_link_tag 'blueprint/screen', :media => 'screen' 
-  = stylesheet_link_tag 'blueprint/print', :media => 'print' 
+  = stylesheet_link_tag 'blueprint/screen.css', :media => 'screen' 
+  = stylesheet_link_tag 'blueprint/print.css', :media => 'print' 
   = stylesheet_link_tag 'styles.css'
   = javascript_include_tag :defaults
   = csrf_meta_tag
 %body
-  #container #showgrid  
-    #fs-content
-        #fs-mainblock #span-18 #colborder
-            #fs-header 
-                =render 'layouts/header'
-            = yield
-            #fs-footer
-                =render 'layouts/footer'
+  .container.showgrid  
+    .fs-content
+      .fs-mainblock.span-18.colborder
+        .fs-header 
+          =render 'layouts/header'
+        = yield
+        .fs-footer
+          =render 'layouts/footer'
 
