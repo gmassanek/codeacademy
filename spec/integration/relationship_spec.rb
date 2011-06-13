@@ -42,7 +42,6 @@ describe Relationship do
     page.should have_content("Relationship between #{@node1.title} and #{@node2.title} created.")
   end
   it "show both direction's sentences" do
-    puts @relationship.inspect
     visit relationship_path(@relationship) 
     page.should have_content("#{@relationship.sentence1to2}")
     page.should have_content("#{@relationship.sentence2to1}")

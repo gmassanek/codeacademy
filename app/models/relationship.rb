@@ -8,7 +8,6 @@ class Relationship < ActiveRecord::Base
   validate :has_space_holders
   #attr_accessible :node1_id, :node2_id
   def sentence1to2
-    puts self.inspect
     sentence1["%1"]=node1.to_s
     sentence1["%2"]=node2.to_s
     sentence1
