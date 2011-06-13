@@ -23,8 +23,8 @@ describe Node do
       page.should have_content("Title can't be blank")
     end
   end
-  describe "saving edit nodes" do
-    it "can save edit nodes" do
+  describe "editing nodes" do
+    it "can edit nodes" do
       node = Fabricate(:node)
       visit edit_node_path(node)
       title = Faker::Lorem.words(3).join(" ")
@@ -40,24 +40,37 @@ describe Node do
       page.should have_content("Description can't be blank")
     end
   end
-  describe "index page" do
-    it "shows all nodes on the node index page" do
-      node1 = Fabricate(:node)
-      node2 = Fabricate(:node)
-      visit nodes_path
-      page.should have_content(node1.title)
-      page.should have_content(node2.title)
+  describe "node navigation" do
+    before do
+      @node = Fabricate(:node)
     end
-    it "has a link to edit node on node index page" do
-      node = Fabricate(:node)
-      visit nodes_path
-      page.click_link("editNode_#{node.id}")
-      page.current_path.should == edit_node_path(node)
+    describe "index page" do
+      it "shows all nodes on the node index page" do
+        node2 = Fabricate(:node)
+        visit nodes_path
+        page.should have_content(@node.title)
+        page.should have_content(node2.title)
+      end
+      it "has a link to edit node on node index page" do
+        visit nodes_path
+        page.click_link("editNode_#{@node.id}")
+        page.current_path.should == edit_node_path(@node)
+      end
+      it "has a link to delete node on node index page" do
+        visit nodes_path
+        page.click_link("deleteNode_#{@node.id}")
+      end
     end
-    it "has a link to delete node on node index page" do
-      node = Fabricate(:node)
-      visit nodes_path
-      page.click_link("deleteNode_#{node.id}")
+    describe "show page" do
+      it "shows the node title" do
+        visit node_path(@node)
+        page.should have_css('h1', :text => "#{@node.title}")
+      end
+      it "shows the node description" do
+        visit node_path(@node)
+        page.should have_content("#{@node.description}")
+      end
+      it "shows all the nodes related to it"
     end
   end
 end

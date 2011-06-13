@@ -15,6 +15,7 @@ Ecosystem::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
       resources :nodes
+      resources :relationships
 
   # Sample resource route with options:
   #   resources :products do
@@ -51,7 +52,7 @@ Ecosystem::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "nodes#index"
+  root :to => "pages#home"
 
   # See how all your routes lay out with "rake routes"
 

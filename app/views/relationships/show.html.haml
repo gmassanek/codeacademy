@@ -1,0 +1,5 @@
+- unless flash[:notice].nil?
+  %p= flash[:notice]
+%h1= "Relationship between #{@relationship.node1} and #{@relationship.node2}"
+%p= @relationship.sentence1to2
+%p= @relationship.sentence2to1
