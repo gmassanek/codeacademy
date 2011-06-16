@@ -7,17 +7,25 @@ describe Relationship do
     @frag1 = Faker::Lorem.words(2).join(" ")
     @frag2 = Faker::Lorem.words(3).join(" ")
     @frag3 = Faker::Lorem.words(2).join(" ")
-    @sentence1 = "#{@frag1} %1 #{@frag2} %2 #{@frag3}}"
-    @sentence2 = "#{@frag3} %2 #{@frag1} %1 #{@frag2}}"
+    @sentence1 = "#{@frag1} %1 #{@frag2} %2 #{@frag3}"
+    @sentence2 = "#{@frag3} %2 #{@frag1} %1 #{@frag2}"
     @relationship = Relationship.new(:node1=>@node1, :node2=>@node2, :sentence1 => @sentence1, :sentence2 => @sentence2)
     @relationship.save
   end
   it "displays the relationship from node1 to node2" do
-    @relationship.sentence1to2.should == "#{@frag1} #{@node1} #{@frag2} #{@node2} #{@frag3}}"
+    @relationship.sentence1to2.should == "#{@frag1} #{@node1} #{@frag2} #{@node2} #{@frag3}"
   end
   it "displays the relationship from node2 to node1" do
-    @relationship.sentence2to1.should == "#{@frag3} #{@node2} #{@frag1} #{@node1} #{@frag2}}"
+    @relationship.sentence2to1.should == "#{@frag3} #{@node2} #{@frag1} #{@node1} #{@frag2}"
   end
+  it "doesn't change sentence1 even after calling sentence1to2" do
+    sent = @relationship.sentence1
+    @relationship.sentence1to2
+    @relationship.save
+    sent.should == @relationship.sentence1
+  end
+  it "responds to node1"
+  it "is valid if %1 or %2 are not separated from other characters by white space"
   describe "relationship key" do
     it "replies to .key function" do
       @relationship.should respond_to(:key)
