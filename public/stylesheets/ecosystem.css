@@ -1,0 +1,29 @@
+body {
+  background-image:url('/images/wood025.jpg');
+  background-repeat: repeat;
+}
+#top {
+  width: 100%;
+  background-color:black;
+  color: white;
+  margin-bottom: 10px;
+}
+#headerDiv {
+  width: 950px;
+  margin: auto;
+  height: 3em;
+}
+#headerDiv h2 {
+  color: white;
+}
+#footer {
+  width: 100%;
+  background-color:white;
+  text-align: center;
+}
+.container {
+  background-color: white;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  behavior:url(border-radius.htc);
+}

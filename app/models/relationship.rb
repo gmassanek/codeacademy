@@ -7,8 +7,8 @@ class Relationship < ActiveRecord::Base
   validate :has_space_holders, :allow_nil => true
   validate :not_self_referencing
 
-  validates :node1_id, :presence => true
-  validates :node2_id, :presence => true
+  validates :node1, :presence => true
+  validates :node2, :presence => true
   validates :sentence1, :presence => true
   validates :sentence2, :presence => true
   validates :key, :uniqueness => true
@@ -17,10 +17,12 @@ class Relationship < ActiveRecord::Base
     errors.add(:node1, 'cannot be the same as node 2') if node1_id == node2_id
   end
   def fillKey
-    if node1_id<node2_id
-      self.key = "#{node1_id}:#{node2_id}"
-    else
-      self.key = "#{node2_id}:#{node1_id}"
+    unless node1.nil? or node2.nil?
+      if node1_id<node2_id
+        self.key = "#{node1_id}:#{node2_id}"
+      else
+        self.key = "#{node2_id}:#{node1_id}"
+      end
     end
   end
   def sentence1to2

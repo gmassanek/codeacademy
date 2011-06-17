@@ -8,6 +8,7 @@ gem 'rails', '3.0.7'
 gem 'pg'
 gem 'dynamic_form'
 gem 'haml'
+gem 'simple_form'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"

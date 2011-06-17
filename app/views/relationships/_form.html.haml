@@ -1,11 +1,8 @@
-= form_for @relationship do |f|
-  = f.error_messages
-  = f.label :node1_id
-  = f.select :node1_id, Node.all.collect {|n| [n.title, n.id]}
-  = f.label :node2_id
-  = f.select :node2_id, Node.all.collect {|n| [n.title, n.id]}
-  = f.label :sentence1
-  = f.text_field :sentence1
-  = f.label :sentence2
-  = f.text_field :sentence2
-  = f.submit
+= simple_form_for @relationship do |f|
+  %fieldset
+    %legend Relationship
+    = f.association :node1
+    = f.association :node2
+    = f.input :sentence1, :placeholder => '%1 is related to %2', :input_html => { :class => 'text' }
+    = f.input :sentence2, :placeholder => '%2 is related to %1', :input_html => { :class => 'text' }
+    = f.button :submit

@@ -27,6 +27,13 @@ describe Relationship do
   it "responds to node1" do
     @relationship.should respond_to(:node1)
   end
+  it "is invalid if node1 or node2 are blank" do
+    @relationship.node1 = nil
+    @relationship.should_not be_valid
+    @relationship.node1 = @node1
+    @relationship.node2 = nil
+    @relationship.should_not be_valid
+  end
   it "is valid if %1 or %2 are not separated from other characters by white space" do
     @relationship.sentence1 = "(%1) %2"
     @relationship.should be_valid

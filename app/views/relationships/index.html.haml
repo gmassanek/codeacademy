@@ -1,5 +1,10 @@
-%h1 Relationships
-- @relationships.each do |r|
-  %h2= "Relationship between #{Node.find(r.node1_id).title} and #{Node.find(r.node2_id).title}."
-  =link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
+%h3 Relationships
+%table
+  - @relationships.each do |r|
+    %tr
+      %td= r.node1
+      %td= r.node2
+      %td= r.sentence1to2
+      %td= r.sentence2to1
+      %td= link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
 
