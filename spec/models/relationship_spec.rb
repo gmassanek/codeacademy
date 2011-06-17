@@ -24,8 +24,13 @@ describe Relationship do
     @relationship.save
     sent.should == @relationship.sentence1
   end
-  it "responds to node1"
-  it "is valid if %1 or %2 are not separated from other characters by white space"
+  it "responds to node1" do
+    @relationship.should respond_to(:node1)
+  end
+  it "is valid if %1 or %2 are not separated from other characters by white space" do
+    @relationship.sentence1 = "(%1) %2"
+    @relationship.should be_valid
+  end
   describe "relationship key" do
     it "replies to .key function" do
       @relationship.should respond_to(:key)
@@ -45,6 +50,10 @@ describe Relationship do
     it "defaults the key and saves it" do
       @relationship.key.should_not be_nil
     end
+  end
+  it "can't save with the same two nodes" do
+    @relationship.node2 = @node1
+    @relationship.should_not be_valid
   end
 end
 

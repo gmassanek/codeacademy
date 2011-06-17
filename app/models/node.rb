@@ -7,17 +7,16 @@ class Node < ActiveRecord::Base
     title
   end
   def relationships
-    relationships1<<relationships2
+    relationships1 | relationships2
   end
   def related_nodes
-    nodes = []
-    relationships1.each do |r|
-      nodes<<r.node2
+    relationships.each.collect do |r|
+      if r.node1_id == self.id
+        r.node2
+      else
+        r.node1
+      end
     end
-    relationships2.each do |r|
-      nodes<<r.node1
-    end
-    return nodes
   end
 end
 

@@ -5,6 +5,7 @@ class Relationship < ActiveRecord::Base
   before_validation :fillKey
 
   validate :has_space_holders, :allow_nil => true
+  validate :not_self_referencing
 
   validates :node1_id, :presence => true
   validates :node2_id, :presence => true
@@ -12,6 +13,9 @@ class Relationship < ActiveRecord::Base
   validates :sentence2, :presence => true
   validates :key, :uniqueness => true
 
+  def not_self_referencing
+    errors.add(:node1, 'cannot be the same as node 2') if node1_id == node2_id
+  end
   def fillKey
     if node1_id<node2_id
       self.key = "#{node1_id}:#{node2_id}"
@@ -34,12 +38,9 @@ class Relationship < ActiveRecord::Base
     end
   end
   def populateSentence(sentence)
-    #I don't like this, come up with a better way
-    sentence["%1"]=node1.to_s
-    sentence["%2"]=node2.to_s
-    sentence
+    sentence.gsub(/(%1)/, node1.title).gsub(/%2/, node2.title)
   end
   def sentenceValid?(sentence)
-    sentence.split.include?('%1') and sentence.split.include?('%2')
+    sentence.include?('%1') and sentence.include?('%2')
   end
 end
