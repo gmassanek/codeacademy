@@ -27,3 +27,5 @@ body {
   -webkit-border-radius:5px;
   behavior:url(border-radius.htc);
 }
+
+.errorOneLine, .alertOneLine, .noticeOneLine, .successOneLine, .infoOneLine {margin-left: 0.2em;padding:0.2em;margin-bottom:0.5em;border:2px solid #ddd;}

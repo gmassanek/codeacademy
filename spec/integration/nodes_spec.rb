@@ -18,9 +18,9 @@ describe Node do
     it "shows errors on the new node page" do
       node = Fabricate(:node)
       visit edit_node_path(node)
-      page.fill_in 'Title', :with => nil
+      page.fill_in 'node_title', :with =>'' 
       page.click_button 'Update Node'
-      page.should have_content("Title can't be blank")
+      page.should have_content("can't be blank")
     end
   end
   describe "editing nodes" do
@@ -28,16 +28,16 @@ describe Node do
       node = Fabricate(:node)
       visit edit_node_path(node)
       title = Faker::Lorem.words(3).join(" ")
-      page.fill_in 'Title', :with => title
+      page.fill_in 'node_title', :with => title
       page.click_button 'Update Node'
       page.should have_content("Node #{title} updated")
     end
     it "shows errors on the edit node page" do
       visit new_node_path
       title = Faker::Lorem.words(3).join(" ")
-      page.fill_in 'Title', :with => title
+      page.fill_in 'node_title', :with => title
       page.click_button 'Create Node'
-      page.should have_content("Description can't be blank")
+      page.should have_content("can't be blank")
     end
   end
   describe "node navigation" do

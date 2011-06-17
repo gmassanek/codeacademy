@@ -3,7 +3,7 @@ require 'simple_form/br_component.rb'
 SimpleForm.setup do |config|
   # Components used by the form builder to generate a complete input. You can remove
   # any of them, change the order, or even add your own components to the stack.
-  config.components = [:placeholder, :label, :br, :input ]
+  config.components = [:placeholder, :label, :error, :br, :input ]
 
   # Default tag used on hints.
   # config.hint_tag = :span
@@ -12,10 +12,10 @@ SimpleForm.setup do |config|
   # config.hint_class = :info
 
   #CSS class to add to all error tags.
-  config.error_class = :error
+  config.error_class = :errorOneLine
 
   # Default tag used on errors.
-  config.error_tag = :div
+  # config.error_tag = :div
 
   # Method used to tidy up errors.
   # config.error_method = :first

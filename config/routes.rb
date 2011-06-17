@@ -52,7 +52,10 @@ Ecosystem::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+  #@firstNode = Node.first
   root :to => "pages#home"
+  #map.root :controller => 'nodes', :action => 'show', :node => @firstNode
+
 
   # See how all your routes lay out with "rake routes"
 

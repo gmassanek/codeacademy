@@ -1,7 +1,6 @@
-= form_for @node do |f|
-  = f.error_messages
-  = f.label :title
-  = f.text_field :title
-  = f.label :description
-  = f.text_area :description
-  = f.submit
+= simple_form_for @node do |f|
+  %fieldset
+    %legend Node
+    = f.input :title, :input_html => {:class => 'title'}
+    = f.input :description
+    = f.submit

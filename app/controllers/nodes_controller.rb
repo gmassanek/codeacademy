@@ -17,9 +17,9 @@ class NodesController < ApplicationController
     end
   end
   def update
-    @node = Node.new(params[:id])
+    @node = Node.find(params[:id])
     if @node.update_attributes(params[:node])
-      redirect_to @node, :notice => "Node #{@node.title} updated"
+      redirect_to @node, :notice => "Node #{@node} updated"
     else
       render :action => 'edit'
     end
