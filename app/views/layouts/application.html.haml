@@ -9,11 +9,11 @@
   = csrf_meta_tag
 %body
   .container.showgrid  
-    .fs-content
-      .fs-mainblock.span-18.colborder
-        .fs-header 
-          =render 'layouts/header'
+    .span-24.colborder
+      .header 
+        =render 'layouts/header'
+      .content.span-24
         = yield
-        .fs-footer
-          =render 'layouts/footer'
+      .footer
+        =render 'layouts/footer'
 
