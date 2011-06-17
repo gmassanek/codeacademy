@@ -3,4 +3,8 @@
 %h1= @node.title
 %h3 Description
 %p= @node.description
+%h3 Related Nodes
+%p
+  - @node.related_nodes.each do |node|
+    = node.title
 %p= debug(params)

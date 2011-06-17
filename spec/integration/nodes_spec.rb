@@ -70,7 +70,16 @@ describe Node do
         visit node_path(@node)
         page.should have_content("#{@node.description}")
       end
-      it "shows all the nodes related to it"
+      it "shows all the nodes related to it" do
+        @node2 = Fabricate(:node)
+        @node3 = Fabricate(:node)
+        @rel = Relationship.create(:node1 => @node, :node2 => @node2, :sentence1 => "%1 %2", :sentence2 => "%2 %1")
+        @rel2 = Relationship.create(:node1 => @node3, :node2 => @node, :sentence1 => "%1 %2", :sentence2 => "%2 %1")
+        visit node_path(@node)
+        page.should have_content("#{@node2}")
+        page.should have_content("#{@node3}")
+
+      end
     end
   end
 end
