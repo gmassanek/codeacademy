@@ -38,7 +38,7 @@ class Relationship < ActiveRecord::Base
     end
   end
   def populateSentence(sentence)
-    sentence.gsub(/(%1)/, node1.title).gsub(/%2/, node2.title)
+    sentence.sub("%1", node1.title).sub("%2", node2.title)
   end
   def sentenceValid?(sentence)
     sentence.include?('%1') and sentence.include?('%2')
