@@ -1,8 +1,10 @@
-.span-22.push-1
+.span-17.prepend-1.border
   - unless flash[:notice].nil?
     %p.notice= flash[:notice]
   %h2= @node.title
+  %p= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
   %p= @node.description
+.span-6.sidebar.last
   %h3 Related Nodes
   %ul
     - @node.relationships.each do |r|

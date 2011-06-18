@@ -22,6 +22,15 @@ describe Node do
       page.click_button 'Update Node'
       page.should have_content("can't be blank")
     end
+    it "saves a link" do
+      visit new_node_path
+      title = Faker::Lorem.words(3).join(" ")
+      page.fill_in 'Title', :with => title
+      page.fill_in 'Description', :with => Faker::Lorem.words(5).join(" ")
+      page.fill_in 'Url', :with => "wwww.#{title.gsub(" ","")}.com"
+      page.click_button 'Create Node'
+      page.should have_content("Node #{title} created")
+    end
   end
   describe "editing nodes" do
     it "can edit nodes" do
@@ -81,6 +90,10 @@ describe Node do
       end
     end
     describe "root page" do
+      it "has a sidebar" do
+        visit node_path(@node)
+        page.should have_css('.sidebar')
+      end
     end
   end
 end

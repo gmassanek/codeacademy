@@ -1,3 +1,5 @@
+- unless flash[:notice].nil?
+  %p.notice= flash[:notice]
 %h3 Nodes
 %table
   - @nodes.each do |node|

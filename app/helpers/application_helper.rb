@@ -6,7 +6,7 @@ module ApplicationHelper
     if sentence == relationship.sent1(:filled_with => nil)
       relationship.populate(sentence, {:val1 => node.to_s, :val2 => link})
     else
-      relationship.populate(sentence,{:val1 => link, :val2 => othernode.to_s})
+      relationship.populate(sentence,{:val1 => link, :val2 => node.to_s})
     end
   end
 end

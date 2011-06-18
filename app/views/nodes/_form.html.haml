@@ -1,6 +1,10 @@
 = simple_form_for @node do |f|
   %fieldset
     %legend Node
+    = f.error_messages
     = f.input :title, :input_html => {:class => 'title'}
+    = f.input :homepage
     = f.input :description
+    = f.simple_fields_for :links, @node.links.build do |links_form|
+      = links_form.input :url
     = f.submit
