@@ -13,14 +13,14 @@ describe Relationship do
     @relationship.save
   end
   it "displays the relationship from node1 to node2" do
-    @relationship.sentence1to2.should == "#{@frag1} #{@node1} #{@frag2} #{@node2} #{@frag3}"
+    @relationship.sent1.should == "#{@frag1} #{@node1} #{@frag2} #{@node2} #{@frag3}"
   end
   it "displays the relationship from node2 to node1" do
-    @relationship.sentence2to1.should == "#{@frag3} #{@node2} #{@frag1} #{@node1} #{@frag2}"
+    @relationship.sent2.should == "#{@frag3} #{@node2} #{@frag1} #{@node1} #{@frag2}"
   end
   it "doesn't change sentence1 even after calling sentence1to2" do
     sent = @relationship.sentence1
-    @relationship.sentence1to2
+    @relationship.sent1
     @relationship.save
     sent.should == @relationship.sentence1
   end
@@ -63,7 +63,7 @@ describe Relationship do
     @relationship.should_not be_valid
   end
   it "responds to .sentence(node)" do
-    @relationship.sentence_from(@node1).should == @relationship.sentence1to2
+    @relationship.sentence_from(@node1).should == @relationship.sent1
   end
   it "responds to .other_node(node)" do
     @relationship.other_node(@node1).should == @node2

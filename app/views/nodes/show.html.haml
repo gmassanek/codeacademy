@@ -6,4 +6,4 @@
   %h3 Related Nodes
   %ul
     - @node.relationships.each do |r|
-      %li= link_to "#{r.sentence_from(@node)}", r.other_node(@node)
+      %li= relationship_sentence_with_link(r, @node)

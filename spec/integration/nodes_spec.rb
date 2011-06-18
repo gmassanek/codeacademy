@@ -64,21 +64,20 @@ describe Node do
     describe "show page" do
       it "shows the node title" do
         visit node_path(@node)
-        page.should have_css('h1', :text => "#{@node.title}")
+        page.should have_css('h2', :text => "#{@node.title}")
       end
       it "shows the node description" do
         visit node_path(@node)
         page.should have_content("#{@node.description}")
       end
-      it "shows all the nodes related to it" do
+      it "links to all the nodes related to it" do
         @node2 = Fabricate(:node)
         @node3 = Fabricate(:node)
         @rel = Relationship.create(:node1 => @node, :node2 => @node2, :sentence1 => "%1 %2", :sentence2 => "%2 %1")
         @rel2 = Relationship.create(:node1 => @node3, :node2 => @node, :sentence1 => "%1 %2", :sentence2 => "%2 %1")
         visit node_path(@node)
-        page.should have_content("#{@node2}")
-        page.should have_content("#{@node3}")
-
+        page.should have_link(@node2.title)
+        page.should have_link(@node3.title)
       end
     end
     describe "root page" do

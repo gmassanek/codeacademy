@@ -45,8 +45,8 @@ describe Relationship do
   end
   it "show both direction's sentences" do
     visit relationship_path(@relationship) 
-    page.should have_content("#{@relationship.sentence1to2}")
-    page.should have_content("#{@relationship.sentence2to1}")
+    page.should have_content("#{@relationship.sent1}")
+    page.should have_content("#{@relationship.sent2}")
   end
   describe "index" do
     it "shows a relationship's title on the index page" do
