@@ -62,5 +62,11 @@ describe Relationship do
     @relationship.node2 = @node1
     @relationship.should_not be_valid
   end
+  it "responds to .sentence(node)" do
+    @relationship.sentence_from(@node1).should == @relationship.sentence1to2
+  end
+  it "responds to .other_node(node)" do
+    @relationship.other_node(@node1).should == @node2
+  end
 end
 

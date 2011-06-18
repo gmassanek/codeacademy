@@ -1,4 +1,4 @@
-#centerHome.span-19.prepend-3.last
+#centerHome.span-18.push-3
   .span-6
     = image_tag("Wiki1.png")
     %h3 discover
@@ -6,8 +6,22 @@
   .span-6
     = image_tag("Search.png")
     %h3 learn 
-    %p.quiet Once you discover a new node that you like, learn how to use it.  See how it fits into the Ruby Ecosystem, find installation directions, code samples, and other references.
-  .span-6
+    %p.quiet Learn how to use new frameworks, gems, tools, and ideas.  See how they fit into the Ruby Ecosystem and find installation directions, code samples, and other references.
+  .span-6.last
     = image_tag("Workspace2.png")
     %h3 reference 
-    %p.quiet Check back to keep your skills sharp, find out new release information, or discover even more solutions.
+    %p.quiet Check back to keep your skills sharp, find out about new releases, or discover even more new solutions.
+%hr.span-12.push-6.hr
+.span-18.push-3
+  .span-6
+    %ul
+      - @nodes1.each do |n|
+        %li= link_to "#{n.title}", n  unless n.nil?
+  .span-6
+    %ul
+      - @nodes2.each do |n|
+        %li= link_to "#{n.title}", n  unless n.nil?
+  .span-6.last
+    %ul
+      - @nodes3.each do |n|
+        %li= link_to "#{n.title}", n  unless n.nil?

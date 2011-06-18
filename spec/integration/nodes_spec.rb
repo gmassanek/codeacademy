@@ -81,5 +81,7 @@ describe Node do
 
       end
     end
+    describe "root page" do
+    end
   end
 end

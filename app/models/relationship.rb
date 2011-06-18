@@ -25,6 +25,20 @@ class Relationship < ActiveRecord::Base
       end
     end
   end
+  def sentence_from(node)
+    if node1_id == node.id
+      sentence1to2
+    else
+      sentence2to1
+    end
+  end
+  def other_node(node)
+    if node1_id == node.id
+      node2
+    else
+      node1
+    end
+  end
   def sentence1to2
     populateSentence(sentence1)
   end

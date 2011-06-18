@@ -1,10 +1,9 @@
-- unless flash[:notice].nil?
-  %p.notice= flash[:notice]
-%h1= @node.title
-%h3 Description
-%p= @node.description
-%h3 Related Nodes
-%p
-  - @node.related_nodes.each do |node|
-    = node.title
-%p= debug(params)
+.span-22.push-1
+  - unless flash[:notice].nil?
+    %p.notice= flash[:notice]
+  %h2= @node.title
+  %p= @node.description
+  %h3 Related Nodes
+  %ul
+    - @node.relationships.each do |r|
+      %li= link_to "#{r.sentence_from(@node)}", r.other_node(@node)
