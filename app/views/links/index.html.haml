@@ -1,0 +1,8 @@
+= render 'shared/notice'
+%h3 Links
+%table
+  - @links.each do |link|
+    %tr
+      %td= link.to_s
+      %td= link_to 'Edit', edit_link_path(link), :id => "editLink_#{link.id}"
+      %td= link_to 'Delete', link_path(link), :id => "deleteLink_#{link.id}"

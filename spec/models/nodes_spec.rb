@@ -46,9 +46,19 @@ describe Node do
     it "responds to links" do
       @node.should respond_to(:links)
     end
+    it "accepts attributes for a link" do
+      node = Fabricate(:node)
+      node.update_attributes :links_attributes => [{:url => 'http://www.google.com'}]
+      @node.save.should == true
+    end
+    it "accepts attributes for multiple links" do
+      node = Fabricate(:node)
+      node.update_attributes :links_attributes => [{:url => 'http://www.google.com'}, {:url => 'http://www.yahoo.com'}]
+      @node.save.should == true
+    end
     it "can save with a link" do
       @node = Fabricate(:node_with_links)
-      @node.should be_valid
+      @node.links.count.should == 3
     end
   end
 end

@@ -4,6 +4,11 @@
   %h2= @node.title
   %p= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
   %p= @node.description
+- unless @node.links.empty?
+  %h3 Helpful Links 
+  %ul
+    - @node.links.each do |link|
+      %li= link_to link.url, link.url
 .span-6.sidebar.last
   %h3 Related Nodes
   %ul

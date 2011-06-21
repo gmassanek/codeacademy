@@ -1,0 +1,20 @@
+%fieldset
+  %legend Node
+  - form_for @node do |f|
+    = f.error_messages
+    = f.label :title
+    %br
+    = f.text_field :title, :class => 'title'
+    %br
+    = f.label :homepage
+    = f.text_field  :homepage, :class => 'text'
+    %br
+    - f.fields_for :links do |links_form|
+      = links_form.label 'Remove Link' 
+      = links_form.text_field :url, :class => 'text'
+      = links_form.check_box :_destroy
+      %br
+    = f.label :description, :rows => 3
+    = f.text_area  :description
+    %br
+    = f.submit

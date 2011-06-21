@@ -1,0 +1,7 @@
+= simple_form_for @link do |f|
+  %fieldset
+    %legend Link
+    = f.error_messages
+    = f.association :node
+    = f.input :url
+    = f.submit

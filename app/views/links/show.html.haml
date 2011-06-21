@@ -1,0 +1,4 @@
+.span-17.prepend-1.border
+  = render 'shared/notice'
+  %h2= @link.to_s
+  %p= link_to @link.url, @link.url, :target => '_blank'

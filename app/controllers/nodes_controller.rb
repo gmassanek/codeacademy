@@ -7,11 +7,12 @@ class NodesController < ApplicationController
   end
   def new
     @node = Node.new
+    3.times { @node.links.build}
   end
   def create
     @node = Node.new(params[:node])
     if @node.save
-      redirect_to nodes_path, :notice => "Node #{@node.title} created"
+      redirect_to nodes_path, :notice => "Node #{@node.to_s} created"
     else
       render :action => 'new'
     end

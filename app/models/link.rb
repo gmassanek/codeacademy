@@ -1,7 +1,11 @@
 class Link < ActiveRecord::Base
-  belongs_to :node
-  validates :node, :presence => true
+  belongs_to :node, :inverse_of => :links
+  #validates :node_id, :presence => true, :unless => lambda {|link| link.node.try(:valid?)}
+  validates_presence_of :node
   validates :url, :presence => true
-  #validates_format_of :url, :with => URI::regexp(%w(http https))
-  validates_format_of :url, :with => /^(#{URI::regexp(%w(http https))})$/, :allow_blank => true
+
+  def to_s
+    "#{node.to_s} (#{url})"
+  end
 end
+
