@@ -27,5 +27,6 @@ class NodesController < ApplicationController
   end
   def edit
     @node = Node.find(params[:id])
+    3.times { @node.links.build}
   end
 end

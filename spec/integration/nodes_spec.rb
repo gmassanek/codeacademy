@@ -17,19 +17,6 @@ describe Node do
       page.click_button 'Create Node'
       page.should have_content("can't be blank")
     end
-    it "saves a node with a link" do
-      visit new_node_path
-      title = Faker::Lorem.words(3).join(" ")
-      page.fill_in 'Title', :with => title
-      page.fill_in 'Description', :with => Faker::Lorem.words(5).join(" ")
-      page.fill_in 'Url', :with => "wwww.#{title.gsub(" ","")}.com"
-      page.click_button 'Create Node'
-      page.should have_content("Node #{title} created")
-    end
-    it "has 3 link inputs" do
-      visit new_node_path
-      page.should have_css('label', :text => 'Url', :count => 3)
-    end
   end
   describe "edit page" do
     before do
@@ -101,6 +88,19 @@ describe Node do
     end
   end
   describe "and links" do
+    it "saves a node with a link" do
+      visit new_node_path
+      title = Faker::Lorem.words(3).join(" ")
+      page.fill_in 'Title', :with => title
+      page.fill_in 'Description', :with => Faker::Lorem.words(5).join(" ")
+      page.fill_in 'Url', :with => "wwww.#{title.gsub(" ","")}.com"
+      page.click_button 'Create Node'
+      page.should have_content("Node #{title} created")
+    end
+    it "has 3 link inputs" do
+      visit new_node_path
+      page.should have_css('label', :text => 'Url', :count => 3)
+    end
     it "shows all the links associated" do
       node = Fabricate(:node_with_links)
       node.links.each do |link|
@@ -123,6 +123,11 @@ describe Node do
       page.check('Remove')
       page.click_button('node_submit')
       node.links.size.should == 2
+    end
+    it "has 3 link inputs for edit" do
+      node = Fabricate(:node)
+      visit edit_node_path(node)
+      page.should have_css('label', :text => 'Url', :count => 3)
     end
   end
 end
