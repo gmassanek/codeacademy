@@ -129,5 +129,8 @@ describe Node do
       visit edit_node_path(node)
       page.should have_css('label', :text => 'Url', :count => 3)
     end
+    it "has an 'add link' link on the new and edit pages"
+    it "can associate links to relationships"
+    it "can save a nodes social media pages and hotlinks"
   end
 end
