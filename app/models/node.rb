@@ -28,8 +28,8 @@ class Node < ActiveRecord::Base
     if homepage.empty? 
       return nil
     end
-    homepage = "www." + homepage unless homepage.include?("www.")
-    homepage = "http://" + homepage unless homepage.include?("http://")
+    #homepage = "www." + homepage unless homepage.include?("www.")
+    #homepage = "http://" + homepage unless homepage.include?("http://")
     super
   end
   
