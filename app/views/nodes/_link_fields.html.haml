@@ -1,4 +1,3 @@
 .fields
-  = f.input :_destroy, :as => "hidden"
   = link_to_remove_fields "Remove Link", f
-  = f.input :url
+  = f.input :url, :input_html => {:class => "text"}, :br => false

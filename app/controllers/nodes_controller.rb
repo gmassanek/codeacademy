@@ -29,4 +29,9 @@ class NodesController < ApplicationController
     @node = Node.find(params[:id])
     @node.links.build
   end
+  def destroy
+    @node = Node.find(params[:id])
+    @node.destroy
+    redirect_to nodes_path, :notice => "Node deleted"
+  end
 end

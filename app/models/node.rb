@@ -33,7 +33,7 @@ class Node < ActiveRecord::Base
     super
   end
   
-  def self.all
+  def self.all(*args)
     self.find(:all, :order => "title")  
   end
 end

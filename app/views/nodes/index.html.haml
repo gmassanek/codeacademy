@@ -5,4 +5,4 @@
     %tr
       %td= node.title
       %td= link_to 'Edit', edit_node_path(node), :id => "editNode_#{node.id}"
-      %td= link_to 'Delete', node_path(node), :id => "deleteNode_#{node.id}"
+      %td= link_to 'Destroy', node, :confirm => "Are you sure?", :method => :delete 

@@ -1,11 +1,14 @@
 = simple_form_for @node do |f|
   %fieldset
     %legend Node
-    = f.error_messages
-    = f.input :title, :input_html => {:class => 'title'}
-    = f.input :homepage
-    = f.input :description
-    = link_to_add_fields "Add Link", f, :links 
-    = f.simple_fields_for :links do |links_form|
-      = render "link_fields", :f => links_form
+    .span-11
+      = f.error_messages
+      = f.input :title, :input_html => {:class => 'title'}
+      = f.input :homepage
+      = f.input :description, :input_html => {:rows => 8}
+    %fieldset.span-11
+      %legend Helpful Links
+      = link_to_add_fields "Add Link", f, :links 
+      = f.simple_fields_for :links do |links_form|
+        = render "link_fields", :f => links_form
     = f.submit
