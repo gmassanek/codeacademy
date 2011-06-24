@@ -12,7 +12,7 @@ class NodesController < ApplicationController
   def create
     @node = Node.new(params[:node])
     if @node.save
-      redirect_to nodes_path, :notice => "Node #{@node.to_s} created"
+      redirect_to node_path(@node), :notice => "Node #{@node.to_s} created"
     else
       render :action => 'new'
     end
@@ -20,7 +20,7 @@ class NodesController < ApplicationController
   def update
     @node = Node.find(params[:id])
     if @node.update_attributes(params[:node])
-      redirect_to nodes_path, :notice => "Node #{@node} updated"
+      redirect_to node_path(@node), :notice => "Node #{@node} updated"
     else
       render :action => 'edit'
     end

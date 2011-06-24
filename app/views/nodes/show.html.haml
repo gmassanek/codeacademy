@@ -3,6 +3,7 @@
     %p.notice= flash[:notice]
   %h2= @node.title
   %p= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
+  %p= link_to "Edit", edit_node_path(@node)
   %p= @node.description
 - unless @node.links.empty?
   .span-6.sidebar.last
