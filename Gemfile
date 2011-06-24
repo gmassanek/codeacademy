@@ -19,6 +19,7 @@ group :test, :development do
   gem 'launchy'
   gem 'fabrication'
   gem 'ffaker'
+  gem 'database_cleaner'
 end
 # Use unicorn as the web server
 # gem 'unicorn'
