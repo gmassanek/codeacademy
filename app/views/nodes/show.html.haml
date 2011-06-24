@@ -5,13 +5,13 @@
   %p= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
   %p= link_to "Edit", edit_node_path(@node)
   %p= @node.description
-- unless @node.links.empty?
-  .span-6.sidebar.last
+.span-6.sidebar.last
+  - unless @node.links.empty?
     %h3 Helpful Links 
     %ul
       - @node.links.each do |link|
         %li= link_to link.url, link.url
-    %h3 Related Nodes
-    %ul
-      - @node.relationships.each do |r|
-        %li= relationship_sentence_with_link(r, @node)
+  %h3 Related Nodes
+  %ul
+    - @node.relationships.each do |r|
+      %li= relationship_sentence_with_link(r, @node)

@@ -34,9 +34,9 @@ class Relationship < ActiveRecord::Base
   end
   def other_node(node)
     if node1_id == node.id
-      node2
+      return Node.find(node2_id)
     else
-      node1
+      return Node.find(node1_id)
     end
   end
   def sent1(options = {:filled_with => 'nodes'})
