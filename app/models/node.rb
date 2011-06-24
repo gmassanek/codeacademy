@@ -23,16 +23,6 @@ class Node < ActiveRecord::Base
       end
     end
   end
-  
-  def homepage=(homepage)
-    if homepage.empty? 
-      return nil
-    end
-    #homepage = "www." + homepage unless homepage.include?("www.")
-    #homepage = "http://" + homepage unless homepage.include?("http://")
-    super
-  end
-  
   def self.all(*args)
     self.find(:all, :order => "title")  
   end
