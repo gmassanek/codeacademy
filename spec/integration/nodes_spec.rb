@@ -45,7 +45,7 @@ describe Node do
       page.should have_content(@node.title)
       page.should have_content(node2.title)
     end
-    it "should order the links alphabetically"
+
     it "has e working edit link" do
       visit nodes_path
       page.click_link("editNode_#{@node.id}")

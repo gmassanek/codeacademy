@@ -37,6 +37,19 @@ describe Node do
   it "has a homepage" do
     @node.should be_valid
   end
+  it "should order the links alphabetically" do
+    @node2 = Fabricate(:node)
+    @node3 = Fabricate(:node)
+    @node.title = "G title"
+    @node.save
+    @node2.title = "A title"
+    @node2.save
+    @node3.title = "Z title"
+    @node3.save
+    Node.all.first.should == @node2
+    Node.all.last.should == @node3
+    Node.all.second.should == @node
+  end
   it "prepends www. and http:// if they're not there already" do
     @node.homepage = "google.com"
     @node.save

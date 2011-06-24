@@ -32,4 +32,8 @@ class Node < ActiveRecord::Base
     homepage = "http://" + homepage unless homepage.include?("http://")
     super
   end
+  
+  def self.all
+    self.find(:all, :order => "title")  
+  end
 end
