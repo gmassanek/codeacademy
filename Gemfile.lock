@@ -54,6 +54,9 @@ GEM
       guard (>= 0.4.0)
     haml (3.1.2)
     i18n (0.5.0)
+    jquery-rails (1.0.11)
+      railties (~> 3.0)
+      thor (~> 0.14)
     json_pure (1.5.2)
     launchy (0.4.0)
       configuration (>= 0.0.5)
@@ -124,6 +127,7 @@ DEPENDENCIES
   ffaker
   guard-rspec
   haml
+  jquery-rails
   launchy
   pg
   rails (= 3.0.7)

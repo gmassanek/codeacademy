@@ -7,7 +7,7 @@ class NodesController < ApplicationController
   end
   def new
     @node = Node.new
-    3.times { @node.links.build}
+    @node.links.build
   end
   def create
     @node = Node.new(params[:node])
@@ -27,6 +27,6 @@ class NodesController < ApplicationController
   end
   def edit
     @node = Node.find(params[:id])
-    3.times { @node.links.build}
+    @node.links.build
   end
 end

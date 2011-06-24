@@ -10,6 +10,7 @@ gem 'dynamic_form'
 gem 'haml'
 gem 'simple_form'
 gem 'escape_utils'
+gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"

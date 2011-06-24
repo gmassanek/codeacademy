@@ -45,6 +45,7 @@ describe Node do
       page.should have_content(@node.title)
       page.should have_content(node2.title)
     end
+    it "should order the links alphabetically"
     it "has e working edit link" do
       visit nodes_path
       page.click_link("editNode_#{@node.id}")
@@ -97,9 +98,9 @@ describe Node do
       page.click_button 'Create Node'
       page.should have_content("Node #{title} created")
     end
-    it "has 3 link inputs" do
+    it "has 1 link inputs" do
       visit new_node_path
-      page.should have_css('label', :text => 'Url', :count => 3)
+      page.should have_css('label', :text => 'Url', :count => 1)
     end
     it "shows all the links associated" do
       node = Fabricate(:node_with_links)
@@ -120,16 +121,36 @@ describe Node do
       node.links.each do |link|
         visit edit_node_path(node)
       end
-      page.check('Remove')
+      page.click_link('Remove')
       page.click_button('node_submit')
       node.links.size.should == 2
     end
-    it "has 3 link inputs for edit" do
+    it "has 1 link inputs for edit" do
       node = Fabricate(:node)
       visit edit_node_path(node)
-      page.should have_css('label', :text => 'Url', :count => 3)
+      page.should have_css('label', :text => 'Url', :count => 1)
     end
-    it "has an 'add link' link on the new and edit pages"
+    context "js links" do
+      #before do
+      #  Capybara.current_driver = :selenium
+      #end
+      #it "has an 'add link' link on the new and edit pages"
+      it "has a link to delete each link on the new page" do
+        visit new_node_path
+        delete_link = page.find_link("Remove Link")
+        delete_link.click
+        delete_link.should_not be_visible
+      end
+      it "has a link to add a link on the new page" do
+        visit new_node_path
+        count = page.all('a', :text => ("Remove Link")).count
+        page.click_link("Add Link")
+        page.all('a', :text => ("Remove Link")).count.should == count+1
+      end
+      #after do
+      #  Capybara.use_default_driver
+      #end
+    end
     it "can associate links to relationships"
     it "can save a nodes social media pages and hotlinks"
   end
