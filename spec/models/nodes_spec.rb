@@ -50,10 +50,26 @@ describe Node do
     Node.all.last.should == @node3
     Node.all.second.should == @node
   end
-  it "prepends www. and http:// if they're not there already" do
-    @node.homepage = "google.com"
-    @node.save
-    @node.homepage.should == "http://www.google.com"
+  it "accepts valid URLs" do
+    validURLs = [
+          "http://www.google.com",
+          "https://hello"
+    ]
+    validURLs.each do |url|
+      @node.homepage = url
+      @node.should be_valid
+    end
+  end
+  it "rejects invalid URLs" do
+    invalidURLs = [
+          "google.com",
+          "hello",
+          "www.google.com"
+    ]
+    invalidURLs.each do |url|
+      @node.homepage = url
+      @node.should_not be_valid
+    end
   end
   describe "can have links associated" do
     it "responds to links" do

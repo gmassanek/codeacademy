@@ -4,6 +4,7 @@ class Node < ActiveRecord::Base
   has_many :links, :inverse_of => :node
   validates :title, :presence => true
   validates :description, :presence => true
+  validates :homepage, :format => {:with => URI::regexp}, :allow_blank => true
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
 
   def to_s

@@ -94,7 +94,7 @@ describe Node do
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'Title', :with => title
       page.fill_in 'Description', :with => Faker::Lorem.words(5).join(" ")
-      page.fill_in 'Url', :with => "wwww.#{title.gsub(" ","")}.com"
+      page.fill_in 'Url', :with => "http://wwww.#{title.gsub(" ","")}.com"
       page.click_button 'Create Node'
       page.should have_content("Node #{title} created")
     end
