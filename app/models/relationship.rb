@@ -7,6 +7,9 @@ class Relationship < ActiveRecord::Base
   validate :has_space_holders, :allow_nil => true
   validate :not_self_referencing
 
+  has_many :links, :inverse_of => :relationship
+  accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
+
   validates :node1, :presence => true
   validates :node2, :presence => true
   validates :sentence1, :presence => true
@@ -16,6 +19,11 @@ class Relationship < ActiveRecord::Base
   def not_self_referencing
     errors.add(:node1, 'cannot be the same as node 2') if node1_id == node2_id
   end
+  
+  def to_s
+    "#{node1.to_s} to #{node2.to_s}"
+  end
+
   def fillKey
     unless node1.nil? or node2.nil?
       if node1_id<node2_id

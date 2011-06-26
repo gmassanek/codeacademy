@@ -64,6 +64,11 @@ describe Node do
       visit node_path(@node)
       page.should have_css('h2', :text => "#{@node.title}")
     end
+    it "uses a slug from the title for the URL" do
+      @node = Fabricate(:node, :title => "Github")
+      visit node_path(@node)
+      page.current_url.should include("github")
+    end
     it "shows the node description" do
       visit node_path(@node)
       page.should have_content("#{@node.description}")
@@ -151,7 +156,6 @@ describe Node do
         Capybara.use_default_driver
       end
     end
-    it "can associate links to relationships"
     it "can save a nodes social media pages and hotlinks"
   end
 end

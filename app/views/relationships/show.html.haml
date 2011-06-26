@@ -1,6 +1,11 @@
-- unless flash[:notice].nil?
-  %p= flash[:notice]
-%h1= "Relationship between #{@relationship.node1} and #{@relationship.node2}"
-%p= @relationship.sent1
-%p= @relationship.sent2
-%p= @relationship.key
+.span-17.prepend-1.border
+  - unless flash[:notice].nil?
+    %p.notice= flash[:notice]
+  %h2= relationship_sentence_with_link(@relationship, @relationship.node1)
+  %p= link_to "Edit", edit_relationship_path(@relationship)
+.span-6.sidebar.last
+  - unless @relationship.links.empty?
+    %h3 Helpful Links 
+    %ul
+      - @relationship.links.each do |link|
+        %li= link_to link.url, link.url

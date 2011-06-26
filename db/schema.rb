@@ -10,11 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110618194619) do
+ActiveRecord::Schema.define(:version => 20110626170838) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
     t.integer "node_id"
+    t.integer "relationship_id"
   end
 
   create_table "nodes", :force => true do |t|
@@ -23,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110618194619) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "homepage"
+    t.string   "cached_slug"
   end
 
   create_table "relationships", :force => true do |t|
@@ -37,5 +39,17 @@ ActiveRecord::Schema.define(:version => 20110618194619) do
 
   add_index "relationships", ["node1_id"], :name => "index_relationships_on_node1_id"
   add_index "relationships", ["node2_id"], :name => "index_relationships_on_node2_id"
+
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
 end

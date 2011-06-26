@@ -1,8 +1,14 @@
 = simple_form_for @relationship do |f|
   %fieldset
     %legend Relationship
-    = f.association :node1
-    = f.association :node2
-    = f.input :sentence1, :placeholder => '%1 is related to %2'
-    = f.input :sentence2, :placeholder => '%2 is related to %1'
+    .span-11
+      = f.association :node1
+      = f.association :node2
+      = f.input :sentence1, :placeholder => '%1 is related to %2'
+      = f.input :sentence2, :placeholder => '%2 is related to %1'
+    %fieldset.span-11
+      %legend Helpful Links
+      = link_to_add_fields "Add Link", f, :links 
+      = f.simple_fields_for :links do |links_form|
+        = render "link_fields", :f => links_form
     = f.button :submit

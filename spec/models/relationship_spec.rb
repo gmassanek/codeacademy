@@ -2,71 +2,85 @@ require 'spec_helper'
 
 describe Relationship do
   before do
-    @node1 = Fabricate(:node)
-    @node2 = Fabricate(:node)
-    @frag1 = Faker::Lorem.words(2).join(" ")
-    @frag2 = Faker::Lorem.words(3).join(" ")
-    @frag3 = Faker::Lorem.words(2).join(" ")
-    @sentence1 = "#{@frag1} %1 #{@frag2} %2 #{@frag3}"
-    @sentence2 = "#{@frag3} %2 #{@frag1} %1 #{@frag2}"
-    @relationship = Relationship.new(:node1=>@node1, :node2=>@node2, :sentence1 => @sentence1, :sentence2 => @sentence2)
-    @relationship.save
+    @rel = Fabricate(:relationship)
   end
   it "displays the relationship from node1 to node2" do
-    @relationship.sent1.should == "#{@frag1} #{@node1} #{@frag2} #{@node2} #{@frag3}"
+    @rel.sent1.should include(@rel.node1.title)
+    @rel.sent1.should include(@rel.node2.title)
   end
   it "displays the relationship from node2 to node1" do
-    @relationship.sent2.should == "#{@frag3} #{@node2} #{@frag1} #{@node1} #{@frag2}"
+    @rel.sent2.should include(@rel.node1.title)
+    @rel.sent2.should include(@rel.node2.title)
   end
   it "doesn't change sentence1 even after calling sentence1to2" do
-    sent = @relationship.sentence1
-    @relationship.sent1
-    @relationship.save
-    sent.should == @relationship.sentence1
+    sent = @rel.sentence1
+    @rel.sent1
+    @rel.save
+    sent.should == @rel.sentence1
   end
   it "responds to node1" do
-    @relationship.should respond_to(:node1)
+    @rel.should respond_to(:node1)
+  end
+  it "is invalid if the sentence 1 is blank" do
+    @rel.sentence1 = nil
+    @rel.should_not be_valid
+  end
+  it "is invalid if the sentence 2 is blank" do
+    @rel.sentence2 = nil
+    @rel.should_not be_valid
+  end
+  it "is invalid if the sentence 1 doesn't contain a %1 and a %2" do
+    @rel.sentence1 = "This should be %2 invalid"
+    @rel.should_not be_valid
+    @rel.sentence1 = "This should be %1 invalid"
+    @rel.should_not be_valid
+  end
+  it "is invalid if the sentence 2 doesn't contain a %1 and a %2" do
+    @rel.sentence2 = "This should be %2 invalid"
+    @rel.should_not be_valid
+    @rel.sentence2 = "This should be %1 invalid"
+    @rel.should_not be_valid
   end
   it "is invalid if node1 or node2 are blank" do
-    @relationship.node1 = nil
-    @relationship.should_not be_valid
-    @relationship.node1 = @node1
-    @relationship.node2 = nil
-    @relationship.should_not be_valid
+    @rel.node1 = nil
+    @rel.should_not be_valid
+    @rel.node1 = @rel.node1
+    @rel.node2 = nil
+    @rel.should_not be_valid
   end
   it "is valid if %1 or %2 are not separated from other characters by white space" do
-    @relationship.sentence1 = "(%1) %2"
-    @relationship.should be_valid
+    @rel.sentence1 = "(%1) %2"
+    @rel.should be_valid
   end
   describe "relationship key" do
     it "replies to .key function" do
-      @relationship.should respond_to(:key)
+      @rel.should respond_to(:key)
     end
     it "has the same key as the opposite relationship" do
-      @relationship2 = @relationship.clone
-      @relationship2.node1 = @node2
-      @relationship2.node2 = @node1
-      @relationship2.key.should == @relationship.key
+      @rel2 = @rel.clone
+      @rel2.node1 = @rel.node2
+      @rel2.node2 = @rel.node1
+      @rel2.key.should == @rel.key
     end
     it "restricts a key to being unique" do
-      @relationship2 = @relationship.clone
-      @relationship2.node1 = @node2
-      @relationship2.node2 = @node1
-      @relationship2.should_not be_valid
+      @rel2 = @rel.clone
+      @rel2.node1 = @rel.node2
+      @rel2.node2 = @rel.node1
+      @rel2.should_not be_valid
     end
     it "defaults the key and saves it" do
-      @relationship.key.should_not be_nil
+      @rel.key.should_not be_nil
     end
   end
   it "can't save with the same two nodes" do
-    @relationship.node2 = @node1
-    @relationship.should_not be_valid
+    @rel.node2 = @rel.node1
+    @rel.should_not be_valid
   end
   it "responds to .sentence(node)" do
-    @relationship.sentence_from(@node1).should == @relationship.sent1
+    @rel.sentence_from(@rel.node1).should == @rel.sent1
   end
   it "responds to .other_node(node)" do
-    @relationship.other_node(@node1).should == @node2
+    @rel.other_node(@rel.node1).should == @rel.node2
   end
 end
 

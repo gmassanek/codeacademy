@@ -8,6 +8,18 @@ describe Node do
     @node.title = nil
     @node.should_not be_valid
   end
+  context "slugs" do
+    it "saves it's title as a slug" do
+      @node = Fabricate(:node, :title => "Test")
+      @node.save
+      @node.cached_slug.should == "test"
+    end
+  end
+  it "prevents duplicate titles" do
+    @node2 = Fabricate(:node)
+    @node2.title = @node.title
+    @node2.should_not be_valid
+  end
   it "is invalid without a description" do
     @node.description = nil
     @node.should_not be_valid
