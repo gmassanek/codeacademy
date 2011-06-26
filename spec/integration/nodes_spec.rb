@@ -156,6 +156,15 @@ describe Node do
         Capybara.use_default_driver
       end
     end
-    it "can save a nodes social media pages and hotlinks"
+    context "social media links" do
+      it "saves social media pages" do
+        node = Fabricate(:node)
+        visit node_path(node)
+        page.fill_in("github", :with => "gmassanek")
+        page.click_button("Update Link")
+        visit node_path(node)
+        page.should have_link("github.com")
+      end
+    end
   end
 end

@@ -1,0 +1,9 @@
+.span-17.prepend-1.border
+  = render 'shared/notice'
+  %h2= @siteHandle.to_s
+  %p
+    %label Github
+    =@siteHandle.github
+  %p
+    %label Twitter
+    =@siteHandle.twitter

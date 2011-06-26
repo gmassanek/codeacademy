@@ -1,0 +1,8 @@
+= simple_form_for @siteHandle do |f|
+  %fieldset
+    %legend Site Handles
+    = f.error_messages
+    = f.association :node
+    = f.input :github
+    = f.input :twitter
+    = f.submit

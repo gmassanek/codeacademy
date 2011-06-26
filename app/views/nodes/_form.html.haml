@@ -10,5 +10,5 @@
       %legend Helpful Links
       = link_to_add_fields "Add Link", f, :links 
       = f.simple_fields_for :links do |links_form|
-        = render "link_fields", :f => links_form
+        = render 'link_fields', :f => links_form
     = f.button :submit

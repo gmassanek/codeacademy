@@ -17,6 +17,7 @@ Ecosystem::Application.routes.draw do
       resources :nodes
       resources :relationships
       resources :links
+      resources :site_handles
 
   # Sample resource route with options:
   #   resources :products do

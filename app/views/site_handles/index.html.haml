@@ -1,0 +1,8 @@
+= render 'shared/notice'
+%h3 Site Handles
+%table
+  - @siteHandles.each do |site_handle|
+    %tr
+      %td= site_handle.to_s
+      %td= link_to 'Edit', edit_site_handle_path(site_handle), :id => "editSiteHandle_#{site_handle.id}"
+      %td= link_to 'Delete', site_handle_path(site_handle), :id => "deleteSiteHandle_#{site_handle.id}"
