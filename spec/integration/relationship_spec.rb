@@ -14,9 +14,10 @@ describe Relationship do
     page.click_button 'Create Relationship'
     page.should have_content("Relationship created.")
   end
-  it "show node1 sentence by default" do
+  it "show links to both nodes" do
     visit relationship_path(@relationship) 
-    page.should have_content("#{@relationship.sent1}")
+    page.should have_link(@relationship.node1.to_s)
+    page.should have_link(@relationship.node2.to_s)
   end
   describe "index" do
     it "shows a relationship's title on the index page" do

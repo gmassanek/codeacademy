@@ -9,6 +9,15 @@ module ApplicationHelper
       relationship.populate(sentence,{:val1 => link, :val2 => node.to_s})
     end
   end
+  def relationship_sentence_with_links(relationship)
+    sentence = relationship.sent1(:filled_with => nil)
+    node1 = relationship.node1
+    link1 = link_to node1.to_s, node_path(node1)
+    node2  = relationship.node2
+    link2 = link_to node2.to_s, node_path(node2)
+    puts link2
+    relationship.populate(sentence, {:val1 => link1, :val2 => link2})
+  end
   def link_to_remove_fields(name, f)
     f.input(:_destroy, :as => "hidden") + link_to_function(name, "remove_fields(this)")
   end

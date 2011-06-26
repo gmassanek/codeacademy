@@ -33,6 +33,7 @@ class Relationship < ActiveRecord::Base
       end
     end
   end
+
   def sentence_from(node, options = {:filled_with => 'nodes'})
     if node1_id == node.id
       sent1(options)
@@ -40,6 +41,7 @@ class Relationship < ActiveRecord::Base
       sent2(options)
     end
   end
+
   def other_node(node)
     if node1_id == node.id
       return Node.find(node2_id)
@@ -47,6 +49,7 @@ class Relationship < ActiveRecord::Base
       return Node.find(node1_id)
     end
   end
+
   def sent1(options = {:filled_with => 'nodes'})
     if options[:filled_with] == 'nodes'
       return populate(sentence1)
@@ -54,6 +57,7 @@ class Relationship < ActiveRecord::Base
       return sentence1
     end
   end
+
   def sent2(options = {:filled_with => 'nodes'})
     if options[:filled_with] == 'nodes'
       return populate(sentence2)
@@ -61,6 +65,7 @@ class Relationship < ActiveRecord::Base
       return sentence2
     end
   end
+
   def has_space_holders
     if !sentence1.nil? and !sentenceValid?(sentence1)
       errors.add(:sentence1, ' needs to have %1 and %2')
@@ -69,9 +74,11 @@ class Relationship < ActiveRecord::Base
       errors.add(:sentence2, ' needs to have %1 and %2')
     end
   end
+
   def populate(sentence, options = {:val1 => @node1.to_s, :val2 => @node2.to_s})
     sentence.sub("%1", options[:val1]).sub("%2", options[:val2]).html_safe
   end
+
   def sentenceValid?(sentence)
     sentence.include?('%1') and sentence.include?('%2')
   end

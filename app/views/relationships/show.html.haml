@@ -1,7 +1,7 @@
 .span-17.prepend-1.border
   - unless flash[:notice].nil?
     %p.notice= flash[:notice]
-  %h2= relationship_sentence_with_link(@relationship, @relationship.node1)
+  %h2= relationship_sentence_with_links(@relationship)
   %p= link_to "Edit", edit_relationship_path(@relationship)
 .span-6.sidebar.last
   - unless @relationship.links.empty?
