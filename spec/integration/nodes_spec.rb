@@ -86,10 +86,20 @@ describe Node do
       visit node_path(@node)
       page.should have_css('.sidebar')
     end
+    it "has link to each relationship" do
+      @node2 = Fabricate(:node)
+      @rel = Fabricate(:relationship, :node1 => @node, :node2 => @node2)
+      visit node_path(@node)
+      @node.relationships.each do |r|
+        page.should have_link("relationshipLink#{r.id}")
+      end
+    end
     it "shows related nodes in sidebar" do
+      @node2 = Fabricate(:node)
+      @rel = Fabricate(:relationship, :node1 => @node, :node2 => @node2)
       visit node_path(@node)
       @node.related_nodes.each do |n|
-        page.should have_css('.h2', :text => "#{n.title}")
+        page.should have_content(n.to_s)
       end
     end
   end

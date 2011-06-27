@@ -18,8 +18,9 @@
     %ul
       - @node.links.each do |link|
         %li= link_to link.url, link.url
-  %h3 Related Nodes
-  %ul
-    - @node.relationships.each do |r|
-      %li= relationship_sentence_with_link(r, @node)
+  - unless @node.relationships.empty?
+    %h3 Related Nodes
+    %ul
+      - @node.relationships.each do |r|
+        %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
 
