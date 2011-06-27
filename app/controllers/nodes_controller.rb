@@ -8,6 +8,7 @@ class NodesController < ApplicationController
   def new
     @node = Node.new
     @node.links.build
+    @node.build_site_handle
   end
   def create
     @node = Node.new(params[:node])
@@ -28,6 +29,7 @@ class NodesController < ApplicationController
   def edit
     @node = Node.find(params[:id])
     @node.links.build
+    @node.build_site_handle if @node.site_handle.blank?
   end
   def destroy
     @node = Node.find(params[:id])

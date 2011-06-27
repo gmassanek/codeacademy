@@ -2,6 +2,10 @@
   - unless flash[:notice].nil?
     %p.notice= flash[:notice]
   %h2= @node.title
+  - unless @node.handles.nil?
+    %ul.mediaLinks
+      - @node.handles.each do |key, value|
+        %li= link_to_site_handle(key, @node.site_handle.link_to(key))
   %p= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
   %p= link_to "Edit", edit_node_path(@node)
   %p= @node.description
@@ -15,3 +19,5 @@
   %ul
     - @node.relationships.each do |r|
       %li= relationship_sentence_with_link(r, @node)
+
+

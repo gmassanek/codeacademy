@@ -28,6 +28,14 @@ class Node < ActiveRecord::Base
     end
   end
 
+  def getHandle(handle)
+    site_handle[handle]
+  end
+
+  def handles
+    return site_handle.handles unless site_handle.nil?
+  end
+
   def self.all(*args)
     self.find(:all, :order => "title")  
   end

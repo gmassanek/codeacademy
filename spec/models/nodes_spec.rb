@@ -108,12 +108,15 @@ describe Node do
     end
     it "accepts attributes for a site handle" do
       node = Fabricate(:node)
-      node.update_attributes :site_handle_attributes => [{:github => 'gmassanek'}]
+      node.update_attributes :site_handle_attributes => {:github => 'gmassanek'}
       @node.save.should == true
     end
     it "can save with a link" do
       @node = Fabricate(:node_with_site_handles)
-      @node.getHandle(:github).should_not be_nil
+      @node.handles["github"].should_not be_nil
+    end
+    it "responds to .handles" do
+      @node.should respond_to(:handles)
     end
   end
 end

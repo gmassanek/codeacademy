@@ -159,11 +159,11 @@ describe Node do
     context "social media links" do
       it "saves social media pages" do
         node = Fabricate(:node)
+        visit edit_node_path(node)
+        page.fill_in("Github", :with => "gmassanek")
+        page.click_button("Update Node")
         visit node_path(node)
-        page.fill_in("github", :with => "gmassanek")
-        page.click_button("Update Link")
-        visit node_path(node)
-        page.should have_link("github.com")
+        page.should have_css('img', :id => "githubLinkImage")
       end
     end
   end
