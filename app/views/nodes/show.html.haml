@@ -10,8 +10,8 @@
       %ul
         - @node.handles.each do |key, value|
           %li= link_to_site_handle(key, @node.site_handle.link_to(key))
-  %p= link_to "Edit", edit_node_path(@node)
   %p= @node.description
+  %p.right= link_to "Edit", edit_node_path(@node)
 .span-6.sidebar.last
   - unless @node.links.empty?
     %h3 Helpful Links 
@@ -22,5 +22,4 @@
   %ul
     - @node.relationships.each do |r|
       %li= relationship_sentence_with_link(r, @node)
-
 
