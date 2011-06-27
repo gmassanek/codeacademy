@@ -37,3 +37,15 @@ body {
 #centerHome p {
   text-align: center;
 }
+
+.mediaLinks img {
+  border: 1px solid #ccc;
+}
+
+.mediaLinks ul {
+  list-style: none;
+  display: inline;
+}
+.mediaLinks ul li{
+  display: inline;
+}

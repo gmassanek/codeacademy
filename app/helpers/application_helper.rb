@@ -35,6 +35,7 @@ module ApplicationHelper
   end
 
   def link_to_site_handle(handle, link)
-    image = image_tag "#{handle}.png", :id => "#{handle}LinkImage"
+    image = image_tag "#{handle}.png", :id => "#{handle}LinkImage", :height => "32px"
+    link_to image, link
   end
 end
