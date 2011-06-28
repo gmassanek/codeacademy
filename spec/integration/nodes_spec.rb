@@ -60,10 +60,6 @@ describe Node do
     before do
       @node = Fabricate(:node)
     end
-    it "shows the node title" do
-      visit node_path(@node)
-      page.should have_css('h2', :text => "#{@node.title}")
-    end
     it "uses a slug from the title for the URL" do
       @node = Fabricate(:node, :title => "Github")
       visit node_path(@node)
@@ -72,6 +68,15 @@ describe Node do
     it "shows the node description" do
       visit node_path(@node)
       page.should have_content("#{@node.description}")
+    end
+    it "has a link in the header if there is a homepage" do
+      @node.update_attributes(:homepage => "http://www.google.com")
+      visit node_path(@node)
+      page.should have_css('h2 a')
+    end
+    it "has no link in the header if there is no homepage" do
+      visit node_path(@node)
+      page.should_not have_link(@node.title)
     end
     it "links to all the nodes related to it" do
       @node2 = Fabricate(:node)
