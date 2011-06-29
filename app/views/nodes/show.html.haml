@@ -23,7 +23,7 @@
         %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
   %h3 Tweets
   
-  - unless @node.tweets.empty?
+  - unless @node.tweets.nil?
     - @node.tweets[(1..5)].each do |e|
       %p
         = e['text']
