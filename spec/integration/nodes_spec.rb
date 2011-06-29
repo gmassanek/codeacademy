@@ -46,7 +46,7 @@ describe Node do
       page.should have_content(node2.title)
     end
 
-    it "has e working edit link" do
+    it "has a working edit link" do
       visit nodes_path
       page.click_link("editNode_#{@node.id}")
       page.current_path.should == edit_node_path(@node)
@@ -70,11 +70,11 @@ describe Node do
       page.should have_content("#{@node.description}")
     end
     it "has a link in the header if there is a homepage" do
-      @node.update_attributes(:homepage => "http://www.google.com")
       visit node_path(@node)
       page.should have_css('h2 a')
     end
     it "has no link in the header if there is no homepage" do
+      @node.update_attributes(:homepage => "")
       visit node_path(@node)
       page.should_not have_link(@node.title)
     end

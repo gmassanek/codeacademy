@@ -1,4 +1,5 @@
 module ApplicationHelper
+ # include TwitterHelper
 
   def relationship_sentence_with_link(relationship, node)
     sentence = relationship.sentence_from(node, :filled_with => nil)

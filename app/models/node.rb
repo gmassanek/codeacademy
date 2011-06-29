@@ -1,4 +1,8 @@
+require 'open-uri'
+
 class Node < ActiveRecord::Base
+  #include TwitterHelper
+
   has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id'
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
   has_many :links, :inverse_of => :node
@@ -38,5 +42,12 @@ class Node < ActiveRecord::Base
 
   def self.all(*args)
     self.find(:all, :order => "title")  
+  end
+
+  def tweets
+    query = CGI.escape(title)
+    JSON.parse(
+      open("http://search.twitter.com/search.json?q=#{query}").read
+    )['results']
   end
 end
