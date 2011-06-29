@@ -1,8 +1,8 @@
 .span-17.prepend-1.border
   - unless flash[:notice].nil?
     %p.notice= flash[:notice]
-  %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.empty?
-  %h2= @node.title if @node.homepage.empty?
+  %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
+  %h2= @node.title if @node.homepage.nil?
   - unless @node.handles.nil?
     .mediaLinks
       %ul
