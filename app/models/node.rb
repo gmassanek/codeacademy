@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class Node < ActiveRecord::Base
   #include TwitterHelper
 
@@ -45,9 +43,12 @@ class Node < ActiveRecord::Base
   end
 
   def tweets
+    puts "-------------------------"
     query = CGI.escape(title)
-    JSON.parse(
-      open("http://search.twitter.com/search.json?q=#{query}").read
-    )['results']
+    search = Twitter::Search.new
+    puts "-------------------------"
+    a = search.containing(query).language("en").result_type("recent").per_page(5).collect {|tweet| tweet}
+    puts a.inspect
+    return a
   end
 end

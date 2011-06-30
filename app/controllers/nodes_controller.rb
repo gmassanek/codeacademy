@@ -4,6 +4,7 @@ class NodesController < ApplicationController
   end
   def show
     @node = Node.find(params[:id])
+    @tweets = @node.tweets
   end
   def new
     @node = Node.new
