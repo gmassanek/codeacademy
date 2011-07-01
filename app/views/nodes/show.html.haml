@@ -15,6 +15,7 @@
       - @node.links.each do |link|
         %li= link_to link.url, link.url
   %p.right= link_to "Edit", edit_node_path(@node)
+  = render 'learned_form'
 .span-6.sidebar.last
   - unless @node.relationships.blank?
     %h3 Related Nodes

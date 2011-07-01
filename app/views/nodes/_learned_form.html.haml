@@ -1,0 +1,2 @@
+= simple_form_for @node, :remote => true do |f|
+  = f.input :learned, :br => false, :as  => :boolean, :input_html => {:onchange => 'this.form.submit()'}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626201332) do
+ActiveRecord::Schema.define(:version => 20110701193316) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20110626201332) do
     t.datetime "updated_at"
     t.string   "homepage"
     t.string   "cached_slug"
+    t.boolean  "learned"
   end
 
   create_table "relationships", :force => true do |t|
