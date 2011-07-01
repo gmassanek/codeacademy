@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Twitter" do
+describe "Twitter", :twitter => true do
   describe Node do
     it "has a twitter search key"
     it "shows 5 most recent tweets from search on show page" do

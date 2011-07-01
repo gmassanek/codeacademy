@@ -1,28 +1,28 @@
 .span-17.prepend-1.border
-  - unless flash[:notice].nil?
+  - unless flash[:notice].blank?
     %p.notice= flash[:notice]
-  %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.nil?
-  %h2= @node.title if @node.homepage.nil?
-  - unless @node.handles.nil?
+  %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.blank?
+  %h2= @node.title if @node.homepage.blank?
+  - unless @node.handles.blank?
     .mediaLinks
       %ul
         - @node.handles.each do |key, value|
           %li= link_to_site_handle(key, @node.site_handle.link_to(key))
   %p= @node.description
-  - unless @node.links.empty?
+  - unless @node.links.blank?
     %h3 Helpful Links 
     %ul
       - @node.links.each do |link|
         %li= link_to link.url, link.url
   %p.right= link_to "Edit", edit_node_path(@node)
 .span-6.sidebar.last
-  - unless @node.relationships.empty?
+  - unless @node.relationships.blank?
     %h3 Related Nodes
     %ul
       - @node.relationships.each do |r|
         %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
   %h3 Tweets
-  - unless @tweets.empty?
+  - unless @tweets.blank?
     - @tweets.each do |e|
       %p
         = e['text'].html_safe

@@ -139,7 +139,7 @@ describe Node do
       visit edit_node_path(node)
       page.should have_css('label', :text => 'Url', :count => 1)
     end
-    context "js links" do
+    context "js links", :js => true do
       before do
         Capybara.current_driver = :selenium
       end
@@ -149,17 +149,17 @@ describe Node do
         delete_link.click
         delete_link.should_not be_visible
       end
-      it "has a link to delete each link on the edit page" do
+      it "has a link to delete each link on the edit page", :broken => true do
         #Why won't this one work!?!?!
-        #node = Fabricate(:node)
-        #visit edit_node_path(node)
-        #save_and_open_page
-        #page.fill_in "Url", :with => "http://www.google.com"
-        #page.click_button "Update Node"
-        #visit edit_node_path(node)
-        #page.click_link("Remove Link")
-        #page.click_button "Update Node"
-        #node.links.count.should == 0
+        node = Fabricate(:node)
+        visit edit_node_path(node)
+        save_and_open_page
+        page.fill_in "Url", :with => "http://www.google.com"
+        page.click_button "Update Node"
+        visit edit_node_path(node)
+        page.click_link("Remove Link")
+        page.click_button "Update Node"
+        node.links.count.should == 0
       end
       it "has a link to add a link on the new page" do
         visit new_node_path
