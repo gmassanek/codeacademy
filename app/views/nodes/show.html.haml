@@ -3,6 +3,7 @@
     %p.notice= flash[:notice]
   %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.blank?
   %h2= @node.title if @node.homepage.blank?
+  .right= render 'learned_form'
   - unless @node.handles.blank?
     .mediaLinks
       %ul
@@ -15,7 +16,6 @@
       - @node.links.each do |link|
         %li= link_to link.url, link.url
   %p.right= link_to "Edit", edit_node_path(@node)
-  = render 'learned_form'
 .span-6.sidebar.last
   - unless @node.relationships.blank?
     %h3 Related Nodes
