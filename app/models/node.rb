@@ -45,7 +45,6 @@ class Node < ActiveRecord::Base
   def tweets
     query = CGI.escape(title)
     search = Twitter::Search.new
-    #a = search.containing(query).language("en").result_type("recent").per_page(5).collect {|tweet| tweet}
-    []
+    a = search.containing(query).language("en").result_type("recent").per_page(5).collect {|tweet| tweet}
   end
 end

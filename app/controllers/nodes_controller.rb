@@ -20,7 +20,6 @@ class NodesController < ApplicationController
     end
   end
   def update
-    puts "helloooooooooooooooo"
     @node = Node.find(params[:id])
     if @node.update_attributes(params[:node])
       redirect_to node_path(@node), :notice => "Node #{@node} updated"
