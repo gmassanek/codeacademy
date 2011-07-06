@@ -1,7 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-ENV["TEST_JS"] ||= 'true'
+ENV["TEST_JS"] ||= 'false'
 ENV["TEST_TWITTER"] ||= 'true'
+ENV["BROKEN"] ||= 'false'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
@@ -29,11 +30,13 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   #Filter tests based on any rspec environment settings
-  config.filter_run_excluding :broken => true
-  if ENV["TEST_JS"] != true
+  if ENV["BROKEN"] != 'true'
+    config.filter_run_excluding :broken => true
+  end
+  if ENV["TEST_JS"] != 'true'
     config.filter_run_excluding :js => true
   end
-  if ENV["TEST_TWITTER"] != true
+  if ENV["TEST_TWITTER"] != 'true'
     config.filter_run_excluding :twitter => true
   end
   #config.run_all_when_everything_filtered = true

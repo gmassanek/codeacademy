@@ -119,5 +119,6 @@ describe Node do
       @node.should respond_to(:handles)
     end
   end
+  describe "twitter search key"
 end
 

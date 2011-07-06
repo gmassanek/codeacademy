@@ -22,11 +22,12 @@
     %ul
       - @node.relationships.each do |r|
         %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
-  %h3 Tweets
   - unless @tweets.blank?
-    - @tweets.each do |e|
-      %p
-        = e['text'].html_safe
-        %br
-        %span= "@#{e['from_user']}"
+    .tweets
+      %h3 Tweets
+      - @tweets.each do |e|
+        %p
+          = e['text'].html_safe
+          %br
+          %span= "@#{e['from_user']}"
 

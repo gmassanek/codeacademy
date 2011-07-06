@@ -2,11 +2,18 @@ require 'spec_helper'
 
 describe "Twitter", :twitter => true do
   describe Node do
-    it "has a twitter search key"
-    it "shows 5 most recent tweets from search on show page" do
+    before do
       @node = Fabricate(:node)
       visit node_path(@node)
-      page.should_not have_css('div.twitter')
+    end
+    it "has a twitter search key" do
+      page.should have_content(@node.twitter_search_key)
+    end
+    it "shows 5 most recent tweets from search on show page" do
+      #had to update title because Faker doesn't usually have twitter results
+      @node.update_attribute(:title, "Google")
+      visit node_path(@node)
+      page.should have_css('div.tweets')
     end
   end
 end
