@@ -136,7 +136,5 @@ describe Node do
     end
     it "could test the Twitter Helper here?"
   end
-
-
 end
 
