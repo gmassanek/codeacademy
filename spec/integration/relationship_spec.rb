@@ -14,10 +14,13 @@ describe Relationship do
     page.click_button 'Create Relationship'
     page.should have_content("Relationship created.")
   end
-  it "show links to both nodes" do
-    visit relationship_path(@relationship) 
-    page.should have_link(@relationship.node1.to_s)
-    page.should have_link(@relationship.node2.to_s)
+  describe "show" do
+    it "show links to both nodes" do
+      visit relationship_path(@relationship) 
+      page.should have_link(@relationship.node1.to_s)
+      page.should have_link(@relationship.node2.to_s)
+    end
+    it "should have a URL of node1/node2"
   end
   describe "index" do
     it "shows a relationship's title on the index page" do

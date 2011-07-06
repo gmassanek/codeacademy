@@ -25,9 +25,9 @@
   - unless @tweets.blank?
     .tweets
       %h3 Tweets
-      - @tweets.each do |e|
+      - @tweets.each do |tweet|
         %p
-          = e['text'].html_safe
+          = tweet['text'].html_safe
           %br
-          %span= "@#{e['from_user']}"
+          %span= "@#{tweet['from_user']}"
 

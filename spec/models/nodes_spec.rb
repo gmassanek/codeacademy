@@ -126,10 +126,15 @@ describe Node do
       @node = Fabricate(:node, :twitter_search_key => "Google")
       @node.tweets.should_not == @node.twitter_search_for(@node.title)
     end
-    it "searches twitter using the twitter search key (not title)" do
+    it "has no twitter_search_key by default" do
       @node = Fabricate(:node)
-      @node.tweets.should == @node.twitter_search_for(@node.title)
+      @node.twitter_search_key.should be_blank
     end
+    it "has no tweets by default" do
+      @node = Fabricate(:node)
+      @node.tweets.should be_blank 
+    end
+    it "could test the Twitter Helper here?"
   end
 
 
