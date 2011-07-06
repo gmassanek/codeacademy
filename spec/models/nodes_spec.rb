@@ -119,5 +119,19 @@ describe Node do
       @node.should respond_to(:handles)
     end
   end
+  describe "twitter search key" do
+    before do
+    end
+    it "searches twitter using the twitter search key (not title)" do
+      @node = Fabricate(:node, :twitter_search_key => "Google")
+      @node.tweets.should_not == @node.twitter_search_for(@node.title)
+    end
+    it "searches twitter using the twitter search key (not title)" do
+      @node = Fabricate(:node)
+      @node.tweets.should == @node.twitter_search_for(@node.title)
+    end
+  end
+
+
 end
 
