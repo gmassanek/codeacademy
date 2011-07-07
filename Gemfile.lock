@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: http://gems.github.com/
   specs:
     abstract (1.0.0)
     actionmailer (3.0.7)
@@ -29,6 +30,10 @@ GEM
       activesupport (= 3.0.7)
     activesupport (3.0.7)
     addressable (2.2.6)
+    alexrabarts-iso_country_codes (0.2.2)
+    alexrabarts-tld (0.6.0)
+      addressable
+      alexrabarts-iso_country_codes (>= 0.2.1)
     arel (2.0.10)
     babosa (0.3.5)
     builder (2.1.2)
@@ -143,6 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  alexrabarts-tld
   capybara
   database_cleaner
   dynamic_form

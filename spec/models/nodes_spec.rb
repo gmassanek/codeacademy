@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'twitter'
 
 describe Node do
   before do
@@ -124,7 +125,7 @@ describe Node do
     end
     it "searches twitter using the twitter search key (not title)" do
       @node = Fabricate(:node, :twitter_search_key => "Google")
-      @node.tweets.should_not == @node.twitter_search_for(@node.title)
+      @node.tweets.should_not == TwitterHelper.twitter_search_for(@node.title)
     end
     it "has no twitter_search_key by default" do
       @node = Fabricate(:node)
@@ -134,7 +135,6 @@ describe Node do
       @node = Fabricate(:node)
       @node.tweets.should be_blank 
     end
-    it "could test the Twitter Helper here?"
   end
 end
 

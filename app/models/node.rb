@@ -1,5 +1,6 @@
 class Node < ActiveRecord::Base
-  #include TwitterHelper
+  require 'tld'
+  require 'twitter'
 
   has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id'
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
@@ -46,19 +47,7 @@ class Node < ActiveRecord::Base
   end
 
   def tweets
-    return twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
+    return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
   end
 
-  def twitter_search_for(search_key, options = {:html => false})
-    search = Twitter::Search.new
-    results =  search.containing(CGI.escape(search_key)).language("en").result_type("recent").per_page(5).collect {|tweet| tweet}
-    if options[:html] == true
-      results.each do |result| 
-        result['text'].gsub(/http:/i, "<a href=\"http:\">http:</a>")
-        return results
-      end
-    else
-      return results
-    end
-  end
 end
