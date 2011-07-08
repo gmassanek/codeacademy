@@ -5,7 +5,6 @@ class NodesController < ApplicationController
   def show
     @node = Node.find(params[:id])
     @tweets = @node.tweets
-    puts @tweets.inspect
   end
   def new
     @node = Node.new
