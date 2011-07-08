@@ -1,26 +1,30 @@
 .span-15.prepend-1.border
   - unless flash[:notice].blank?
     %p.notice= flash[:notice]
-  %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.blank?
-  %h2= @node.title if @node.homepage.blank?
-  .right= render 'learned_form'
-  - unless @node.handles.blank?
-    .mediaLinks
-      %ul
+  .span-10
+    - if @node.homepage.blank?
+      %h2= @node.title if @node.homepage.blank?
+    - else
+      %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.blank?
+  .mediaLinks.span-5.last
+    - unless @node.handles.blank?
+      %ul.right
         - @node.handles.each do |key, value|
           %li= link_to_site_handle(key, @node.site_handle.link_to(key))
-  %p= @node.description
-  - unless @node.links.blank?
-    %h3 Helpful Links 
-    %ul
-      - @node.links.each do |link|
-        %li= link_to link.url, link.url
-  - unless @node.relationships.blank?
-    %h3 Related Nodes
-    %ul
-      - @node.relationships.each do |r|
-        %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
-  %p.right= link_to "Edit", edit_node_path(@node)
+  .span-15.last
+    %p= @node.description
+    - unless @node.links.blank?
+      %h3 Helpful Links 
+      %ul
+        - @node.links.each do |link|
+          %li= link_to link.url, link.url
+    - unless @node.relationships.blank?
+      %h3 Related Nodes
+      %ul
+        - @node.relationships.each do |r|
+          %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
+    %p.right= link_to "Edit", edit_node_path(@node)
+    .right.span-3= render 'learned_form'
 .span-8.sidebar.last
   - unless @tweets.blank?
     .tweets
