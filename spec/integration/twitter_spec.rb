@@ -19,6 +19,7 @@ describe "Twitter", :twitter => true do
         page.should have_css('a')
       end
     end
+
     it "tests the hyperlink, handle, and hash parsers"
   end
 end

@@ -1,6 +1,5 @@
 class Node < ActiveRecord::Base
-  require 'tld'
-  require 'twitter'
+  require 'twitter_helper'
 
   has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id'
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'

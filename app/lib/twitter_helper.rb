@@ -1,3 +1,4 @@
+require 'tld'
 module  TwitterHelper
   def self.twitter_search_for(search_key, options = {:html => false})
     search = Twitter::Search.new
@@ -11,12 +12,15 @@ module  TwitterHelper
     end
     return results
   end
+
   def self.hyperlink_parser(string, link_class="", target="")
       return string.gsub(/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/) {|x| TLD.has_valid_tld?(x) ? "<a href='#{x}' target='#{target}' class='#{link_class}'>#{x}</a>" : x}
   end
+
   def self.handle_parser(string, link_class="", target="")
       return string.gsub(/@(\w+)/) {|x| "<a href='https://twitter.com/#!/#{x.gsub "@", ""}' target='#{target}' class='#{link_class}'>#{x}</a>"}
   end
+
   def self.hash_parser(string, link_class="", target="")
       return string.gsub(/#(\w+)/) {|x| "<a href='https://twitter.com/search?q=##{x.gsub "#", ""}' target='#{target}' class='#{link_class}'>#{x}</a>"}
   end
