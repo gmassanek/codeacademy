@@ -38,6 +38,7 @@ describe Node do
   describe "index page" do
     before do
       @node = Fabricate(:node)
+      visit nodes_path
     end
     it "shows all nodes" do
       node2 = Fabricate(:node)
@@ -45,14 +46,11 @@ describe Node do
       page.should have_content(@node.title)
       page.should have_content(node2.title)
     end
-
     it "has a working edit link" do
-      visit nodes_path
       page.click_link("editNode_#{@node.id}")
       page.current_path.should == edit_node_path(@node)
     end
     it "has a working delete link" do
-      visit nodes_path
       page.click_link("deleteNode_#{@node.id}")
     end
   end

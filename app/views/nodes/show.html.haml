@@ -1,4 +1,4 @@
-.span-17.prepend-1.border
+.span-15.prepend-1.border
   - unless flash[:notice].blank?
     %p.notice= flash[:notice]
   %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.blank?
@@ -15,19 +15,16 @@
     %ul
       - @node.links.each do |link|
         %li= link_to link.url, link.url
-  %p.right= link_to "Edit", edit_node_path(@node)
-.span-6.sidebar.last
   - unless @node.relationships.blank?
     %h3 Related Nodes
     %ul
       - @node.relationships.each do |r|
         %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
+  %p.right= link_to "Edit", edit_node_path(@node)
+.span-8.sidebar.last
   - unless @tweets.blank?
     .tweets
-      %h3 Tweets
+      %h4 Buzz
       - @tweets.each do |tweet|
-        %p
-          = tweet['text'].html_safe
-          %br
-          %span= "@#{tweet['from_user']}"
+        = render 'shared/tweet', :tweet => tweet
 

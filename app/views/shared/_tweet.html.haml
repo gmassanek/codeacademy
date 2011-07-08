@@ -1,0 +1,9 @@
+.span-8
+  .span-2.center
+    = image_tag tweet['profile_image_url']
+  .span-6.last
+    %span.bold= link_to("@" + tweet['from_user'], "https://twitter.com/#!/#{tweet['from_user']}")
+    %br
+    = tweet['text'].html_safe
+    %br
+    .bottom.right.quiet= distance_of_time_in_words(Time.now, tweet['created_at']) + " ago"

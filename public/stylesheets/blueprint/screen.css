@@ -57,6 +57,7 @@ caption {background:#eee;}
 .hide {display:none;}
 .quiet {color:#666;}
 .loud {color:#000;}
+.bold {font-weight:bold;}
 .highlight {background:#ff0;}
 .added {background:#060;color:#fff;}
 .removed {background:#900;color:#fff;}
