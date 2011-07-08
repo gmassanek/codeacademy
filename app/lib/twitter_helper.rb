@@ -9,7 +9,7 @@ module  TwitterHelper
         tweet['text'] = hyperlink_parser(tweet['text'], nil, "_blank")
         tweet['text'] = handle_parser(tweet['text'], nil, "_blank")
         tweet['text'] = hash_parser(tweet['text'], nil, "_blank")
-        tweet['from_user'] = handle_link(tweet['from_user'], nil, "_blank")
+        #tweet['from_user'] = handle_link(tweet['from_user'], nil, "_blank")
       end
     end
     return results
