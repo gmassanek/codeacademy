@@ -3,7 +3,6 @@ module  TwitterHelper
   def self.twitter_search_for(search_key, options = {:html => false})
     search = Twitter::Search.new
     results =  search.containing(CGI.escape(search_key)).language("en").result_type("recent").per_page(5).collect {|tweet| tweet}
-    puts results.inspect
     if options[:html] == true
       results.each do |tweet| 
         tweet['text'] = hyperlink_parser(tweet['text'], nil, "_blank")
