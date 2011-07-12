@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'friendly_id'
 gem 'twitter'
 gem 'alexrabarts-tld'
+gem 'rails3-jquery-autocomplete'
+gem 'nifty-generators'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"

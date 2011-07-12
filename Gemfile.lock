@@ -87,6 +87,7 @@ GEM
     multi_json (1.0.3)
     multi_xml (0.2.2)
     multipart-post (1.1.2)
+    nifty-generators (0.4.6)
     nokogiri (1.4.5)
     pg (0.11.0)
     polyglot (0.3.1)
@@ -103,6 +104,8 @@ GEM
       activesupport (= 3.0.7)
       bundler (~> 1.0)
       railties (= 3.0.7)
+    rails3-jquery-autocomplete (0.9.0)
+      rails (~> 3.0)
     railties (3.0.7)
       actionpack (= 3.0.7)
       activesupport (= 3.0.7)
@@ -160,8 +163,10 @@ DEPENDENCIES
   haml
   jquery-rails
   launchy
+  nifty-generators
   pg
   rails (= 3.0.7)
+  rails3-jquery-autocomplete
   rspec-rails (~> 2.4)
   simple_form
   twitter
