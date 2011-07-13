@@ -16,7 +16,7 @@ class NodesController < ApplicationController
   def create
     @node = Node.new(params[:node])
     if @node.save
-  ,   redirect_to node_path(@node), :notice => "Node #{@node.to_s} created"
+     redirect_to node_path(@node), :notice => "Node #{@node.to_s} created"
     else
       render :action => 'new'
     end
