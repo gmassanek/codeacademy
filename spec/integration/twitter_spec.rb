@@ -11,6 +11,7 @@ describe "Twitter", :twitter => true do
     end
     it "shows 5 most recent tweets from search on show page" do
       visit node_path(@node)
+      save_and_open_page
       page.should have_css('div.tweets')
     end
     it "has links in tweets where there are links" do

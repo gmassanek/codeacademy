@@ -1,0 +1,9 @@
+= render 'shared/notice'
+%h3 Tutorials 
+%table
+  - @tutorials.each do |tutorial|
+    %tr
+      %td= tutorial.to_s
+      %td= tutorial.title
+      %td= link_to 'Edit', edit_tutorial_path(tutorial), :id => "editTutorial_#{tutorial.id}"
+      %td= link_to 'Delete', tutorial_path(tutorial), :id => "deleteTutorial_#{tutorial.id}"

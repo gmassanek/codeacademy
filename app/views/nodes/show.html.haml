@@ -15,6 +15,11 @@
     %ul
       - @node.links.each do |link|
         %li= link_to link.url, link.url
+  - unless @node.tutorials.blank? 
+    %h3 Tutorials
+    %ul
+      - @node.tutorials.each do |tutorial|
+        %li= link_to "#{tutorial.title}", tutorial_path(tutorial)
   %p.right= link_to "Edit", edit_node_path(@node)
 .span-6.sidebar.last
   - unless @node.relationships.blank?
