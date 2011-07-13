@@ -16,6 +16,9 @@ body {
 #headerDiv h2 {
   color: white;
 }
+#headerDiv input {
+  margin-right:3em;
+}
 #footer {
   width: 100%;
   background-color:white;

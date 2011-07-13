@@ -1,6 +1,6 @@
 #headerDiv
   %h2.left.strong= link_to 'rubeco', root_path
   .right a mapping of the ruby ecosystem
-  .span-6.right
+  .right
     = form_tag({:controller => 'pages', :action => 'node_search_by_title'}, :method => :get) do
-      = autocomplete_field_tag 'title', '', nodes_autocomplete_node_title_path, :id_element => "#id_element_placeholder"
+      = autocomplete_field_tag 'title', '', nodes_autocomplete_node_title_path, :id_element => "#id_element_placeholder", :class => "text"
