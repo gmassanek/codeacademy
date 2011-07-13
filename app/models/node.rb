@@ -52,7 +52,7 @@ class Node < ActiveRecord::Base
   end
 
   def tweets
-#    return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
-    return []
+    return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
+    #return []
   end
 end

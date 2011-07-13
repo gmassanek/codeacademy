@@ -169,7 +169,6 @@ describe Node do
         #Why won't this one work!?!?!
         node = Fabricate(:node)
         visit edit_node_path(node)
-        save_and_open_page
         page.fill_in "Url", :with => "http://www.google.com"
         page.click_button "Update Node"
         visit edit_node_path(node)
@@ -198,9 +197,10 @@ describe Node do
       end
     end
     context "nodes can be learned" do
-      it "nodes are either learned or not learned", :js => true do
+      it "nodes are either learned or not learned", :js => true, :broken => true do
         node = Fabricate(:node)
         visit node_path(node)
+        save_and_open_page
         page.check("node[learned]")
         page.should have_content("Node #{node.title} updated")
       end

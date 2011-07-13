@@ -113,6 +113,10 @@ describe Node do
     end
   end
   describe "twitter search key" do
+    it "searches twitter using the twitter search key" do
+      node = Fabricate(:node, :twitter_search_key => "Google")
+      node.tweets.size.should == 5
+    end
     it "searches twitter using the twitter search key (not title)" do
       node = Fabricate(:node, :twitter_search_key => "Google")
       node.tweets.should_not == TwitterHelper.twitter_search_for(node.title)

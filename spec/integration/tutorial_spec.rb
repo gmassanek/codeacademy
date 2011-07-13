@@ -69,7 +69,6 @@ describe Tutorial do
     it "displays the tutorial title in the index" do
       visit tutorials_path(@tutorial)
       page.should have_css('td', :text => @tutorial.title)
-      save_and_open_page
     end
 
   end

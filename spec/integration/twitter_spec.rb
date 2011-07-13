@@ -8,6 +8,7 @@ describe "Twitter", :twitter => true do
       visit edit_node_path(node)
       node.twitter_search_key.should == "cnn"
     end
+    it "tests size of twitter images.  View tests?"
     it "shows 5 most recent tweets from search on show page" do
       visit node_path(node)
       page.should have_css('div.tweets')
@@ -20,4 +21,6 @@ describe "Twitter", :twitter => true do
     end
   end
   it "tests the hyperlink, handle, and hash parsers"
+
+
 end
