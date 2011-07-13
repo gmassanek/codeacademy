@@ -1,3 +1,5 @@
+- unless flash[:notice].blank?
+  %p.notice= flash[:notice]
 #centerHome.span-18.push-3
   .span-6
     = image_tag("Wiki1.png")
@@ -11,9 +13,6 @@
     = image_tag("Workspace2.png")
     %h3 reference 
     %p.quiet Check back to keep your skills sharp, find out about new releases, or discover even more new solutions.
-.span-12.push-6
-  - form_tag do
-    = text_field_tag 'title', '', :autocomplete => pages_autocomplete_node_title_path
 %hr.span-12.push-6.hr
 .span-18.push-3
   .span-6

@@ -1,6 +1,7 @@
 Ecosystem::Application.routes.draw do
   match '/home', :to => 'pages#home'
-  get 'pages/autocomplete_node_title'
+  get 'nodes/autocomplete_node_title'
+  get 'pages/node_search_by_title'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
