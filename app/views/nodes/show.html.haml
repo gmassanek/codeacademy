@@ -18,6 +18,11 @@
       %ul
         - @node.links.each do |link|
           %li= link_to link.url, link.url
+    - unless @node.tutorials.blank? 
+      %h3 Tutorials
+      %ul
+        - @node.tutorials.each do |tutorial|
+          %li= link_to "#{tutorial.title}", tutorial_path(tutorial)
     - unless @node.relationships.blank?
       %h3 Related Nodes
       %ul

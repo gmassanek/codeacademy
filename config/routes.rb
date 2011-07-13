@@ -20,6 +20,7 @@ Ecosystem::Application.routes.draw do
       resources :relationships
       resources :links
       resources :site_handles
+      resources :tutorials
 
   # Sample resource route with options:
   #   resources :products do

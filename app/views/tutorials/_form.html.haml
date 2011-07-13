@@ -1,0 +1,8 @@
+= simple_form_for @tutorial do |f|
+  %fieldset
+    %legend Tutorial
+    = f.error_messages
+    = f.association :node
+    = f.input :title
+    = f.input :description
+    = f.submit
