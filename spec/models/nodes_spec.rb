@@ -130,5 +130,26 @@ describe Node do
       node.tweets.should be_blank 
     end
   end
+  describe "has a confidence level" do
+      it "of nil by default" do
+        node = Fabricate(:node)
+        node.confidence.should be_nil
+      end
+      it "can only be 1-5" do
+        node = Fabricate(:node)
+        node.confidence = 0
+        node.should_not be_valid
+      end
+      it "can only be 1-5" do
+        node = Fabricate(:node)
+        node.confidence = 6
+        node.should_not be_valid
+      end
+      it "can only be 1-5" do
+        node = Fabricate(:node)
+        node.confidence = 3
+        node.should be_valid
+      end
+  end
 end
 

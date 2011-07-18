@@ -196,14 +196,7 @@ describe Node do
         page.should have_css('img', :id => "githubLinkImage")
       end
     end
-    context "nodes can be learned" do
-      it "nodes are either learned or not learned", :js => true, :broken => true do
-        node = Fabricate(:node)
-        visit node_path(node)
-        save_and_open_page
-        page.check("node[learned]")
-        page.should have_content("Node #{node.title} updated")
-      end
+    context "nodes have confidences" do
     end
   end
 end
