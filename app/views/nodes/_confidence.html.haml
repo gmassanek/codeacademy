@@ -1,0 +1,11 @@
+- unless node.confidence.nil?
+  = simple_form_for @node, :remote => true do |f|
+    = f.input :confidence, :br => false, :as  => :hidden,:input_html => {:onchange => 'this.form.submit()'}
+    - conf_id = 1
+    - node.confidence.times do
+      - img = image_tag 'brainOn.png', :size => '32x32'
+      = link_to img, '', :id => "confidence_#{conf_id}", :onclick => "brain_click(this, #{conf_id})"
+      - conf_id = conf_id + 1
+    - (5-node.confidence).times do
+      = image_tag 'brainOff.png', :size => '32x32', :id => "confidence_#{conf_id}", :onclick => "brain_click(this, #{conf_id})"
+      - conf_id = conf_id + 1

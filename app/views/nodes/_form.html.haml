@@ -7,6 +7,7 @@
       = f.input :homepage
       = f.input :twitter_search_key
       = f.input :description, :input_html => {:rows => 8}
+      = f.input :confidence, :collection => 1..5
     %fieldset.span-11
       %legend Helpful Links
       = link_to_add_fields "Add Link", f, :links 
