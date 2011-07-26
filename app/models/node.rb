@@ -60,12 +60,14 @@ class Node < ActiveRecord::Base
     #return []
   end
   def stack_results
-    search_results =  Questions.retrieve_by_tag(stack_search_key, :page_size => 5) unless stack_search_key.blank?
-    results = []
-    search_results.questions.each do |q|
-      thread = {:title => q.title, :answers_url => q.question_answers_url}
-      a << thread
+    unless stack_search_key.blank?
+      search_results =  Questions.retrieve_by_tag(stack_search_key, :page_size => 5) 
+      results = []
+      search_results.questions[1..5].each do |q|
+        thread = {:title => q.title, :answers_url => q.question_answers_url}
+        results << thread
+      end
+      return results
     end
-    return search_results
   end
 end
