@@ -17,6 +17,7 @@ gem 'twitter'
 gem 'alexrabarts-tld'
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
+gem 'rubyoverflow'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"

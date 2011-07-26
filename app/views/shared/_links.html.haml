@@ -1,0 +1,9 @@
+- if item.links.empty?
+  No helpful links to display.
+- else
+  - item.links.each do |link|
+    = link.to_s
+= "Add Comment"
+- form_for [item, Link.new()] do |f|
+  = f.input :body
+  = f.submit

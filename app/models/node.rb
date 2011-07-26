@@ -1,5 +1,7 @@
 class Node < ActiveRecord::Base
   require 'twitter_helper'
+  require 'rubyoverflow'
+  include Rubyoverflow
 
   has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id'
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
@@ -56,5 +58,14 @@ class Node < ActiveRecord::Base
   def tweets
     return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
     #return []
+  end
+  def stack_results
+    search_results =  Questions.retrieve_by_tag(stack_search_key, :page_size => 5) unless stack_search_key.blank?
+    results = []
+    search_results.questions.each do |q|
+      thread = {:title => q.title, :answers_url => q.question_answers_url}
+      a << thread
+    end
+    return search_results
   end
 end

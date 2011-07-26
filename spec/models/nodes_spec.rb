@@ -130,6 +130,20 @@ describe Node do
       node.tweets.should be_blank 
     end
   end
+  describe "stack overflow search key" do
+    it "searches stack overflow using the stack overflow search key" do
+      node = Fabricate(:node, :stack_search_key => "Rspec")
+      node.stack_results.size.should == 5
+    end
+    it "has no stack_search_key by default" do
+      node = Fabricate(:node)
+      node.stack_search_key.should be_blank
+    end
+    it "has no stack results by default" do
+      node = Fabricate(:node)
+      node.stack_results.should be_blank 
+    end
+  end
   describe "has a confidence level" do
       it "of nil by default" do
         node = Fabricate(:node)
