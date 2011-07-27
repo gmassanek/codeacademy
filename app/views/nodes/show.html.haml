@@ -31,13 +31,4 @@
     %p.right= link_to "Edit", edit_node_path(@node)
     .right.span-3= render 'learned_form'
     = render 'nodes/confidence', :node => @node
-.span-8.sidebar.last
-  %h4 Buzz
-  - unless @tweets.blank?
-    .tweets
-      - @tweets.each do |tweet|
-        = render 'shared/tweet', :tweet => tweet
-  - unless @stack_results.blank?
-    .stack
-      - @stack_results.each do |stack_question|
-        = render 'shared/stack_question', :question => stack_question
+= render 'nodes/buzz', :node => @node
