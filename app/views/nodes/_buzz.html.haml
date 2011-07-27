@@ -1,9 +1,11 @@
 :javascript
-  $(document).ready(function() {
-    $("#buzz").msAccordion();
-    }
-  )
-#buzz.span-8.sidebar.last
+  jQuery(document).ready(function(){
+      $('.accordion .head').click(function() {
+          $(this).next().toggle('medium');
+          return false;
+      }).next().hide();
+  });
+.accordion.span-8.sidebar.last
   %h4 Buzz
   = render 'nodes/tweets', :tweets => node.tweets
   = render 'nodes/stack_results', :stack_results => node.stack_results

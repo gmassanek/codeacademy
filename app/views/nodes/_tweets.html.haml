@@ -1,6 +1,5 @@
 - unless tweets.blank?
-  .set
-    .title Twitter
-    .content
-      - tweets.each do |tweet|
-        = render 'shared/tweet', :tweet => tweet
+  .head Twitter
+  .content
+    - tweets.each do |tweet|
+      = render 'shared/tweet', :tweet => tweet

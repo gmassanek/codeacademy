@@ -1,6 +1,5 @@
 - unless stack_results.blank?
-  .set
-    .title Stack Overflow
-    .content
-      - stack_results.each do |stack_question|
-        = render 'nodes/stack_question', :question => stack_question
+  .head Stack Overflow
+  .content
+    - stack_results.each do |stack_question|
+      = render 'nodes/stack_question', :question => stack_question
