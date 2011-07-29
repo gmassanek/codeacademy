@@ -31,4 +31,5 @@
     %p.right= link_to "Edit", edit_node_path(@node)
     .right.span-3= render 'learned_form'
     = render 'nodes/confidence', :node => @node
-= render 'nodes/buzz', :node => @node
+.span-8.sidebar.last
+  = render 'nodes/buzz', :node => @node

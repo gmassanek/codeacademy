@@ -66,3 +66,7 @@ body {
   text-align: center;
   margin: auto;
 }
+.no_margin{
+  clear;
+}
+.bottom_border {padding-bottom:4px;margin-bottom:5px;border-bottom:1px solid #ddd;}
