@@ -11,11 +11,11 @@ describe "Twitter", :twitter => true do
     it "tests size of twitter images.  View tests?"
     it "shows 5 most recent tweets from search on show page" do
       visit node_path(node)
-      page.should have_css('div.tweets')
+      page.should have_css('div#tweets')
     end
     it "has links in tweets where there are links" do
       visit node_path(node)
-      within('div.tweets' ) do
+      within('div#tweets' ) do
         page.should have_css('a')
       end
     end
@@ -31,11 +31,11 @@ describe "Stack Overflow" do
     end
     it "shows 5 most recent stack questions from search on show page" do
       visit node_path(node)
-      page.should have_css('div.stack')
+      page.should have_css('div#stack_results')
     end
     it "has links to stack overflow in each stack search result" do
       visit node_path(node)
-      within('div.stack' ) do
+      within('div#stack_results' ) do
         page.all('a').count.should == 5
       end
     end
