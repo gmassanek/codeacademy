@@ -125,19 +125,7 @@ describe Node do
  
   end
   describe "and links" do
-    it "saves a node with a link" do
-      visit new_node_path
-      title = Faker::Lorem.words(3).join(" ")
-      page.fill_in 'Title', :with => title
-      page.fill_in 'Description', :with => Faker::Lorem.words(5).join(" ")
-      page.fill_in 'Url', :with => "http://wwww.#{title.gsub(" ","")}.com"
-      page.click_button 'Create Node'
-      page.should have_content("Node #{title} created")
-    end
-    it "has 1 link inputs" do
-      visit new_node_path
-      page.should have_css('label', :text => 'Url', :count => 1)
-    end
+    it "has an option to save a link on the show page"
     it "shows all the links associated" do
       node = Fabricate(:node_with_links)
       node.links.each do |link|
@@ -150,31 +138,9 @@ describe Node do
       visit node_path(node)
       page.should_not have_content("Helpful Links")
     end
-    it "has 1 link inputs for edit" do
-      node = Fabricate(:node)
-      visit edit_node_path(node)
-      page.should have_css('label', :text => 'Url', :count => 1)
-    end
     context "js links", :js => true do
       before do
         Capybara.current_driver = :selenium
-      end
-      it "has a link to delete each link on the new page" do
-        visit new_node_path
-        delete_link = page.find_link("Remove Link")
-        delete_link.click
-        delete_link.should_not be_visible
-      end
-      it "has a link to delete each link on the edit page", :broken => true do
-        #Why won't this one work!?!?!
-        node = Fabricate(:node)
-        visit edit_node_path(node)
-        page.fill_in "Url", :with => "http://www.google.com"
-        page.click_button "Update Node"
-        visit edit_node_path(node)
-        page.click_link("Remove Link")
-        page.click_button "Update Node"
-        node.links.count.should == 0
       end
       it "has a link to add a link on the new page" do
         visit new_node_path

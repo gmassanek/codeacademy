@@ -5,7 +5,7 @@ class Node < ActiveRecord::Base
 
   has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id'
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
-  has_many :links, :inverse_of => :node
+  has_many :links, :as => :linkable
   has_many :tutorials, :inverse_of => :node
   has_one :site_handle, :inverse_of => :node
   

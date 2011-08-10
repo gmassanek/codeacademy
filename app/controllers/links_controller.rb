@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
   def index
+    @linkable = find_linkable
     @links = Link.all
   end
   def show
@@ -9,9 +10,11 @@ class LinksController < ApplicationController
     @link = Link.new
   end
   def create
-    @link = Link.new(params[:link])
+    @linkable = find_linkable
+    @link = @linkable.links.build(params[:link])
     if @link.save
-      redirect_to links_path, :notice => "Link created"
+      flash[:notice] = "Link created"
+      redirect_to :id => nil
     else
       render :action => 'new'
     end
@@ -26,5 +29,16 @@ class LinksController < ApplicationController
   end
   def edit
     @link = Link.find(params[:id])
+  end
+
+  private
+
+  def find_linkable
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 end

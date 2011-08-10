@@ -16,9 +16,10 @@ Ecosystem::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-      resources :nodes
+      resources :nodes do
+        resources :links
+      end
       resources :relationships
-      resources :links
       resources :site_handles
       resources :tutorials
 
