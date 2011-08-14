@@ -4,5 +4,5 @@
     %fieldset
       %legend New Link
       = f.error_messages
-      = f.input :url
+      = f.input :url, :input_html => {:type => "text"}
       = f.submit

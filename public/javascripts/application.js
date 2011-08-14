@@ -16,7 +16,3 @@ function brain_click(link, new_conf) {
   hiddenInput.value = new_conf;
   hiddenInput.form.submit();
 }
-function show_link_form {
-  alert('hello');
-  $( "#newLinkForm").dialog( "open" );
-}
