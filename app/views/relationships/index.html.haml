@@ -1,10 +1,15 @@
-%h3 Relationships
-%table
-  - @relationships.each do |r|
-    %tr
-      %td= r.node1
-      %td= r.node2
-      %td= r.sent1
-      %td= r.sent2
-      %td= link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
-
+.span-24.last
+  = render 'shared/notice'
+.span-24.contentBox.last
+  %h3.span-10 Relationships
+  .span-5.right
+    .right= link_to 'Add', new_relationship_path
+  %table
+    - @relationships.each do |r|
+      %tr
+        %td= r.node1
+        %td= r.node2
+        %td= r.sent1
+        %td= r.sent2
+        %td= link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
+        %td= link_to 'Destroy', r, :confirm => "Are you sure?", :method => :delete, :id => "deleteRelationship_#{r.id}"

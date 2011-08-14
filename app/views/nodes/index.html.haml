@@ -1,8 +1,12 @@
-= render 'shared/notice'
-%h3 Nodes
-%table
-  - @nodes.each do |node|
-    %tr
-      %td= link_to node.title, node
-      %td= link_to 'Edit', edit_node_path(node), :id => "editNode_#{node.id}"
-      %td= link_to 'Destroy', node, :confirm => "Are you sure?", :method => :delete, :id => "deleteNode_#{node.id}"
+.span-24.last
+  = render 'shared/notice'
+.span-24.contentBox.last
+  %h3.span-10 Nodes
+  .span-5.right
+    .right= link_to 'Add', new_node_path
+  %table
+    - @nodes.each do |node|
+      %tr
+        %td= link_to node.title, node
+        %td= link_to 'Edit', edit_node_path(node), :id => "editNode_#{node.id}"
+        %td= link_to 'Destroy', node, :confirm => "Are you sure?", :method => :delete, :id => "deleteNode_#{node.id}"
