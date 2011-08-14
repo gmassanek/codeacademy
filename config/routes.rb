@@ -19,7 +19,9 @@ Ecosystem::Application.routes.draw do
       resources :nodes do
         resources :links
       end
-      resources :relationships
+      resources :relationships do
+        resources :links
+      end
       resources :site_handles
       resources :tutorials
 

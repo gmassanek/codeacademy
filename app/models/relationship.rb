@@ -7,7 +7,7 @@ class Relationship < ActiveRecord::Base
   validate :has_space_holders, :allow_nil => true
   validate :not_self_referencing
 
-  has_many :links, :inverse_of => :relationship
+  has_many :links, :as => :linkable
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
 
   validates :node1, :presence => true

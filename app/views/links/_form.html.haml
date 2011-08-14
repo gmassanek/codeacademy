@@ -1,7 +1,8 @@
-= simple_form_for @link do |f|
-  %fieldset
-    %legend Link
-    = f.error_messages
-    = f.association :node
-    = f.input :url
-    = f.submit
+#newLinkForm
+  = render 'shared/notice'
+  = simple_form_for [linkable, link] do |f|
+    %fieldset
+      %legend New Link
+      = f.error_messages
+      = f.input :url
+      = f.submit

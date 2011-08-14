@@ -13,11 +13,7 @@
           %li= link_to_site_handle(key, @node.site_handle.link_to(key))
   .span-15.last
     %p= @node.description
-    - unless @node.links.blank?
-      %h3 Helpful Links 
-      %ul
-        - @node.links.each do |link|
-          %li= link_to link.url, link.url
+    = render 'shared/link_section', :linkable => @node, :link => @link
     - unless @node.tutorials.blank? 
       %h3 Tutorials
       %ul

@@ -4,6 +4,8 @@
   - @links.each do |link|
     %tr
       %td= link.to_s
+      %td= link_to 'Edit', edit_polymorphic_path([link.linkable, link]), :id => "editLink_#{link.id}"
+      %td= link_to 'Delete', polymorphic_path([link.linkable, link]), :method => :delete, :confirm => "Are you sure?", :id => "deleteLink_#{link.id}"
 = simple_form_for [@linkable, Link.new] do |f|
   %fieldset
     %legend Links

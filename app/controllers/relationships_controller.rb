@@ -1,7 +1,6 @@
 class RelationshipsController < ApplicationController
   def new
     @relationship = Relationship.new
-    @relationship.links.build
   end
   def edit
     @relationship = Relationship.find(params[:id])
@@ -20,6 +19,7 @@ class RelationshipsController < ApplicationController
   end
   def show
     @relationship = Relationship.find(params[:id])
+    @link = @relationship.links.build
   end
   def update
     @relationship = Relationship.find(params[:id])

@@ -1,0 +1,22 @@
+:javascript
+  jQuery(document).ready(function(){
+    $("#newLinkForm").dialog({ 
+      autoOpen: false,
+      modal: true,
+      width: 400
+    });
+    $( "#addLink" )
+            .button()
+            .click(function() {
+                $( "#newLinkForm").dialog( "open" );
+    });
+  });
+  
+%h3 Helpful Links 
+= button_to 'Add Helpful Link', 'javascript:;', :id => "addLink"
+- unless linkable.links.count == 0
+  %ul
+    - linkable.links.each do |link|
+      - unless link.url.blank?
+        %li= link_to link.url, link.url
+= render 'links/form', :linkable => linkable, :link => @link

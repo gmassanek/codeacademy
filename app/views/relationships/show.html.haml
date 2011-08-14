@@ -3,9 +3,5 @@
     %p.notice= flash[:notice]
   %h2= relationship_sentence_with_links(@relationship)
   %p= link_to "Edit", edit_relationship_path(@relationship)
+  = render 'shared/link_section', :linkable => @relationship, :link => @link
 .span-6.sidebar.last
-  - unless @relationship.links.empty?
-    %h3 Helpful Links 
-    %ul
-      - @relationship.links.each do |link|
-        %li= link_to link.url, link.url

@@ -133,11 +133,6 @@ describe Node do
         page.should have_link(link.url)
       end
     end
-    it "doesn't have Helpful Links if there are none" do
-      node = Fabricate(:node)
-      visit node_path(node)
-      page.should_not have_content("Helpful Links")
-    end
     context "js links", :js => true do
       before do
         Capybara.current_driver = :selenium

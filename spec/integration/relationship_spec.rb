@@ -6,6 +6,7 @@ describe Relationship do
   end
   it "can save new relationships" do
     node3 = Fabricate(:node)
+
     visit new_relationship_path
     page.select @relationship.node1.title, :from => 'Node1'
     page.select node3.title, :from => 'Node2'

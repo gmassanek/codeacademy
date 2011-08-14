@@ -6,6 +6,7 @@ class NodesController < ApplicationController
   end
   def show
     @node = Node.find(params[:id])
+    @link = @node.links.build
     @tweets = @node.tweets
     @stack_results = @node.stack_results
   end

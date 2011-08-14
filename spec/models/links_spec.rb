@@ -1,25 +1,26 @@
 require 'spec_helper'
 
 describe Link do
-  it "requires a node or a relationship and a URL" do
+  it "requires a linkable element and a URL" do
     @link = Fabricate(:node_link)
     @link.should be_valid
-    @link.node = nil
+    @link.linkable = nil
     @link.should_not be_valid
   end
   it "requires a node or a relationship and a URL" do
     @link = Fabricate(:relationship_link)
     @link.should be_valid
-    @link.relationship = nil
+    @link.linkable = nil
     @link.should_not be_valid
   end
+
   it "accepts valid URLs" do
     validURLs = [
           "http://www.google.com",
           "https://hello"
     ]
     validURLs.each do |url|
-      @link = Fabricate(:link)
+      @link = Fabricate(:node_link)
       @link.url = url
       @link.should be_valid
     end
@@ -31,7 +32,7 @@ describe Link do
           "www.google.com"
     ]
     invalidURLs.each do |url|
-      @link = Fabricate(:link)
+      @link = Fabricate(:node_link)
       @link.url = url
       @link.should_not be_valid
     end

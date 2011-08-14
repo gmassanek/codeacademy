@@ -5,7 +5,7 @@ Fabricator(:node) do
   site_handle {|node, i| Fabricate(:site_handle, :node => node, :github => nil)}
 end
 Fabricator(:node_with_links, :from => :node) do
-  links(:count => 3) {|node, i| Fabricate(:link, :node => node)}
+  links(:count => 3) {|node, i| Fabricate(:node_link, :linkable => node)}
 end
 Fabricator(:node_with_site_handles, :from => :node) do
   site_handle {|node, i| Fabricate(:site_handle, :node => node)}
