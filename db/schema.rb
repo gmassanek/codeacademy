@@ -10,12 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110809232358) do
+ActiveRecord::Schema.define(:version => 20110814165044) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
-    t.integer "element_id"
-    t.string  "element_type"
     t.string  "linkable_type"
     t.integer "linkable_id"
   end
@@ -27,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20110809232358) do
     t.datetime "updated_at"
     t.string   "homepage"
     t.string   "cached_slug"
-    t.boolean  "learned"
     t.string   "twitter_search_key"
     t.integer  "confidence"
     t.string   "stack_search_key"

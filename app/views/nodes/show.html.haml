@@ -25,7 +25,6 @@
         - @node.relationships.each do |r|
           %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
     %p.right= link_to "Edit", edit_node_path(@node)
-    .right.span-3= render 'learned_form'
     = render 'nodes/confidence', :node => @node
 .span-8.sidebar.last
   = render 'nodes/buzz', :node => @node
