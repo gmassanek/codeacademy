@@ -28,7 +28,7 @@ describe Link do
       page.should have_content("Link updated")
     end
     it "shows errors" do
-      page.fill_in 'link_url', :with => nil
+      page.fill_in 'link_url', :with => ""
       page.click_button 'Update Link'
       page.should have_content("can't be blank")
     end

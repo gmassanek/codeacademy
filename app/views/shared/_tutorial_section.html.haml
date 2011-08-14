@@ -1,0 +1,5 @@
+%h3 Tutorials
+- unless item.tutorials.blank? 
+  %ul
+    - item.tutorials.each do |tutorial|
+      %li= link_to "#{tutorial.title}", tutorial_path(tutorial)

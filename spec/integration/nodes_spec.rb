@@ -87,10 +87,6 @@ describe Node do
       page.should have_link(@node2.title)
       page.should have_link(@node3.title)
     end
-    it "has a sidebar" do
-      visit node_path(@node)
-      page.should have_css('.sidebar')
-    end
     it "has link to each relationship" do
       @node2 = Fabricate(:node)
       @rel = Fabricate(:relationship, :node1 => @node, :node2 => @node2)

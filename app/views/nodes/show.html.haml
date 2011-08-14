@@ -1,31 +1,21 @@
-.span-15.prepend-1.border
-  - unless flash[:notice].blank?
-    %p.notice= flash[:notice]
-  .span-10
-    - if @node.homepage.blank?
-      %h2= @node.title if @node.homepage.blank?
-    - else
-      %h2= link_to @node, @node.homepage, :target => '_blank' unless @node.homepage.blank?
-  .mediaLinks.span-5.last
-    - unless @node.handles.blank?
-      %ul.right
-        - @node.handles.each do |key, value|
-          %li= link_to_site_handle(key, @node.site_handle.link_to(key))
-  .span-15.last
+.span-24#adminBox.last
+  %p.right= link_to "Edit Node", edit_node_path(@node)
+.span-24.last
+  = render 'shared/notice'
+.span-24.contentBox
+  = render 'shared/page_header', :item => @node
+  = render 'shared/site_handle_icons', :item => @node
+  .span-24.last
     %p= @node.description
-    = render 'shared/link_section', :linkable => @node, :link => @link
-    - unless @node.tutorials.blank? 
-      %h3 Tutorials
-      %ul
-        - @node.tutorials.each do |tutorial|
-          %li= link_to "#{tutorial.title}", tutorial_path(tutorial)
-    - unless @node.relationships.blank?
-      %h3 Related Nodes
-      %ul
-        - @node.relationships.each do |r|
-          %li= relationship_sentence_with_link(r, @node) + "<br/>".html_safe + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
-    %p.right= link_to "Edit", edit_node_path(@node)
     = render 'nodes/confidence', :node => @node
-.span-8.sidebar.last
-  = render 'nodes/buzz', :node => @node
+.span-24.contentBox
+  .span-8.border
+    = render 'shared/link_section', :linkable => @node, :link => @link
+  .span-8.border
+    = render 'shared/tutorial_section', :item => @node
+  .span-8.last
+    = render 'shared/relationship_section', :item => @node
+.span-24.contentBox.last
+  .span-8.border
+    = render 'nodes/buzz', :node => @node
 

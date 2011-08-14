@@ -24,11 +24,19 @@ body {
   background-color:white;
   text-align: center;
 }
-.container {
+.whiteRoundedBox {
   background-color: white;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   behavior:url(border-radius.htc);
+}
+.contentBox {
+  padding: 5px;
+  background-color: white;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  behavior:url(border-radius.htc);
+  margin-bottom: 10px;
 }
 
 .errorOneLine, .alertOneLine, .noticeOneLine, .successOneLine, .infoOneLine {margin-left: 0.2em;padding:0.2em;margin-bottom:0.5em;border:2px solid #ddd;}

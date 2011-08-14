@@ -1,0 +1,5 @@
+.span-10
+  - if item.homepage.blank?
+    %h1= item.to_s
+  - else
+    %h1= link_to item.to_s, item.homepage, :target => '_blank'
