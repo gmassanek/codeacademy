@@ -2,12 +2,11 @@ class Node < ActiveRecord::Base
   require 'twitter_helper'
   require 'rubyoverflow'
   include Rubyoverflow
-
-  has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id'
+  has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id' 
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
   has_many :links, :as => :linkable
   has_many :tutorials, :inverse_of => :node
-  has_one :site_handle, :inverse_of => :node
+  has_one :site_handle, :as => :item
   
 
   validates :title, :presence => true, :uniqueness => true
@@ -19,6 +18,7 @@ class Node < ActiveRecord::Base
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :site_handle
   
+  #attr_accessible :site_handle_attributes 
   has_friendly_id :title, :use_slug => true
 
   def to_s

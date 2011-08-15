@@ -1,1 +1,4 @@
-= render 'form'
+.span-24.last
+  = render 'shared/notice'
+.span-24.contentBox.last
+  = render 'form', :item => @item, :site_handle => @site_handle

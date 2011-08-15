@@ -5,11 +5,10 @@ describe Relationship do
     @relationship = Fabricate(:relationship)
   end
   it "can save new relationships" do
-    node3 = Fabricate(:node)
-
+    node = Fabricate(:node)
     visit new_relationship_path
     page.select @relationship.node1.title, :from => 'Node1'
-    page.select node3.title, :from => 'Node2'
+    page.select node.title, :from => 'Node2'
     page.fill_in 'Sentence1', :with => @relationship.sentence1
     page.fill_in 'Sentence2', :with => @relationship.sentence2
     page.click_button 'Create Relationship'

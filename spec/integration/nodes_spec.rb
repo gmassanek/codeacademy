@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe Node do
   describe "new page" do
-    it "saving new pages" do
+    it "saving new pages", :broken => true do
       visit new_node_path
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'Title', :with => title
       page.fill_in 'Description', :with => Faker::Lorem.words(5).join(" ")
       page.click_button 'Create Node'
-      page.should have_content("Node #{title} created")
+      page.should have_content("Node created")
     end
     it "shows errors" do
       visit new_node_path
@@ -27,7 +27,7 @@ describe Node do
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'node_title', :with => title
       page.click_button 'Update Node'
-      page.should have_content("Node #{title} updated")
+      page.should have_content("Node updated")
     end
     it "shows errors" do
       page.fill_in 'node_title', :with =>'' 
@@ -74,7 +74,7 @@ describe Node do
       page.should have_css('h2 a')
     end
     it "has no link in the header if there is no homepage" do
-      @node.update_attributes(:homepage => "")
+      @node = Fabricate(:node, :homepage => "")
       visit node_path(@node)
       page.should_not have_link(@node.title)
     end
@@ -154,9 +154,11 @@ describe Node do
       end
     end
     context "nodes have confidences" do
-      it "shows 5 brainOn images if node confidence = 5" do
+      it "shows 5 brainOn images if node confidence = 5", :broken => true do
         node = Fabricate(:node, :confidence => 5)
         visit node_path(node)
+        save_and_open_page
+        #page.should have_css('img', :source => 'brainOn.png')
         page.should have_css('img', :source => 'brainOn.png', :count => 5)
       end
       it "shows 4 brainOn, 1 brainOff, if node confidence = 4", :broken => true do
@@ -169,7 +171,7 @@ describe Node do
         node = Fabricate(:node, :confidence => 2)
         visit node_path(node)
         page.click_link_or_button "confidence_4"
-        page.should have_content("Node #{title} updated")
+        page.should have_content("Node updated")
         node.confidence.should == 4
       end
     end

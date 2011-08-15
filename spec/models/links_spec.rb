@@ -1,16 +1,10 @@
 require 'spec_helper'
 
 describe Link do
-  it "requires a linkable element and a URL" do
+  it "requires a URL" do
     @link = Fabricate(:node_link)
     @link.should be_valid
-    @link.linkable = nil
-    @link.should_not be_valid
-  end
-  it "requires a node or a relationship and a URL" do
-    @link = Fabricate(:relationship_link)
-    @link.should be_valid
-    @link.linkable = nil
+    @link.url = nil
     @link.should_not be_valid
   end
 

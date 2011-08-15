@@ -1,4 +1,4 @@
 Fabricator(:site_handle) do
-  node_id {Fabricate(:node).id}
+  item! {Fabricate(:node)}
   github { "gmassanek" }
 end

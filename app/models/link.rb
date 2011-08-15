@@ -1,6 +1,6 @@
 class Link < ActiveRecord::Base
   belongs_to :linkable, :polymorphic => true
-  validates :linkable, :presence => true
+  #validates :linkable, :presence => true
 
   validates :url, :presence => true, :format => {:with => URI::regexp}
 

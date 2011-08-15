@@ -14,8 +14,10 @@
       = link_to_add_fields "Add Link", f, :links 
       = f.simple_fields_for :links do |links_form|
         = render 'link_fields', :f => links_form
-    %fieldset.span-11
+    .span-11
       %legend Site Handles
       = f.simple_fields_for :site_handle do |handles_form|
-        = render 'site_handle_fields', :f => handles_form
+        .fields
+          = handles_form.input :github, :input_html => {:class => "text"}, :br => false
+          = handles_form.input :twitter, :input_html => {:class => "text"}, :br => false
     = f.button :submit

@@ -1,7 +1,12 @@
-.span-17.prepend-1.border
-  - unless flash[:notice].nil?
-    %p.notice= flash[:notice]
-  %h2= relationship_sentence_with_links(@relationship)
-  %p= link_to "Edit", edit_relationship_path(@relationship)
-  = render 'shared/link_section', :linkable => @relationship, :link => @link
-.span-6.sidebar.last
+.span-24#adminBox.last
+  %p.right= link_to "Edit Relationship", edit_relationship_path(@relationship)
+.span-24.last
+  = render 'shared/notice'
+.span-24.contentBox.last
+  = render 'shared/page_header', :item => @relationship
+  = render 'shared/site_handle_icons', :item => @relationship
+  .span-24.last
+    %p= relationship_sentence_with_links(@relationship)
+.span-24.contentBox
+  .span-8.border
+    = render 'shared/link_section', :linkable => @relationship, :link => @link

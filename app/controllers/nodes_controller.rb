@@ -17,8 +17,9 @@ class NodesController < ApplicationController
   end
   def create
     @node = Node.new(params[:node])
+    @node.build_site_handle(params[:node][:site_handle_attributes])
     if @node.save
-     redirect_to node_path(@node), :notice => "Node #{@node.to_s} created"
+      redirect_to node_path(@node), :notice => "Node created"
     else
       render :action => 'new'
     end
@@ -26,7 +27,7 @@ class NodesController < ApplicationController
   def update
     @node = Node.find(params[:id])
     if @node.update_attributes(params[:node])
-      redirect_to node_path(@node), :notice => "Node #{@node} updated"
+      redirect_to node_path(@node), :notice => "Node updated"
     else
       render :action => 'edit'
     end
@@ -34,7 +35,6 @@ class NodesController < ApplicationController
   def edit
     @node = Node.find(params[:id])
     @node.links.build
-    @node.build_site_handle if @node.site_handle.blank?
   end
   def destroy
     @node = Node.find(params[:id])

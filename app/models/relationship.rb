@@ -4,11 +4,14 @@ class Relationship < ActiveRecord::Base
   
   before_validation :fillKey
 
+  has_one :site_handle, :as => :item
+
   validate :has_space_holders, :allow_nil => true
   validate :not_self_referencing
 
   has_many :links, :as => :linkable
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :site_handle
 
   validates :node1, :presence => true
   validates :node2, :presence => true
@@ -81,5 +84,13 @@ class Relationship < ActiveRecord::Base
 
   def sentenceValid?(sentence)
     sentence.include?('%1') and sentence.include?('%2')
+  end
+
+  def getHandle(handle)
+    site_handle[handle]
+  end
+
+  def handles
+    return site_handle.handles unless site_handle.nil?
   end
 end

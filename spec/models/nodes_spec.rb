@@ -104,10 +104,6 @@ describe Node do
       node.update_attributes :site_handle_attributes => {:github => 'gmassanek'}
       node.save.should == true
     end
-    it "can save with a link" do
-      node = Fabricate(:node_with_site_handles)
-      node.handles["github"].should_not be_nil
-    end
     it "responds to .handles" do
       node.should respond_to(:handles)
     end

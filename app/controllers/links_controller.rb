@@ -42,8 +42,8 @@ class LinksController < ApplicationController
     flash[:notice] = "Link deleted"
     redirect_to @linkable
   end
+  
   private
-
   def find_linkable
     params.each do |name, value|
       if name =~ /(.+)_id$/

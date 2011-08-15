@@ -9,6 +9,14 @@ module ApplicationHelper
       relationship.populate(sentence,{:val1 => link, :val2 => node.to_s})
     end
   end
+  
+  def item_title(item)
+    if item.respond_to?(:homepage) && !item.homepage.blank?
+      link_to item.to_s, item.homepage, :target => '_blank'
+    else
+      item.to_s
+    end
+  end
 
   def relationship_sentence_with_links(relationship)
     sentence = relationship.sent1(:filled_with => nil)
@@ -34,6 +42,10 @@ module ApplicationHelper
   end
 
   def link_to_site_handle(handle, link)
+    puts "==================="
+    puts handle.inspect
+    puts link.inspect
+    puts "==================="
     image = image_tag "#{handle}.png", :id => "#{handle}LinkImage", :height => "32px"
     link_to image, link
   end
