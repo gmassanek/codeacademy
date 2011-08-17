@@ -1,21 +1,23 @@
 module ApplicationHelper
-  def relationship_sentence_with_link(relationship, node)
-    sentence = relationship.sentence_from(node, :filled_with => nil)
-    othernode = relationship.other_node(node)
-    link = "<a href='#{node_url(othernode)}' id=node_#{othernode.id}>#{othernode.to_s}</a>"
-    if sentence == relationship.sent1(:filled_with => nil)
-      relationship.populate(sentence, {:val1 => node.to_s, :val2 => link})
-    else
-      relationship.populate(sentence,{:val1 => link, :val2 => node.to_s})
-    end
-  end
-  
   def item_title(item)
     if item.respond_to?(:homepage) && !item.homepage.blank?
       link_to item.to_s, item.homepage, :target => '_blank'
     else
       item.to_s
     end
+  end
+
+  def relationship_bullet(relationship, node)
+    sentence = relationship.sentence_from(node, :filled_with => nil)
+    othernode = relationship.other_node(node)
+    link_to_other_node = link_to othernode.to_s, node_url(othernode), :id => "node_#{othernode.id}"
+    if relationship.node1 == node
+      full_sentence = relationship.populate(sentence, {:val1 => node.to_s, :val2 => othernode.to_s})
+    else
+      full_sentence = relationship.populate(sentence,{:val1 => othernode.to_s, :val2 => node.to_s})
+    end
+    link_sentence = link_to full_sentence, relationship, :class => 'relSentenceLink', :id => "relationshipLink#{relationship.id}"
+    link_to_other_node + " - " + link_sentence
   end
 
   def relationship_sentence_with_links(relationship)

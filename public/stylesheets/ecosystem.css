@@ -78,3 +78,13 @@ body {
   clear;
 }
 .bottom_border {padding-bottom:4px;margin-bottom:5px;border-bottom:1px solid #ddd;}
+
+.relSentenceLink {
+  text-decoration:none;
+  font: inherit;
+  color: #000000;
+}
+.relSentenceLink:hover {
+  border-bottom:1px dotted #666; 
+  color: #000000;
+}
