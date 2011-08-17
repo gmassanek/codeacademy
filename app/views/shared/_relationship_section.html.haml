@@ -1,6 +1,6 @@
 %h3 Related Nodes
-- unless item.relationships.blank?
+- unless node.relationships.blank?
   %ul
-    - item.relationships.each do |r|
+    - node.relationships.each do |r|
       %li
-        = relationship_sentence_with_link(r, item) + " - " + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
+        = relationship_sentence_with_link(r, node) + " - " + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
