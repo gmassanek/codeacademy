@@ -67,4 +67,24 @@ describe Tutorial do
       page.should have_content("#{@tutorial.description}")
     end
   end
+  describe "tutorials" do
+    before do
+      @tutorial1 = Fabricate(:relationship_tutorial)
+      @tutorial2 = Fabricate(:relationship_tutorial, :item => @tutorial1.item)
+    end
+    it "has a Tutorials section" do
+      visit polymorphic_path(@tutorial1.item)
+      page.should have_css("h3", :text => 'Tutorials')
+    end
+    it "lists all tutorials for the relationship" do
+      visit polymorphic_path(@tutorial1.item)
+      page.should have_content(@tutorial1.to_s)
+      page.should have_content(@tutorial2.to_s)
+    end
+    it "has links to its tutorials" do
+      visit polymorphic_path(@tutorial1.item)
+      page.click_link (@tutorial1.title)
+      page.current_url.should == polymorphic_url([@tutorial1.item, @tutorial1])
+    end
+  end
 end
