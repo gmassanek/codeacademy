@@ -3,3 +3,5 @@
   %ul
     - item.tutorials.each do |tutorial|
       %li= link_to tutorial.to_s, [item, tutorial]
+.right
+  = link_to 'Add Tutorial', new_polymorphic_path([item, :tutorial])
