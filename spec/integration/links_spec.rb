@@ -40,7 +40,6 @@ describe Link do
     it "shows all links", :broken => true do
       link2 = Fabricate(:node_link)
       visit node_links_path(@link.linkable, @link)
-      save_and_open_page
       page.should have_content(@link.to_s)
       page.should have_content(link2.to_s)
     end

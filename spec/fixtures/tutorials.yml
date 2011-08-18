@@ -1,0 +1,13 @@
+one:
+  item_id: 1
+  item_type: MyString
+  title: MyString
+  description: MyText
+  content: MyText
+
+two:
+  item_id: 1
+  item_type: MyString
+  title: MyString
+  description: MyText
+  content: MyText

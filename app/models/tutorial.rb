@@ -1,12 +1,13 @@
 class Tutorial < ActiveRecord::Base
-  belongs_to :node, :inverse_of => :tutorials  
-  validates :node, :presence => true
+  belongs_to :item, :polymorphic => true
+
+  attr_accessible :item_id, :item_type, :title, :description, :content
+
   validates :title, :presence => true
   validates :description, :presence => true
-  
+  validates :content, :presence => true
+
   def to_s
-    "Tutorial for #{node.to_s}"
+    title
   end
-
 end
-

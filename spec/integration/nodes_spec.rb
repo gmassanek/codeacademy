@@ -57,8 +57,8 @@ describe Node do
   describe "show page" do
     before do
       @node = Fabricate(:node)
-      @tutorial1 = Fabricate(:tutorial, :node => @node)
-      @tutorial2 = Fabricate(:tutorial, :node => @node) 
+      #@tutorial1 = Fabricate(:tutorial, :node => @node)
+      #@tutorial2 = Fabricate(:tutorial, :node => @node) 
     end
     it "uses a slug from the title for the URL" do
       @node = Fabricate(:node, :title => "Github")
@@ -103,21 +103,21 @@ describe Node do
         page.should have_content(n.to_s)
       end
     end
-    it "has a Tutorials section" do
-      @tutorial1 = Fabricate(:tutorial, :node => @node)
-      visit node_path(@node)
-      page.should have_content("Tutorials")
-    end
-    it "lists all tutorials for the node" do
-      visit node_path(@node)
-      page.should have_content(@tutorial1.title)
-      page.should have_content(@tutorial2.title)
-    end
-    it "has links to its tutorials" do
-      visit node_path(@node)
-      page.click_link (@tutorial1.title)
-      page.current_url.should == tutorial_url(@tutorial1)
-    end
+    #it "has a Tutorials section" do
+    #  @tutorial1 = Fabricate(:tutorial, :node => @node)
+    #  visit node_path(@node)
+    #  page.should have_content("Tutorials")
+    #end
+    #it "lists all tutorials for the node" do
+    #  visit node_path(@node)
+    #  page.should have_content(@tutorial1.title)
+    #  page.should have_content(@tutorial2.title)
+    #end
+    #it "has links to its tutorials" do
+    #  visit node_path(@node)
+    #  page.click_link (@tutorial1.title)
+    #  page.current_url.should == tutorial_url(@tutorial1)
+    #end
  
   end
   describe "and links" do

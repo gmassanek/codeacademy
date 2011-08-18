@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110814223707) do
+ActiveRecord::Schema.define(:version => 20110817234402) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(:version => 20110814223707) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "tutorials", :force => true do |t|
-    t.integer  "node_id"
+    t.integer  "item_id"
+    t.string   "item_type"
     t.string   "title"
     t.text     "description"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

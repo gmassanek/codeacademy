@@ -1,36 +1,58 @@
 class TutorialsController < ApplicationController
   def index
-    @tutorials = Tutorial.all
+    @item = find_item
+    @tutorials = @item.tutorials
   end
+
   def show
+    @item = find_item
     @tutorial = Tutorial.find(params[:id])
   end
+
   def new
-    @tutorial = Tutorial.new
+    @item = find_item
+    @tutorial = @item.tutorials.build
   end
+
   def create
-    @tutorial = Tutorial.new(params[:tutorial])
+    @item = find_item
+    @tutorial = @item.tutorials.create(params[:tutorial])
     if @tutorial.save
-      redirect_to tutorials_path, :notice => "Tutorial created"
+      redirect_to [@item, @tutorial], :notice => "Successfully created tutorial."
     else
       render :action => 'new'
     end
   end
+
+  def edit
+    @item = find_item
+    @tutorial = Tutorial.find(params[:id])
+  end
+
   def update
+    @item = find_item
     @tutorial = Tutorial.find(params[:id])
     if @tutorial.update_attributes(params[:tutorial])
-      redirect_to tutorials_path, :notice => "Tutorial updated"
+      redirect_to [@item, @tutorial], :notice  => "Successfully updated tutorial."
     else
       render :action => 'edit'
     end
   end
-  def edit
-    @tutorial = Tutorial.find(params[:id])
-  end
 
-  def delete
+  def destroy
+    @item = find_item
     @tutorial = Tutorial.find(params[:id])
     @tutorial.destroy
-    redirect_to tutorials_path, :notice => "Tutorial deleted"
+    redirect_to polymorphic_path([@item, :tutorials]), :notice => "Successfully destroyed tutorial."
+  end
+
+  private
+  def find_item
+    params.each do |name, value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
+    end
+    nil
   end
 end

@@ -1,13 +1,19 @@
-.span-24.last
-  = render 'shared/notice'
-.span-24.contentBox.last
-  %h3.span-10 Tutorials 
-  .span-5.right
-    .right= link_to 'Add', new_tutorial_path
-  %table
-    - @tutorials.each do |tutorial|
-      %tr
-        %td= tutorial.to_s
-        %td= tutorial.title
-        %td= link_to 'Edit', edit_tutorial_path(tutorial), :id => "editTutorial_#{tutorial.id}"
-        %td= link_to 'Delete', tutorial_path(tutorial), :id => "deleteTutorial_#{tutorial.id}"
+%table
+  %tr
+    %th Item
+    %th Item type
+    %th Title
+    %th Description
+    %th Content
+  - for tutorial in @tutorials
+    %tr
+      %td= tutorial.item_id
+      %td= tutorial.item_type
+      %td= tutorial.title
+      %td= tutorial.description
+      %td= tutorial.content
+      %td= link_to 'Show', polymorphic_path([tutorial.item, tutorial])
+      %td= link_to 'Edit', edit_polymorphic_path([tutorial.item, tutorial]), :id => "editTutorial_#{tutorial.id}"
+      %td= link_to 'Destroy', polymorphic_path([tutorial.item, tutorial]), :confirm => 'Are you sure?', :method => :delete, :id => "deleteTutorial_#{tutorial.id}"
+
+%p= link_to "New Tutorial", new_polymorphic_path([@item, :tutorial])

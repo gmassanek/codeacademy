@@ -1,8 +1,11 @@
-= simple_form_for @tutorial do |f|
-  %fieldset
-    %legend Tutorial
-    = f.error_messages
-    = f.association :node
-    = f.input :title
-    = f.input :description
-    = f.submit
+#newLinkForm
+  = simple_form_for [@item, @tutorial] do |f|
+    %fieldset
+      %legend New Link
+      = f.error_notification
+      .inputs
+        = f.input :description
+        = f.input :title
+        = f.input :content
+      .actions
+        = f.submit

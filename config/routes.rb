@@ -19,12 +19,13 @@ Ecosystem::Application.routes.draw do
       resources :nodes do
         resources :links
         resources :site_handles, :except => :index
+        resources :tutorials
       end
       resources :relationships do
         resources :links
         resources :site_handles, :except => :index
+        resources :tutorials
       end
-      resources :tutorials
 
   # Sample resource route with options:
   #   resources :products do

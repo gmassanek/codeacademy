@@ -1,9 +1,26 @@
 .span-17.prepend-1.border
   = render 'shared/notice'
-  %h2= @tutorial.to_s
-  %p
-    %label Title
-    =@tutorial.title
-  %p
-    %label Description
-    =@tutorial.description
+%h2= @tutorial.to_s
+
+%p
+  %strong Item:
+  = @tutorial.item_id
+%p
+  %strong Item Type:
+  = @tutorial.item_type
+%p
+  %strong Title:
+  = @tutorial.title
+%p
+  %strong Description:
+  = @tutorial.description
+%p
+  %strong Content:
+  = @tutorial.content
+
+%p
+  = link_to "Edit", edit_polymorphic_path([@item, @tutorial])
+  |
+  = link_to "Destroy", polymorphic_path([@item, @tutorial]), :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", polymorphic_path([@item, :tutorials])

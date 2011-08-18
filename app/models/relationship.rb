@@ -10,6 +10,7 @@ class Relationship < ActiveRecord::Base
   validate :not_self_referencing
 
   has_many :links, :as => :linkable
+  has_many :tutorials, :as => :item
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :site_handle
 

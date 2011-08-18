@@ -5,7 +5,7 @@ class Node < ActiveRecord::Base
   has_many :relationships1, :class_name => 'Relationship', :foreign_key => 'node1_id' 
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
   has_many :links, :as => :linkable
-  has_many :tutorials, :inverse_of => :node
+  has_many :tutorials, :as => :item
   has_one :site_handle, :as => :item
   
 
@@ -46,10 +46,6 @@ class Node < ActiveRecord::Base
   def handles
     return site_handle.handles unless site_handle.nil?
   end
-
-#  def tutorials
-#    return tutorial.tutorials unless tutorial.nil?
-#  end
 
   def self.all(*args)
     self.find(:all, :order => "title")  
