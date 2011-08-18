@@ -161,5 +161,12 @@ describe Node do
         node.should be_valid
       end
   end
+  describe "tutorials" do
+    it "responds to tutorials" do
+      @tutorial = Fabricate(:node)
+      @tutorial.should respond_to(:tutorials)
+    end
+  end
+      
 end
 
