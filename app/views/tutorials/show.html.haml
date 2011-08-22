@@ -9,5 +9,5 @@
   = render 'shared/page_header', :item => @tutorial
   .span-24.last
     %p= @tutorial.description
-.span-24.contentBox.last
+.span-24.contentBox.last.tutorialContent
   = markdown(@tutorial.content)

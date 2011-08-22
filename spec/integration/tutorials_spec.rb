@@ -66,6 +66,26 @@ describe Tutorial do
     it "shows the tutorial description" do
       page.should have_content("#{@tutorial.description}")
     end
+    describe "uses markdown" do
+      it "shows headers" do
+        (1..5).each do |n|
+          hashString = ""
+          n.times {hashString = hashString + "#"}
+          @tutorial.update_attributes(:content => "#{hashString} Hello")
+          visit polymorphic_path([@tutorial.item, @tutorial])
+          within("div.tutorialContent") do
+            page.should have_css("h#{n}", :text => "Hello")
+          end
+        end
+      end
+      it "shows links" do
+        @tutorial.update_attributes(:content => "http://www.google.com")
+        visit polymorphic_path([@tutorial.item, @tutorial])
+        within("div.tutorialContent") do
+          page.should have_css("a")
+        end
+      end
+    end
   end
   describe "tutorials" do
     before do

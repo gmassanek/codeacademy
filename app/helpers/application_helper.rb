@@ -5,13 +5,10 @@ module ApplicationHelper
   end
     
   def syntax_highlighter(html)
-puts html.inspect
     doc = Nokogiri::HTML(html)
-puts doc.inspect
     doc.search("//pre[@lang]").each do |pre|  
       pre.replace Albino.colorize(pre.text.rstrip, pre[:lang])  
     end
-puts doc.to_s
     doc.to_s
   end
   
