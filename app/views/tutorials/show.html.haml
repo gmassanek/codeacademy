@@ -1,26 +1,13 @@
-.span-17.prepend-1.border
+.span-24
   = render 'shared/notice'
-%h2= @tutorial.to_s
-
-%p
-  %strong Item:
-  = @tutorial.item_id
-%p
-  %strong Item Type:
-  = @tutorial.item_type
-%p
-  %strong Title:
-  = @tutorial.title
-%p
-  %strong Description:
-  = @tutorial.description
-%p
-  %strong Content:
-  = @tutorial.content
-
-%p
-  = link_to "Edit", edit_polymorphic_path([@item, @tutorial])
-  |
-  = link_to "Destroy", polymorphic_path([@item, @tutorial]), :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", polymorphic_path([@item, :tutorials])
+.span-24#adminBox.last
+  %p.right
+    = link_to "Edit", edit_polymorphic_path([@item, @tutorial])
+    = link_to "Destroy", polymorphic_path([@item, @tutorial]), :confirm => 'Are you sure?', :method => :delete
+    = link_to "View All", polymorphic_path([@item, :tutorials])
+.span-24.contentBox.last
+  = render 'shared/page_header', :item => @tutorial
+  .span-24.last
+    %p= @tutorial.description
+.span-24.contentBox.last
+  = markdown(@tutorial.content)

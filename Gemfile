@@ -18,6 +18,10 @@ gem 'alexrabarts-tld'
 gem 'rails3-jquery-autocomplete'
 gem 'nifty-generators'
 gem 'rubyoverflow'
+gem 'redcarpet'
+gem 'redcarpet'
+gem 'albino'
+gem 'nokogiri'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"

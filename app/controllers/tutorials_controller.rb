@@ -1,3 +1,4 @@
+require 'redcarpet'
 class TutorialsController < ApplicationController
   def index
     @item = find_item
