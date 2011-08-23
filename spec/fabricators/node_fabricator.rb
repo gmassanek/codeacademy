@@ -5,5 +5,5 @@ Fabricator(:node) do
   site_handle! {|node, i| Fabricate(:site_handle, :item => node, :github => "node.title")}
 end
 Fabricator(:node_with_links, :from => :node) do
-  links(:count => 3) {|node, i| Fabricate(:node_link, :linkable => node)}
+  links!(:count => 3) {|node, i| Fabricate(:node_link, :linkable => node)}
 end

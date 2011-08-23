@@ -40,7 +40,7 @@ describe Tutorial do
       @tutorial = Fabricate(:node_tutorial)
     end
     it "shows all tutorials", :broken => true do
-      tutorial2 = Fabricate(:node_tutorial)
+      tutorial2 = Fabricate(:node_tutorial, :item => @tutorial.item)
       visit node_tutorials_path(@tutorial.item, @tutorial)
       page.should have_content(@tutorial.to_s)
       page.should have_content(tutorial2.to_s)

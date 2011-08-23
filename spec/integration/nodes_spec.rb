@@ -124,7 +124,11 @@ describe Node do
  
   end
   describe "and links" do
-    it "has an option to save a link on the show page"
+    it "has an option to save a link on the show page" do
+      node = Fabricate(:node)
+      visit node_path(node)
+      page.should have_button('addLink')
+    end
     it "shows all the links associated" do
       node = Fabricate(:node_with_links)
       node.links.each do |link|
@@ -160,15 +164,13 @@ describe Node do
       it "shows 5 brainOn images if node confidence = 5", :broken => true do
         node = Fabricate(:node, :confidence => 5)
         visit node_path(node)
-        save_and_open_page
-        #page.should have_css('img', :source => 'brainOn.png')
-        page.should have_css('img', :source => 'brainOn.png', :count => 5)
+        page.should have_xpath("//img[@alt='Brainon']", :count => 5)
       end
       it "shows 4 brainOn, 1 brainOff, if node confidence = 4", :broken => true do
         node = Fabricate(:node, :confidence => 4)
         visit node_path(node)
-        page.should have_css('img', :source => 'brainOn.png', :count => 4)
-        page.should have_css('img', :source => 'brainOff.png', :count => 1)
+        page.should have_xpath("//img[@alt='Brainon']", :count => 4)
+        page.should have_xpath("//img[@alt='Brainoff']", :count => 1)
       end
       it "updates by clicking the images" , :js => true do
         node = Fabricate(:node, :confidence => 2)
