@@ -157,25 +157,27 @@ describe Node do
       end
     end
     context "nodes have confidences" do
-      it "shows 5 brainOn images if node confidence = 5", :broken => true do
+      it "shows 5 brainOn images if node confidence = 5" do
         node = Fabricate(:node, :confidence => 5)
         visit node_path(node)
-        save_and_open_page
-        #page.should have_css('img', :source => 'brainOn.png')
-        page.should have_css('img', :source => 'brainOn.png', :count => 5)
+        page.should have_xpath("//img[@alt='Brainon']", :count => 5)
       end
-      it "shows 4 brainOn, 1 brainOff, if node confidence = 4", :broken => true do
+      it "shows 4 brainOn, 1 brainOff, if node confidence = 4" do
         node = Fabricate(:node, :confidence => 4)
         visit node_path(node)
-        page.should have_css('img', :source => 'brainOn.png', :count => 4)
-        page.should have_css('img', :source => 'brainOff.png', :count => 1)
+        page.should have_xpath("//img[@alt='Brainon']", :count => 4)
+        page.should have_xpath("//img[@alt='Brainoff']", :count => 1)
       end
-      it "updates by clicking the images" , :js => true do
-        node = Fabricate(:node, :confidence => 2)
-        visit node_path(node)
-        page.click_link_or_button "confidence_4"
+      it "updates by clicking the images", :js => true do
+        node_attributes = Fabricate.attributes_for(:node, :confidence => 2)
+        visit new_node_path
+        page.fill_in 'Title', :with => node_attributes['title']
+        page.fill_in 'Description', :with => node_attributes['description']
+        page.click_button 'Create Node'
+        page.should have_content("Node created")
+        page.find(:css, 'img#confidence_4').click
         page.should have_content("Node updated")
-        node.confidence.should == 4
+        page.should have_xpath("//img[@alt='Brainon']", :count => 4)
       end
     end
   end

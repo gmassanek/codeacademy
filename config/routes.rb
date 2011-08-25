@@ -1,4 +1,6 @@
 Ecosystem::Application.routes.draw do
+  devise_for :users
+
   match '/home', :to => 'pages#home'
   get 'nodes/autocomplete_node_title'
   get 'pages/node_search_by_title'

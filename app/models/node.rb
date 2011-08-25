@@ -18,9 +18,13 @@ class Node < ActiveRecord::Base
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :site_handle
   
-  #attr_accessible :site_handle_attributes 
   has_friendly_id :title, :use_slug => true
 
+  before_save :default_values
+
+  def default_values
+    self.confidence = 0 unless self.confidence
+  end
   def to_s
     title
   end
@@ -55,6 +59,7 @@ class Node < ActiveRecord::Base
     return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
     #return []
   end
+
   def stack_results
     unless stack_search_key.blank?
       search_results =  Questions.retrieve_by_tag(stack_search_key, :page_size => 5) 
