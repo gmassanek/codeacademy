@@ -2,5 +2,5 @@
   %h2.left.strong= link_to 'rubeco', root_path
   .right a mapping of the ruby ecosystem
   .right
-    = form_tag({:controller => 'pages', :action => 'node_search_by_title'}, :method => :get) do
+    = form_tag(pages_node_search_by_title_path, :method => :get) do
       = autocomplete_field_tag 'title', '', nodes_autocomplete_node_title_path, :id_element => "#id_element_placeholder", :class => "text"

@@ -1,0 +1,11 @@
+.span-24.last
+  = render 'shared/notice'
+.span-24.contentBox.last
+  %h2 Forgot your password?
+  = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = f.error_notification
+    .inputs
+      = f.input :email, :required => true
+    .actions
+      = f.button :submit, "Send me reset password instructions"
+  = render :partial => "devise/shared/links"
