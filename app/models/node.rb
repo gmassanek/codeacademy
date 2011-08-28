@@ -13,7 +13,7 @@ class Node < ActiveRecord::Base
   validates :description, :presence => true
   validates :homepage, :format => {:with => URI::regexp}, :allow_blank => true
 
-  validates :confidence, :numericality => {:only_integer => true}, :inclusion  => {:in => 1..5}, :allow_nil => true
+  validates :confidence, :numericality => {:only_integer => true}, :inclusion  => {:in => 0..5}, :allow_nil => true
 
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :site_handle

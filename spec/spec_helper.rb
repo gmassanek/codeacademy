@@ -1,7 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 ENV["TEST_JS"] ||= 'true'
-ENV["TEST_TWITTER"] ||= 'false'
+ENV["TEST_BUZZ"] ||= 'false'
 ENV["BROKEN"] ||= 'false'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -36,8 +36,8 @@ RSpec.configure do |config|
   if ENV["TEST_JS"] != 'true'
     config.filter_run_excluding :js => true
   end
-  if ENV["TEST_TWITTER"] != 'true'
-    config.filter_run_excluding :twitter => true
+  if ENV["TEST_BUZZ"] != 'true'
+    config.filter_run_excluding :buzz => true
   end
   #config.run_all_when_everything_filtered = true
 end

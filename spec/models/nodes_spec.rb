@@ -52,6 +52,7 @@ describe Node do
     node.should be_valid
   end
   it "should order the links alphabetically" do
+    Node.all.each {|n| n.destroy}
     node.update_attributes(:title => "G title")
     node2 = Fabricate(:node, :title => "A title")
     node3 = Fabricate(:node, :title => "Z title")
@@ -108,7 +109,7 @@ describe Node do
       node.should respond_to(:handles)
     end
   end
-  describe "twitter search key" do
+  describe "twitter search key", :buzz => true  do
     it "searches twitter using the twitter search key" do
       node = Fabricate(:node, :twitter_search_key => "Google")
       node.tweets.size.should == 5
@@ -126,7 +127,7 @@ describe Node do
       node.tweets.should be_blank 
     end
   end
-  describe "stack overflow search key" do
+  describe "stack overflow search key", :buzz => true do
     it "searches stack overflow using the stack overflow search key" do
       node = Fabricate(:node, :stack_search_key => "Rspec")
       node.stack_results.size.should == 5
@@ -141,21 +142,21 @@ describe Node do
     end
   end
   describe "has a confidence level" do
-      it "of nil by default" do
+      it "of 0 by default" do
         node = Fabricate(:node)
-        node.confidence.should be_nil
+        node.confidence.should == 0
       end
-      it "can only be 1-5" do
+      it "can only be 0-5" do
         node = Fabricate(:node)
-        node.confidence = 0
+        node.confidence = -1
         node.should_not be_valid
       end
-      it "can only be 1-5" do
+      it "can only be 0-5" do
         node = Fabricate(:node)
         node.confidence = 6
         node.should_not be_valid
       end
-      it "can only be 1-5" do
+      it "can only be 0-5" do
         node = Fabricate(:node)
         node.confidence = 3
         node.should be_valid

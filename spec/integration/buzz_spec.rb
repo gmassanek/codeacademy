@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Twitter", :twitter => true do
+describe "Twitter", :buzz => true do
   describe Node do
     let(:node) {Fabricate(:node, :twitter_search_key => "cnn")}
 
@@ -22,7 +22,7 @@ describe "Twitter", :twitter => true do
   end
   it "tests the hyperlink, handle, and hash parsers"
 end
-describe "Stack Overflow" do
+describe "Stack Overflow", :buzz => true do
   describe Node do
     let(:node) {Fabricate(:node, :stack_search_key => "rspec")}
     it "has a stack search key" do
