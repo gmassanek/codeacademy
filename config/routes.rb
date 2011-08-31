@@ -1,4 +1,6 @@
 Ecosystem::Application.routes.draw do
+  resources :user_helpfulness_ratings
+
   devise_for :users
 
   match '/home', :to => 'pages#home'

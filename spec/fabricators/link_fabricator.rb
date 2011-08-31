@@ -1,4 +1,5 @@
-Fabricator(:link) do
+Fabricator(:user_helpfulness_rating) do
+  user! {Fabractate(:user)
   url { |link| "http://www.#{link.linkable.to_s.gsub(" ", "")}.com"}
 end
 Fabricator(:node_link, :from => :link) do
