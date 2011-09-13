@@ -5,7 +5,7 @@
 body {
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
-    width: 520px;
+    width: 500px;
     text-align: left;
 }
 .horseparator {
@@ -16,7 +16,7 @@ body {
 	clear:both;
 }
 #container, #templateDescription {
-    width: 520px;
+    width: 500px;
     text-align: left;
 	margin:0 auto;
 }
@@ -101,7 +101,7 @@ body {
     display: block;
 }
 .fullWidth {
-    width: 520px;
+    width: 500px;
     text-align:right;
     overflow: auto;
 }
