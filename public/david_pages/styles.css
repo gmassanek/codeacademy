@@ -1,0 +1,115 @@
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+    width: 520px;
+    text-align: left;
+}
+.horseparator {
+	height:3px;
+	background:#000000;
+}
+.clearer {
+	clear:both;
+}
+#container, #templateDescription {
+    width: 520px;
+    text-align: left;
+	margin:0 auto;
+}
+.info {
+	float:left;
+}
+.ads336x280 {
+	width:336px;
+	height:280px;
+	margin-left:300px;
+	margin-top:5px;
+}
+.facebookFans {
+	float:left;
+}
+.description {
+	margin-left:650px;
+}
+.description li {
+	list-style:none;
+	padding-bottom:10px;
+}
+#shareIcons li {
+	display:inline;
+	height:32px;
+}
+#tweetButton {
+	float:left;
+	padding-bottom:10px;
+	padding-right:10px;
+}
+#shareButton {
+	padding:0 0 10px 10px;
+	margin-bottom:70px;
+}
+.sources {
+	padding-bottom:10px;
+}
+.required {
+	padding-bottom:10px;
+}
+.about {
+	padding-bottom:10px;
+}
+.downloadButton {
+	width:250px;
+	background:#0f0f0f;
+	padding:10px;
+	text-align:center;
+}
+.downloadButton a {
+	text-align:center;
+	color:#ffffff;
+	font-size:18px;
+}
+.ads728x90 {
+	width:728px;
+	height:90px;
+	margin:0 auto;
+}
+.horsep {
+	height:10px;
+}
+.thumbsep {
+	height:25px;
+}
+.thumbpr {
+	padding:0 0 0 10px;
+}
+.thumbpr img{
+	border:0;
+}
+.advertiseHere {
+	text-align:center;
+}
+#mainContentPreveiew {
+	text-align:left;
+}
+#blurbs p {
+    margin-bottom: 5px;
+    width: 100%;
+    display: block;
+}
+.fullWidth {
+    width: 520px;
+    text-align:right;
+    overflow: auto;
+}
+.blurbAuthor {
+    font-weight:bold;
+    text-align:right;
+    margin-bottom: 5px;
+    width: 320px;
+    float:right;
+    display: block;
+}
