@@ -95,6 +95,11 @@ body {
 #mainContentPreveiew {
 	text-align:left;
 }
+#blurbs {
+font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+        font-size: 13px;
+        margin-top: .5em; color: #666;
+}
 #blurbs p {
     margin-bottom: 5px;
     width: 100%;
