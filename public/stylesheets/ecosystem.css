@@ -88,3 +88,12 @@ body {
   border-bottom:1px dotted #666; 
   color: #000000;
 }
+.thinHeightTextArea{
+  height:60px;
+}
+.mediumHeightTextArea{
+  height:100px;
+}
+.XLHeightTextArea{
+  height:500px;
+}

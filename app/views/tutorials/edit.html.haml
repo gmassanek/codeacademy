@@ -1,3 +1,6 @@
-= render 'form'
-
-%p= link_to "Back to List", [@item, :tutorials]
+.span-24.last
+= render 'shared/notice'
+.span-24.contentBox.last
+  = render 'form'
+.span-24.last
+  = debug(params)

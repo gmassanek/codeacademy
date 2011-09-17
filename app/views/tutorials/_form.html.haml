@@ -1,11 +1,11 @@
 #newLinkForm
   = simple_form_for [@item, @tutorial] do |f|
     %fieldset
-      %legend New Link
+      %legend Tutorial
       = f.error_notification
       .inputs
-        = f.input :description
         = f.input :title
-        = f.input :content
+        = f.input :description, :input_html => {:class => 'span-23 thinHeightTextArea'}
+        = f.input :content, :input_html => {:class => 'span-23 XLHeightTextArea'}
       .actions
         = f.submit
