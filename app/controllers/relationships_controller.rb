@@ -22,6 +22,12 @@ class RelationshipsController < ApplicationController
   def show
     @relationship = Relationship.find(params[:id])
     @link = @relationship.links.build
+    if current_user
+      @knowledge_rating = @relationship.user_knowledge_ratings.find_by_user_id(current_user.id)
+      unless @knowledge_rating
+        @knowledge_rating = @relationship.user_knowledge_ratings.build(:user_id => current_user.id, :knowledge_level => 0)
+      end
+    end
   end
   def update
     @relationship = Relationship.find(params[:id])

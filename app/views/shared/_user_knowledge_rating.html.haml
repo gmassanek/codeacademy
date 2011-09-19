@@ -1,9 +1,10 @@
 - if @knowledge_rating
-  = simple_form_for [@node, @knowledge_rating], :remote => true do |f|
+  = "How well do you know #{knowledgeable.to_s}?"
+  = simple_form_for [knowledgeable, @knowledge_rating], :remote => true do |f|
     = f.input :user, :as => :hidden
     = f.input :knowledgeable_id, :as => :hidden
     = f.input :knowledgeable_type, :as => :hidden
-    = f.input :knowledge_level, :br => false, :as  => :hidden,:input_html => {:onchange => 'this.form.submit()'}
+    = f.input :knowledge_level, :as => :hidden
     - level = 1
     - @knowledge_rating.knowledge_level.times do
       = image_tag 'brainOn.png', :size => '32x32', :id => "knowledge_level_#{level}", :onclick => "brain_click(this, #{level})"
@@ -11,3 +12,5 @@
     - (5-@knowledge_rating.knowledge_level).times do
       = image_tag 'brainOff.png', :size => '32x32', :id => "knowledge_level_#{level}", :onclick => "brain_click(this, #{level})"
       - level = level + 1
+    %br
+    %br

@@ -10,6 +10,7 @@ class Relationship < ActiveRecord::Base
   validate :not_self_referencing
 
   has_many :links, :as => :linkable
+  has_many :user_knowledge_ratings, :as => :knowledgeable
   has_many :tutorials, :as => :item
   accepts_nested_attributes_for :links, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :site_handle
@@ -25,7 +26,7 @@ class Relationship < ActiveRecord::Base
   end
   
   def to_s
-    "#{node1.to_s} to #{node2.to_s}"
+    "#{node1.to_s} and #{node2.to_s}"
   end
 
   def fillKey

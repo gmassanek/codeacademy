@@ -6,6 +6,8 @@
   = render 'shared/page_header', :item => @relationship
   = render 'shared/site_handle_icons', :item => @relationship
   .span-24.last
+    = render 'shared/user_knowledge_rating', :knowledgeable => @relationship, :knowledge_rating => @knowledge_rating
+  .span-24.last
     %p= relationship_sentence_with_links(@relationship)
 .span-24.contentBox
   .span-8.border
