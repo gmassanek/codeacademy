@@ -1,6 +1,4 @@
 Ecosystem::Application.routes.draw do
-  resources :user_helpfulness_ratings
-
   devise_for :users
 
   match '/home', :to => 'pages#home'
@@ -20,15 +18,11 @@ Ecosystem::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-      resources :nodes do
+      resources :nodes,:relationships do
         resources :links
         resources :site_handles, :except => :index
         resources :tutorials
-      end
-      resources :relationships do
-        resources :links
-        resources :site_handles, :except => :index
-        resources :tutorials
+        resources :user_knowledge_ratings
       end
 
   # Sample resource route with options:

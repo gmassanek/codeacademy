@@ -1,6 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-ENV["TEST_JS"] ||= 'true'
+ENV["TEST_JS"] ||= 'false'
 ENV["TEST_BUZZ"] ||= 'false'
 ENV["BROKEN"] ||= 'false'
 require File.expand_path("../../config/environment", __FILE__)

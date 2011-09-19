@@ -1,0 +1,11 @@
+one:
+  user_id: 1
+  knowledgeable_id: 1
+  knowledgeable_type: MyString
+  knowledge_level: 1
+
+two:
+  user_id: 1
+  knowledgeable_id: 1
+  knowledgeable_type: MyString
+  knowledge_level: 1

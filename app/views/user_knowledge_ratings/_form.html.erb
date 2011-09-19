@@ -1,0 +1,8 @@
+<%= simple_form_for [@knowledge_rateable, @user_knowledge_rating] do |f| %>
+  <%= f.error_messages %>
+  <%= f.input :user, :as => :hidden %>
+  <%= f.input :knowledgeable_id %>
+  <%= f.input :knowledgeable_type %>
+  <%= f.input :knowledge_level %>
+  <p><%= f.submit %></p>
+<% end %>

@@ -6,9 +6,9 @@ class Node < ActiveRecord::Base
   has_many :relationships2, :class_name => 'Relationship', :foreign_key => 'node2_id'
   has_many :links, :as => :linkable
   has_many :tutorials, :as => :item
+  has_many :user_knowledge_ratings, :as => :knowledgeable
   has_one :site_handle, :as => :item
   
-
   validates :title, :presence => true, :uniqueness => true
   validates :description, :presence => true
   validates :homepage, :format => {:with => URI::regexp}, :allow_blank => true

@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>User</th>
+    <th>Knowledgeable</th>
+    <th>Knowledgeable Type</th>
+    <th>Knowledge Level</th>
+  </tr>
+  <% for user_knowledge_rating in @user_knowledge_ratings %>
+    <tr>
+      <td><%= user_knowledge_rating.user_id %></td>
+      <td><%= user_knowledge_rating.knowledgeable_id %></td>
+      <td><%= user_knowledge_rating.knowledgeable_type %></td>
+      <td><%= user_knowledge_rating.knowledge_level %></td>
+      <td><%= link_to "Show", polymorphic_path([@knowledge_rateable, user_knowledge_rating]) %></td>
+      <td><%= link_to "Edit", edit_polymorphic_path([@knowledge_rateable, user_knowledge_rating]) %></td>
+      <td><%= link_to "Destroy", polymorphic_path([@knowledge_rateable, user_knowledge_rating]), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New User Knowledge Rating", new_polymorphic_path([@knowledge_rateable, user_knowledge_rating]) %></p>

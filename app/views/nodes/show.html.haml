@@ -6,7 +6,7 @@
   = render 'shared/page_header', :item => @node
   = render 'shared/site_handle_icons', :item => @node
   .span-24.last
-    = render 'nodes/confidence', :node => @node
+    = render 'shared/user_knowledge_rating', :knowledge_rating => @knowledge_rating
   .span-24.last
     %p= @node.description
 .span-24.contentBox

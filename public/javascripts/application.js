@@ -12,7 +12,7 @@ function add_fields(link, association, content) {
   $(content).insertAfter(link);
 }
 function brain_click(link, new_conf) {
-  var hiddenInput = document.getElementById('node_confidence');
+  var hiddenInput = document.getElementById('user_knowledge_rating_knowledge_level');
   hiddenInput.value = new_conf;
   hiddenInput.form.submit();
 }

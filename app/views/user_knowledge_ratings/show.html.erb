@@ -1,0 +1,22 @@
+<p>
+  <strong>User:</strong>
+  <%= @user_knowledge_rating.user_id %>
+</p>
+<p>
+  <strong>Knowledgeable:</strong>
+  <%= @user_knowledge_rating.knowledgeable_id %>
+</p>
+<p>
+  <strong>Knowledgeable Type:</strong>
+  <%= @user_knowledge_rating.knowledgeable_type %>
+</p>
+<p>
+  <strong>Knowledge Level:</strong>
+  <%= @user_knowledge_rating.knowledge_level %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_polymorphic_path([@knowledge_rateable, @user_knowledge_rating]) %> |
+  <%= link_to "Destroy", polymorphic_path([@knowledge_rateable, @user_knowledge_rating]), :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", polymorphic_path([@knowledge_rateable, @user_knowledge_rating]) %>
+</p>

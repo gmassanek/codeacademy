@@ -9,6 +9,12 @@ class NodesController < ApplicationController
     @link = @node.links.build
     @tweets = @node.tweets
     @stack_results = @node.stack_results
+    if current_user
+      @knowledge_rating = @node.user_knowledge_ratings.find_by_user_id(current_user.id)
+      unless @knowledge_rating
+        @knowledge_rating = @node.user_knowledge_ratings.build(:user_id => current_user.id, :knowledge_level => 0)
+      end
+    end
   end
   def new
     @node = Node.new

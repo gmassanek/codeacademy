@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110828213126) do
+ActiveRecord::Schema.define(:version => 20110917062232) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(:version => 20110828213126) do
     t.integer  "item_id"
     t.string   "item_type"
     t.integer  "helpfulness"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_knowledge_ratings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "knowledgeable_id"
+    t.string   "knowledgeable_type"
+    t.integer  "knowledge_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
