@@ -1,7 +1,7 @@
 %h3 Related Nodes
+= link_to "Add a related node", new_relationship_path
 - unless node.relationships.blank?
   %ul
     - node.relationships.each do |r|
       %li
-        = #relationship_sentence_with_link(r, node) + " - " + link_to("more info", r, :class => "relationship_link", :id => "relationshipLink#{r.id}")
         = relationship_bullet(r, node)
