@@ -141,27 +141,6 @@ describe Node do
       node.stack_results.should be_blank 
     end
   end
-  describe "has a confidence level" do
-      it "of 0 by default" do
-        node = Fabricate(:node)
-        node.confidence.should == 0
-      end
-      it "can only be 0-5" do
-        node = Fabricate(:node)
-        node.confidence = -1
-        node.should_not be_valid
-      end
-      it "can only be 0-5" do
-        node = Fabricate(:node)
-        node.confidence = 6
-        node.should_not be_valid
-      end
-      it "can only be 0-5" do
-        node = Fabricate(:node)
-        node.confidence = 3
-        node.should be_valid
-      end
-  end
   describe "tutorials" do
     it "responds to tutorials" do
       @tutorial = Fabricate(:node)

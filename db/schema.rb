@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917062232) do
+ActiveRecord::Schema.define(:version => 20110919025034) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20110917062232) do
     t.string   "homepage"
     t.string   "cached_slug"
     t.string   "twitter_search_key"
-    t.integer  "confidence"
     t.string   "stack_search_key"
   end
 
