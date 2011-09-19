@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 ENV["TEST_JS"] ||= 'false'
 ENV["TEST_BUZZ"] ||= 'false'
+ENV["CURRENT_USER"] ||= 'false'
 ENV["BROKEN"] ||= 'false'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -38,6 +39,9 @@ RSpec.configure do |config|
   end
   if ENV["TEST_BUZZ"] != 'true'
     config.filter_run_excluding :buzz => true
+  end
+  if ENV["CURRENT_USER"] != 'true'
+    config.filter_run_excluding :current_user => true
   end
   #config.run_all_when_everything_filtered = true
 end

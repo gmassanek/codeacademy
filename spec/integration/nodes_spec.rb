@@ -161,13 +161,15 @@ describe Node do
       end
     end
     context "nodes have confidences" do
-      it "shows 5 brainOn images if node confidence = 5" do
-        node = Fabricate(:node, :confidence => 5)
+      it "shows 5 brainOn images if node confidence = 5", :current_user => true do
+        node = Fabricate(:node)
+        rating = Fabricate(:user_knowledge_rating, :knowledgeable => node)
         visit node_path(node)
         page.should have_xpath("//img[@alt='Brainon']", :count => 5)
       end
-      it "shows 4 brainOn, 1 brainOff, if node confidence = 4" do
+      it "shows 4 brainOn, 1 brainOff, if node confidence = 4", :current_user => true do
         node = Fabricate(:node, :confidence => 4)
+        rating = Fabricate(:user_knowledge_rating, :knowledgeable => node)
         visit node_path(node)
         page.should have_xpath("//img[@alt='Brainon']", :count => 4)
         page.should have_xpath("//img[@alt='Brainoff']", :count => 1)
