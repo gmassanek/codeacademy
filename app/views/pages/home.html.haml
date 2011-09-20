@@ -17,14 +17,8 @@
   %hr.span-12.push-6.hr
   .span-18.push-3
     .span-6
-      %ul
-        - @nodes1.each do |n|
-          %li= link_to "#{n.title}", n  unless n.nil?
+      = render 'pages/home_node', :nodes => @nodes1
     .span-6
-      %ul
-        - @nodes2.each do |n|
-          %li= link_to "#{n.title}", n  unless n.nil?
+      = render 'pages/home_node', :nodes => @nodes2
     .span-6.last
-      %ul
-        - @nodes3.each do |n|
-          %li= link_to "#{n.title}", n  unless n.nil?
+      = render 'pages/home_node', :nodes => @nodes3

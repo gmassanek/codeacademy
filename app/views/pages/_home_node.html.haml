@@ -1,0 +1,8 @@
+%ul
+  - nodes.each do |n|
+    %li
+      = link_to n.to_s, n  unless n.nil?
+      - if n.relationships.count > 0
+        %ul
+          - n.relationships.each do |r|
+            %li= link_to r.to_s, r unless r.nil?
