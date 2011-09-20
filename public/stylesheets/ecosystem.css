@@ -82,11 +82,9 @@ body {
 .relSentenceLink {
   text-decoration:none;
   font: inherit;
-  color: #000000;
 }
 .relSentenceLink:hover {
   border-bottom:1px dotted #666; 
-  color: #000000;
 }
 .thinHeightTextArea{
   height:60px;
@@ -96,4 +94,14 @@ body {
 }
 .XLHeightTextArea{
   height:500px;
+}
+#homePageNodeList {
+
+}
+#homePageNodeList .nodeList{
+
+}
+#homePageNodeList .relationshipList a{
+  border-bottom:1px dotted #666; 
+  color: #000000;
 }

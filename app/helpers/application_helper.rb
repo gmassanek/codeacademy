@@ -29,7 +29,7 @@ module ApplicationHelper
     else
       full_sentence = relationship.populate(sentence,{:val1 => othernode.to_s, :val2 => node.to_s})
     end
-    link_sentence = link_to full_sentence, relationship, :class => 'relSentenceLink', :id => "relationshipLink#{relationship.id}"
+    link_sentence = link_to full_sentence, relationship, :class => 'relSentenceLink loud', :id => "relationshipLink#{relationship.id}"
     link_to_other_node + " - " + link_sentence
   end
 
