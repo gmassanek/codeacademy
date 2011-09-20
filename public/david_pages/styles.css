@@ -39,3 +39,6 @@ body {
     float:right;
     display: block;
 }
+.title {
+  font-style:italic
+}
