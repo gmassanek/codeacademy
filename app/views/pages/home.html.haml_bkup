@@ -1,0 +1,24 @@
+.span-24
+  = render 'shared/notice'
+.contentBox.span-24.last
+  #centerHome.span-18.push-3
+    .span-6
+      = image_tag("Wiki1.png")
+      %h3 discover
+      %p.quiet Explore the pieces of the Ruby Ecosystem. Find new utilities based one the ones you know or start your journey at the top.
+    .span-6
+      = image_tag("Search.png")
+      %h3 learn 
+      %p.quiet Learn how to use new frameworks, gems, tools, and ideas by seeing how they fit into the Ruby Ecosystem and following installation directions, code samples, and other references.
+    .span-6.last
+      = image_tag("Workspace2.png")
+      %h3 reference 
+      %p.quiet Check back to keep your skills sharp, find out about new releases, or discover even more new solutions.
+  %hr.span-12.push-6.hr
+  .span-18.push-3
+    .span-6
+      = render 'pages/home_node', :nodes => @nodes1
+    .span-6
+      = render 'pages/home_node', :nodes => @nodes2
+    .span-6.last
+      = render 'pages/home_node', :nodes => @nodes3

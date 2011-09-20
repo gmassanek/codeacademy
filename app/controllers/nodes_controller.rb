@@ -2,7 +2,10 @@ class NodesController < ApplicationController
   autocomplete :node, :title
 
   def index
-    @nodes = Node.all
+    @nodes = Node.all.in_groups(3, false)
+    @nodes1 = @nodes[0]
+    @nodes2 = @nodes[1]
+    @nodes3 = @nodes[2]
   end
   def show
     @node = Node.find(params[:id])

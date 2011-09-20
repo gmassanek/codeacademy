@@ -3,5 +3,4 @@
 - unless node.relationships.blank?
   %ul
     - node.relationships.each do |r|
-      %li
-        = relationship_bullet(r, node)
+      %li= relationship_bullet(r, node)

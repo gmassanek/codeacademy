@@ -5,20 +5,17 @@
     .span-6
       = image_tag("Wiki1.png")
       %h3 discover
-      %p.quiet Explore the pieces of the Ruby Ecosystem. Find new utilities based one the ones you know or start your journey at the top.
+      %p.quiet the Ruby and Rails ecosystem and the incredible community that has built it
     .span-6
       = image_tag("Search.png")
-      %h3 learn 
-      %p.quiet Learn how to use new frameworks, gems, tools, and ideas by seeing how they fit into the Ruby Ecosystem and following installation directions, code samples, and other references.
+      %h3 document 
+      %p.quiet your progress as you learn and help others in the community catch up
     .span-6.last
       = image_tag("Workspace2.png")
-      %h3 reference 
-      %p.quiet Check back to keep your skills sharp, find out about new releases, or discover even more new solutions.
+      %h3 develop 
+      %p.quiet the skills you'll need to build incredible products with the people that will help you
   %hr.span-12.push-6.hr
   .span-18.push-3
-    .span-6
-      = render 'pages/home_node', :nodes => @nodes1
-    .span-6
-      = render 'pages/home_node', :nodes => @nodes2
-    .span-6.last
-      = render 'pages/home_node', :nodes => @nodes3
+    %ul
+      %li= link_to "View all nodes and relationships", nodes_path
+

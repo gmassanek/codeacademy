@@ -49,6 +49,10 @@ body {
   text-align: center;
 }
 
+#centerHome img {
+  width:90px;
+}
+
 .mediaLinks img {
   /*border: 1px solid #ccc;*/
 }
