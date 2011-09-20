@@ -80,7 +80,7 @@ class Relationship < ActiveRecord::Base
     end
   end
 
-  def populate(sentence, options = {:val1 => @node1.to_s, :val2 => @node2.to_s})
+  def populate(sentence, options = {:val1 => node1.to_s, :val2 => node2.to_s})
     sentence.sub("%1", options[:val1]).sub("%2", options[:val2]).html_safe
   end
 
