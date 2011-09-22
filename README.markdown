@@ -1,6 +1,6 @@
 # Ecosystem -- AKA Rubeco
 
-Ecosystem is a dynamic application that enables a community to participate in managing and organizing content around a specific topic.  At the lowest level, Ecosystem organizes information based on three fundamental structures:
+Ecosystem is a dynamic application that enables a community to participate in managing and organizing content around a specific topic.  At the lowest level, Ecosystem organizes information based on two fundamental structures:
 
 * Nodes
 * Relationships
@@ -19,7 +19,7 @@ While *Nodes* and *Relationships* capture the fundamental contextual data in an 
 * Cirriculums
 
 ###Information Pages 
-Information Pages display the basic data that is captured for a *Node* or *Relationship*.  On each information page, the user has the capbility to define helpful links, add tutorials, or in the case of a *Node* Information Page, define a relationship.
+Information Pages display the basic data that is captured for a *Node* or *Relationship*.  On each information page, the user has the capability to define helpful links, add tutorials, or in the case of a *Node* Information Page, define a relationship.
 
 ###Tutorials 
 Tutorials allow end users to create guided tutorials for performing specific tasks related to a specific *Node* or *Relationship*.  Tutorials are written in Markdown.
