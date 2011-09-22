@@ -42,3 +42,13 @@ body {
 .title {
   font-style:italic
 }
+#blurbs a {
+    font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+    font-size: 13px;
+    margin-top: .5em; 
+    color: #444;
+}
+#blurbs a:hover {
+    text-decoration: underline;
+    color: #888;
+}
