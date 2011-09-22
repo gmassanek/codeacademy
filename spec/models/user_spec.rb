@@ -23,4 +23,4 @@ describe User do
       tutorial.last_updated_by.should_not be_nil
     end
   end
-ena
+end

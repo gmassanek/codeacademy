@@ -1,5 +1,4 @@
 class Tutorial < ActiveRecord::Base
-  before_filter :authenticate_user!, :except => [:show, :index]
   belongs_to :item, :polymorphic => true
 
   has_one :created_by, :foreign_key => 'id', :class_name => "User"
