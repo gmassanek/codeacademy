@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20110922011015) do
     t.string  "linkable_type"
     t.integer "linkable_id"
     t.integer "created_by_id"
-    t.integer "last_updated_by"
+    t.integer "last_updated_by_id"
   end
 
   create_table "nodes", :force => true do |t|
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(:version => 20110922011015) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "created_by"
-    t.integer  "last_updated_by"
+    t.integer  "created_by_id"
+    t.integer  "last_updated_by_id"
   end
 
   create_table "user_helpfulness_ratings", :force => true do |t|
