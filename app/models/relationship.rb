@@ -5,6 +5,8 @@ class Relationship < ActiveRecord::Base
   before_validation :fillKey
 
   has_one :site_handle, :as => :item
+  has_one :created_by, :foreign_key => 'id', :class_name => "User"
+  has_one :last_updated_by, :foreign_key => 'id', :class_name => "User"
 
   validate :has_space_holders, :allow_nil => true
   validate :not_self_referencing

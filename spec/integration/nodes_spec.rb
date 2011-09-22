@@ -10,6 +10,7 @@ describe Node do
       page.click_button 'Create Node'
       page.should have_content("Node created")
     end
+    it "has current user saved saving new pages"
     it "shows errors" do
       visit new_node_path
       title = Faker::Lorem.words(3).join(" ")

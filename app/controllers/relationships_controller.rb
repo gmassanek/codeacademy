@@ -13,6 +13,7 @@ class RelationshipsController < ApplicationController
   end
   def create
     @relationship = Relationship.new(params[:relationship])
+    set_user_tracking_columns(@relationship, 'create')
     if @relationship.save
       redirect_to @relationship, :notice => "Relationship created."
     else
@@ -22,6 +23,7 @@ class RelationshipsController < ApplicationController
   def show
     @relationship = Relationship.find(params[:id])
     @link = @relationship.links.build
+    set_user_tracking_columns(@relationship, 'update')
     if current_user
       @knowledge_rating = @relationship.user_knowledge_ratings.find_by_user_id(current_user.id)
       unless @knowledge_rating

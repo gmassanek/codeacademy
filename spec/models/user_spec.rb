@@ -1,5 +1,16 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "belongs to different objects" do
+    it "will always be on a node as created_by and last_updated_by" do
+      node = Fabricate(:node)
+      node.created_by.should_not be_nil
+      node.last_updated_by.should_not be_nil
+    end
+    it "will always be on a relationship as created_by and last_updated_by" do
+      relationship = Fabricate(:relationship)
+      relationship.created_by.should_not be_nil
+      relationship.last_updated_by.should_not be_nil
+    end
+  end
 end

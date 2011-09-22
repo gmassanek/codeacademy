@@ -26,6 +26,7 @@ class NodesController < ApplicationController
   end
   def create
     @node = Node.new(params[:node])
+    set_user_tracking_columns(@node, 'create')
     @node.build_site_handle(params[:node][:site_handle_attributes])
     if @node.save
       redirect_to node_path(@node), :notice => "Node created"
@@ -35,6 +36,7 @@ class NodesController < ApplicationController
   end
   def update
     @node = Node.find(params[:id])
+    set_user_tracking_columns(@node, 'update')
     if @node.update_attributes(params[:node])
       redirect_to node_path(@node), :notice => "Node updated"
     else
