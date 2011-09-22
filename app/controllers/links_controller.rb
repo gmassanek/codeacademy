@@ -1,4 +1,5 @@
 class LinksController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
   def index
     @linkable = find_linkable
     @links = @linkable.links
