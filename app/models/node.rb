@@ -7,8 +7,10 @@ class Node < ActiveRecord::Base
   has_many :links, :as => :linkable
   has_many :tutorials, :as => :item
   has_many :user_knowledge_ratings, :as => :knowledgeable
+
   has_one :created_by, :foreign_key => 'id', :class_name => "User"
   has_one :last_updated_by, :foreign_key => 'id', :class_name => "User"
+
   has_one :site_handle, :as => :item
 
   validates :title, :presence => true, :uniqueness => true

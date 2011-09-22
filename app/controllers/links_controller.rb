@@ -13,6 +13,7 @@ class LinksController < ApplicationController
   def create
     @linkable = find_linkable
     @link = @linkable.links.build(params[:link])
+    set_user_tracking_columns(@link, 'create')
     if @link.save
       flash[:notice] = "Link created"
       redirect_to @linkable
@@ -23,6 +24,7 @@ class LinksController < ApplicationController
   def update
     @linkable = find_linkable
     @link = Link.find(params[:id])
+    set_user_tracking_columns(@link, 'update')
     if @link.update_attributes(params[:link])
       flash[:notice] = "Link updated"
       redirect_to @linkable

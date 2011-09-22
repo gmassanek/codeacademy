@@ -18,6 +18,7 @@ class TutorialsController < ApplicationController
   def create
     @item = find_item
     @tutorial = @item.tutorials.create(params[:tutorial])
+    set_user_tracking_columns(@tutorial, 'create')
     if @tutorial.save
       redirect_to [@item, @tutorial], :notice => "Successfully created tutorial."
     else
@@ -33,6 +34,7 @@ class TutorialsController < ApplicationController
   def update
     @item = find_item
     @tutorial = Tutorial.find(params[:id])
+    set_user_tracking_columns(@tutorial, 'update')
     if @tutorial.update_attributes(params[:tutorial])
       redirect_to [@item, @tutorial], :notice  => "Successfully updated tutorial."
     else
