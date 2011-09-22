@@ -1,5 +1,8 @@
 require 'redcarpet'
 class TutorialsController < ApplicationController
+  
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   def index
     @item = find_item
     @tutorials = @item.tutorials

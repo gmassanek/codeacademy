@@ -1,4 +1,7 @@
 class RelationshipsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   def new
     @relationship = Relationship.new
     @relationship.links.build

@@ -1,4 +1,7 @@
 class UserKnowledgeRatingsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   def index
     @user_knowledge_ratings = UserKnowledgeRating.all
     @knowledge_rateable = find_knowledge_ratable
