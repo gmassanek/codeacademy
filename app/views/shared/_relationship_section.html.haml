@@ -1,6 +1,7 @@
 %h3 Related Nodes
-= link_to "Add a related node", new_relationship_path
 - unless node.relationships.blank?
   %ul
     - node.relationships.each do |r|
       %li= relationship_bullet(r, node)
+.right
+  = button_to 'Add Relationship', new_relationship_path, :method => :get, :class => 'ui-button ui-widget ui-state-default ui-corner-all'

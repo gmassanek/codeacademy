@@ -1,22 +1,24 @@
 = simple_form_for @node do |f|
   %fieldset
     %legend Node
-    .span-11
+    .span-22
       = f.error_messages
       = f.input :title, :input_html => {:class => 'title'}
+      = f.input :description, :input_html => {:rows => 8, :class => 'span-22'}
+    .span-11
       = f.input :homepage
       = f.input :twitter_search_key
       = f.input :stack_search_key
-      = f.input :description, :input_html => {:rows => 8}
+      %fieldset
+        %legend Site Handles
+        = f.simple_fields_for :site_handle do |handles_form|
+          .fields
+            = handles_form.input :github, :input_html => {:class => "text"}, :br => false
+            = handles_form.input :twitter, :input_html => {:class => "text"}, :br => false
     %fieldset.span-11
       %legend Helpful Links
       = link_to_add_fields "Add Link", f, :links 
       = f.simple_fields_for :links do |links_form|
         = render 'link_fields', :f => links_form
-    .span-11
-      %legend Site Handles
-      = f.simple_fields_for :site_handle do |handles_form|
-        .fields
-          = handles_form.input :github, :input_html => {:class => "text"}, :br => false
-          = handles_form.input :twitter, :input_html => {:class => "text"}, :br => false
-    = f.button :submit
+    .span-22
+      = f.button :submit
