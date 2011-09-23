@@ -53,8 +53,8 @@ class Node < ActiveRecord::Base
   end
 
   def tweets
-    #return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
-    return []
+    return TwitterHelper.twitter_search_for(twitter_search_key, :html => true) unless twitter_search_key.blank?
+    #return []
   end
 
   def stack_results
@@ -65,8 +65,8 @@ class Node < ActiveRecord::Base
         thread = {:title => q.title, :answers_url => q.question_answers_url}
         results << thread
       end
-      #return results
-      return []
+      return results
+      #return []
     end
   end
 end
