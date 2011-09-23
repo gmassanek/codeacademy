@@ -1,7 +1,8 @@
 .span-24.last
   = render 'shared/notice'
 .span-24#adminBox.contentBox.last
-  = link_to 'Add Node', new_node_path
+  %ul
+    %li= link_to 'Add Node', new_node_path
 .span-24.contentBox.last
   .span-8
     = render 'pages/home_node', :nodes => @nodes1
