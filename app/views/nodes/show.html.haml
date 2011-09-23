@@ -1,9 +1,10 @@
-.span-24#adminBox.last
-  %p.right= link_to "Edit Node", edit_node_path(@node)
 .span-24.last
   = render 'shared/notice'
-.span-24.last
-  = link_to 'Add Node', new_node_path
+.span-24#adminBox.contentBox.last
+  %ul
+    %li= link_to 'All Nodes', nodes_path
+    %li= link_to 'Add Node', new_node_path
+    %li= link_to "Edit Node", edit_node_path(@node)
 .span-24.contentBox.last
   = render 'shared/page_header', :item => @node
   = render 'shared/site_handle_icons', :item => @node

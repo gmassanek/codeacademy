@@ -109,3 +109,11 @@ body {
   border-bottom:1px dotted #666; 
   color: #000000;
 }
+#adminBox ul {
+  margin-bottom: 0em;
+}
+#adminBox li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+}
