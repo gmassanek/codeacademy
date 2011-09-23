@@ -5,7 +5,9 @@
           return false;
       }).next().hide();
   });
-.accordion
+.accordion.span-24.last
   %h2 Community Buzz
-  = render 'nodes/buzz_section', :attribute_name => 'tweets', :title => "Twitter", :collection => node.tweets, :partial_name => 'tweet'
-  = render 'nodes/buzz_section', :attribute_name => 'stack_results', :title => "Stack Overflow", :collection => node.stack_results, :partial_name => 'stack_result'
+  .span-8.border
+    = render 'nodes/buzz_section', :attribute_name => 'tweets', :title => "Twitter", :collection => node.tweets, :partial_name => 'tweet'
+  .span-8.border
+    = render 'nodes/buzz_section', :attribute_name => 'stack_results', :title => "Stack Overflow", :collection => node.stack_results, :partial_name => 'stack_result'
