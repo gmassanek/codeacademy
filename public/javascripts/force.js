@@ -7,7 +7,7 @@ var vis = d3.select("#chart")
     .attr("width", w)
     .attr("height", h);
 
-d3.json("http://localhost:3000/relationships.json", function(json) {
+d3.json("/relationships.json", function(json) {
   var force = d3.layout.force()
       .charge(-100)
       .linkDistance(30)
