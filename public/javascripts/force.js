@@ -39,6 +39,9 @@ d3.json("/relationships.json", function(json) {
   node.append("svg:title")
       .text(function(d) { return d.title;});
 
+  link.append("svg:title")
+      .text(function(d) { return d.sentence;});
+
   vis.style("opacity", 1e-6)
     .transition()
       .duration(1000)

@@ -18,7 +18,7 @@ class RelationshipsController < ApplicationController
       @nodeIndexes[n.fetch(:id)] = i
       @nodes[i].delete(:id)
     end
-    @links = Relationship.all.map do |r| {:source=>@nodeIndexes.fetch(r.node1_id), :target=>@nodeIndexes.fetch(r.node2_id)} end
+    @links = Relationship.all.map do |r| {:source=>@nodeIndexes.fetch(r.node1_id), :target=>@nodeIndexes.fetch(r.node2_id), :sentence => r.sentence_from(r.node1) } end
     @jsonResponse = {:nodes => @nodes, :links => @links}
 
     @relationships = Relationship.all
