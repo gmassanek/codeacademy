@@ -12,8 +12,12 @@ class RelationshipsController < ApplicationController
     @relationship.links.build
   end
   def index
-    @links = Relationship.all.map do |r| {:source=>(r.node1_id-1), :target=>(r.node2_id-1)} end
-    @nodes = Node.all.map do |n| {:title => n.title, :group => 1} end
+    @nodes = Node.all.map do |n| {:id => n.id, :title => n.title, :group => 1} end
+    @nodeIndexes = {}
+    @nodes.each_with_index do |n, i|
+      @nodeIndexes[n.fetch(:id)] = i
+    end
+    @links = Relationship.all.map do |r| {:source=>@nodeIndexes.fetch(r.node1_id), :target=>@nodeIndexes.fetch(r.node2_id)} end
     @jsonResponse = {:nodes => @nodes, :links => @links}
 
     @relationships = Relationship.all

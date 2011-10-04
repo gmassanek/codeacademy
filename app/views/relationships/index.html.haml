@@ -1,6 +1,9 @@
 .span-24.last
   = render 'shared/notice'
 .span-24.contentBox.last
+  .gallery#chart
+= javascript_include_tag 'force.js'
+.span-24.contentBox.last
   %h3.span-10 Relationships
   .span-5.right
     .right= link_to 'Add', new_relationship_path
@@ -12,6 +15,3 @@
         %td= r.sent1
         %td= r.sent2
         %td= link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
-.span-24.contentBox.last
-  .gallery#chart
-= javascript_include_tag 'force.js'
