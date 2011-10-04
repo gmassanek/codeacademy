@@ -12,3 +12,6 @@
         %td= r.sent1
         %td= r.sent2
         %td= link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
+.span-24.contentBox.last
+  .gallery#chart
+= javascript_include_tag 'force.js'

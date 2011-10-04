@@ -12,7 +12,15 @@ class RelationshipsController < ApplicationController
     @relationship.links.build
   end
   def index
+    @links = Relationship.all.map do |r| {:source=>(r.node1_id-1), :target=>(r.node2_id-1)} end
+    @nodes = Node.all.map do |n| {:title => n.title, :group => 1} end
+    @jsonResponse = {:nodes => @nodes, :links => @links}
+
     @relationships = Relationship.all
+    respond_to do |format|
+      format.html
+      format.json {render :json => @jsonResponse}
+    end
   end
   def create
     @relationship = Relationship.new(params[:relationship])
