@@ -16,6 +16,7 @@ class RelationshipsController < ApplicationController
     @nodeIndexes = {}
     @nodes.each_with_index do |n, i|
       @nodeIndexes[n.fetch(:id)] = i
+      @nodes[i].delete(:id)
     end
     @links = Relationship.all.map do |r| {:source=>@nodeIndexes.fetch(r.node1_id), :target=>@nodeIndexes.fetch(r.node2_id)} end
     @jsonResponse = {:nodes => @nodes, :links => @links}
