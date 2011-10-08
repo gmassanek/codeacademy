@@ -1,4 +1,4 @@
-require 'tld'
+#require 'tld'
 module  TwitterHelper
   def self.twitter_search_for(search_key, options = {:html => false})
     search = Twitter::Search.new

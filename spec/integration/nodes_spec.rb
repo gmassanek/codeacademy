@@ -1,8 +1,25 @@
 require 'spec_helper'
+#require 'mock/devise_Session_mock'
+
+def sign_in
+  password = "password" unless password
+  user = Fabricate(:user)
+  page.driver.post user_session_path, :user => {:email => user.email, :password => password}
+  #visit home_path
+  #click_link_or_button('Sign in')
+  #fill_in 'Email', :with => user.email
+  #fill_in 'Password', :with => password
+  #click_link_or_button('Sign in')
+  #save_and_open_page
+  user      
+end 
+def sign_out
+  click_link_or_button('Log Out')   
+end
 
 describe Node do
-  describe "new page" do
-    it "saving new pages", :broken => true do
+describe "new page" do
+  it "saving new pages", :broken => true do
       visit new_node_path
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'Title', :with => title
@@ -25,15 +42,18 @@ describe Node do
       visit edit_node_path(node)
     end
     it "can edit nodes" do
+      save_and_open_page
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'node_title', :with => title
       page.click_button 'Update Node'
       page.should have_content("Node updated")
+      DeviseSessionMock.disable
     end
     it "shows errors" do
       page.fill_in 'node_title', :with =>'' 
       page.click_button 'Update Node'
       page.should have_content("can't be blank")
+      DeviseSessionMock.disable
     end
   end
   describe "index page" do
