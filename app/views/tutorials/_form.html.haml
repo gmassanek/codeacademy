@@ -1,11 +1,9 @@
 #newLinkForm
   = simple_form_for [@item, @tutorial] do |f|
-    %fieldset
-      %legend Tutorial
-      = f.error_notification
-      .inputs
-        = f.input :title
-        = f.input :description, :input_html => {:class => 'span-23 thinHeightTextArea'}
-        = f.input :content, :input_html => {:class => 'span-23 XLHeightTextArea'}
-      .actions
-        = f.submit
+    = f.error_notification
+    .inputs
+      = f.input :title, :as => :text, :label => 'Question (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}
+      = f.input :description, :label => 'Short Answer (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}
+      = f.input :content, :label => "Long Answer (in #{link_to 'Markdown', 'http://en.wikipedia.org/wiki/Markdown'})", :input_html => {:class => 'span-24 XLHeightTextArea'}
+    .actions
+      = f.submit

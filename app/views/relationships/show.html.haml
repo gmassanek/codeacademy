@@ -1,7 +1,5 @@
-.span-24#adminBox.last
-  %p.right= link_to "Edit Relationship", edit_relationship_path(@relationship)
-.span-24.last
-  = render 'shared/notice'
+#adminBox.last.contentBox
+  %p= link_to "Edit Relationship", edit_relationship_path(@relationship)
 .span-24.contentBox.last
   = render 'shared/page_header', :item => @relationship
   .span-24.last

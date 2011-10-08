@@ -2,7 +2,3 @@
   - nodes.each do |n|
     %li.nodeList
       = link_to n.to_s, n  unless n.nil?
-      - if n.relationships.count > 0
-        %ul
-          - n.relationships.each do |r|
-            %li= link_to(r.sentence_from(n), r, :class => 'quiet relSentenceLink')

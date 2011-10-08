@@ -1,13 +1,23 @@
-.span-24
-  = render 'shared/notice'
-.span-24#adminBox.last
-  %p.right
-    = link_to "Edit", edit_polymorphic_path([@item, @tutorial])
-    = link_to "Destroy", polymorphic_path([@item, @tutorial]), :confirm => 'Are you sure?', :method => :delete
-    = link_to "View All", polymorphic_path([@item, :tutorials])
+#adminBox.contentBox.last.right
+  %ul
+    %li= link_to "Back to #{@item}", @item
+    %li= link_to "Edit", edit_polymorphic_path([@item, @tutorial])
+    %li= link_to "Destroy", polymorphic_path([@item, @tutorial]), :confirm => 'Are you sure?', :method => :delete
 .span-24.contentBox.last
-  = render 'shared/page_header', :item => @tutorial
   .span-24.last
-    %p= @tutorial.description
-.span-24.contentBox.last.tutorialContent
-  = markdown(@tutorial.content)
+    %h3.clean= @tutorial.title
+  .span-24
+    %p.right= "Asked by: #{@tutorial.created_by}"
+  .span-24.last
+    %p 
+      %em Short Answer:
+      %br
+      =@tutorial.description
+.span-24.contentBox.last.tutorialContent      
+  %p 
+    %em Long Answer:
+    %br
+    = markdown(@tutorial.content)
+  .span-24
+    %p.right= "Most recently answered by: #{@tutorial.created_by}"
+    

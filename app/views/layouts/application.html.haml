@@ -22,15 +22,14 @@
   %body
     #top 
       =render 'layouts/header'
-    .container
+    .container  
+      .span-24
+        = render 'shared/notice'
       .span-24
         .content.span-24.last
           = render 'shared/authentication'
-          .contentBox.left
-            = link_to 'All Nodes', nodes_path
-      .span-24
-        .content.span-24
-          = yield
+      .content.span-24	
+        = yield
       #footer
         =render 'layouts/footer'
     - if Rails.env.production?

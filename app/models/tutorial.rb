@@ -10,6 +10,7 @@ class Tutorial < ActiveRecord::Base
   validates :title, :presence => true
   validates :description, :presence => true
   validates :content, :presence => true
+  validates_length_of :title, :description, :maximum => 140
 
   def to_s
     title

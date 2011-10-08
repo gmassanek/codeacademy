@@ -90,6 +90,9 @@ body {
 .relSentenceLink:hover {
   border-bottom:1px dotted #666; 
 }
+.veryThinHeightTextArea {
+	height:40px;
+}
 .thinHeightTextArea{
   height:60px;
 }
