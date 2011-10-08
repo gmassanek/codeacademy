@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003210222) do
+ActiveRecord::Schema.define(:version => 20110922011015) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
@@ -41,8 +41,6 @@ ActiveRecord::Schema.define(:version => 20111003210222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "key"
-    t.integer  "created_by_id"
-    t.integer  "last_updated_by_id"
   end
 
   add_index "relationships", ["node1_id"], :name => "index_relationships_on_node1_id"
@@ -77,15 +75,6 @@ ActiveRecord::Schema.define(:version => 20111003210222) do
     t.datetime "updated_at"
     t.integer  "created_by_id"
     t.integer  "last_updated_by_id"
-  end
-
-  create_table "user_helpfulness_ratings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "item_id"
-    t.string   "item_type"
-    t.integer  "helpfulness"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "user_knowledge_ratings", :force => true do |t|
