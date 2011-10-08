@@ -11,12 +11,13 @@
                 $( "#newLinkForm").dialog( "open" );
     });
   });
-%h3 Helful Links
+%h3.span-4 Helful Links  
+.span-4.right.last
+  = button_to 'Add Helpful Link', 'javascript:;', :id => "addLink"
 - unless linkable.links.count == 0
-  %ul
+  %ul.span-7.last
     - linkable.links.each do |link|
       - unless link.url.blank?
         %li= link_to link.url, link.url
-.right
-  = button_to 'Add Helpful Link', 'javascript:;', :id => "addLink"
+
 = render 'links/form', :linkable => linkable, :link => @link

@@ -1,7 +1,7 @@
-%h3 Related Nodes
+%h3.span-4 Related Nodes
+.right.span-4.last
+  = button_to 'Add Relationship', new_relationship_path, :method => :get, :class => 'ui-button ui-widget ui-state-default ui-corner-all'
 - unless node.relationships.blank?
-  %ul
+  %ul.span-7.last
     - node.relationships.each do |r|
       %li= relationship_bullet(r, node)
-.right
-  = button_to 'Add Relationship', new_relationship_path, :method => :get, :class => 'ui-button ui-widget ui-state-default ui-corner-all'

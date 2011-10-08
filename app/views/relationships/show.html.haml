@@ -1,12 +1,16 @@
-#adminBox.last.contentBox
-  %p= link_to "Edit Relationship", edit_relationship_path(@relationship)
+#adminBox.last.contentBox.right
+  %ul
+    %li= link_to 'All Relationships', relationships_path
+    %li= link_to 'Add Relationship', new_relationship_path
+    %li= link_to "Edit Relationship", edit_relationship_path(@relationship)
 .span-24.contentBox.last
-  = render 'shared/page_header', :item => @relationship
-  .span-24.last
+  .span-20
+    %h2= item_title(@relationship)
+  .span-4.last.right
     = render 'shared/user_knowledge_rating', :knowledgeable => @relationship, :knowledge_rating => @knowledge_rating
   .span-24.last
     %p= relationship_sentence_with_links(@relationship)
-.span-24.contentBox
+  %hr.span-24
   .span-8.border
     = render 'shared/link_section', :linkable => @relationship, :link => @link
   .span-8.border

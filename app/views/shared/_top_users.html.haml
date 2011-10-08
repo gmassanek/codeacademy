@@ -1,0 +1,21 @@
+:javascript
+  jQuery(document).ready(function(){
+    $("#top_user_opener").click(function(e) {
+        e.preventDefault();
+        var theHREF = $(this).attr("href");
+        $("#top_users").dialog("open");
+    });
+    $('#top_users').dialog({
+  		autoOpen: false,
+  		title: 'Helpful Resources',
+  		modal: true
+  	});
+  });
+- top_users = UserKnowledgeRating.top_users(knowledgeable)
+= "Who can #{link_to 'help', root_path, :id => 'top_user_opener'}?".html_safe 
+#top_users
+  - top_users.each do |user_and_rating|
+    %p
+      = user_and_rating[0].to_s 
+      knows this well, 
+      = user_and_rating[1].to_s + "/5"

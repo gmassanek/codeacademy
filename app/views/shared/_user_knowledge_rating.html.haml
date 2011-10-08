@@ -1,5 +1,5 @@
 - if @knowledge_rating
-  = "How well do you know it?"
+  How well do you know it?
   = simple_form_for [knowledgeable, @knowledge_rating], :remote => true, :class => 'right' do |f|
     = f.input :user, :as => :hidden
     = f.input :knowledgeable_id, :as => :hidden
@@ -12,3 +12,4 @@
     - (5-@knowledge_rating.knowledge_level).times do
       = image_tag 'brainOff.png', :size => '26x26', :id => "knowledge_level_#{level}", :onclick => "brain_click(this, #{level})"
       - level = level + 1
+= render 'shared/top_users', :knowledgeable => knowledgeable

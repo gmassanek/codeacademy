@@ -60,9 +60,6 @@ describe Tutorial do
       @tutorial = Fabricate(:node_tutorial)
       visit polymorphic_path([@tutorial.item, @tutorial])
     end
-    it "shows the tutorial title" do
-      page.should have_css('h2', :text => @tutorial.to_s)
-    end
     it "shows the tutorial description" do
       page.should have_content("#{@tutorial.description}")
     end

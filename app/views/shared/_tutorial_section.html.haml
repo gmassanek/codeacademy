@@ -1,7 +1,7 @@
-%h3 Tutorials
+%h3.span-4 Tutorials
+.right.span-4.last
+  = button_to 'Add Tutorial', new_polymorphic_path([item, :tutorial]), :method => :get, :class => 'ui-button ui-widget ui-state-default ui-corner-all'
 - unless item.tutorials.count == 0
-  %ul
+  %ul.span-7.last
     - item.tutorials.each do |tutorial|
       %li= link_to tutorial.to_s, [item, tutorial]
-.right
-  = button_to 'Add Tutorial', new_polymorphic_path([item, :tutorial]), :method => :get, :class => 'ui-button ui-widget ui-state-default ui-corner-all'
