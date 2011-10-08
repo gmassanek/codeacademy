@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(:version => 20110922011015) do
     t.datetime "updated_at"
     t.string   "homepage"
     t.string   "cached_slug"
-    t.string   "twitter_search_key"
-    t.string   "stack_search_key"
     t.integer  "created_by_id"
     t.integer  "last_updated_by_id"
   end
@@ -45,13 +43,6 @@ ActiveRecord::Schema.define(:version => 20110922011015) do
 
   add_index "relationships", ["node1_id"], :name => "index_relationships_on_node1_id"
   add_index "relationships", ["node2_id"], :name => "index_relationships_on_node2_id"
-
-  create_table "site_handles", :force => true do |t|
-    t.string  "twitter"
-    t.string  "github"
-    t.string  "item_type"
-    t.integer "item_id"
-  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"

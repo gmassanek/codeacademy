@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Link do
-  describe "new link" do
+  describe "new link", :current_user => true do
     before do
       @node = Fabricate(:node)
       visit new_node_link_path(@node)
@@ -22,12 +22,12 @@ describe Link do
       @link = Fabricate(:node_link, :linkable => @node)
       visit edit_node_link_path(@node, @link)
     end
-    it "can edit links" do
+    it "can edit links", :current_user => true do
       page.fill_in 'link_url', :with => "http://www.google.com"
       page.click_button 'Update Link'
       page.should have_content("Link updated")
     end
-    it "shows errors" do
+    it "shows errors", :current_user => true do
       page.fill_in 'link_url', :with => ""
       page.click_button 'Update Link'
       page.should have_content("can't be blank")
@@ -43,7 +43,7 @@ describe Link do
       page.should have_content(@link.to_s)
       page.should have_content(link2.to_s)
     end
-    it "has a working edit link" do
+    it "has a working edit link", :current_user => true do
       visit node_links_path(@link.linkable, @link)
       page.click_link("editLink_#{@link.id}")
       page.current_path.should == edit_polymorphic_path([@link.linkable, @link])

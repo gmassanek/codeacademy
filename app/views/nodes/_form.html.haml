@@ -7,14 +7,6 @@
       = f.input :description, :input_html => {:rows => 8, :class => 'span-22'}
     .span-11
       = f.input :homepage
-      = f.input :twitter_search_key
-      = f.input :stack_search_key
-      %fieldset
-        %legend Site Handles
-        = f.simple_fields_for :site_handle do |handles_form|
-          .fields
-            = handles_form.input :github, :input_html => {:class => "text"}, :br => false
-            = handles_form.input :twitter, :input_html => {:class => "text"}, :br => false
     %fieldset.span-11
       %legend Helpful Links
       = link_to_add_fields "Add Link", f, :links 

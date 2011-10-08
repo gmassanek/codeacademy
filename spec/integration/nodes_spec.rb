@@ -1,5 +1,4 @@
 require 'spec_helper'
-#require 'mock/devise_Session_mock'
 
 def sign_in
   password = "password" unless password
@@ -28,7 +27,7 @@ describe "new page" do
       page.should have_content("Node created")
     end
     it "has current user saved saving new pages"
-    it "shows errors" do
+    it "shows errors", :current_user => true do
       visit new_node_path
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'node_title', :with => title
@@ -41,19 +40,16 @@ describe "new page" do
       node = Fabricate(:node)
       visit edit_node_path(node)
     end
-    it "can edit nodes" do
-      save_and_open_page
+    it "can edit nodes", :current_user => true do
       title = Faker::Lorem.words(3).join(" ")
       page.fill_in 'node_title', :with => title
       page.click_button 'Update Node'
       page.should have_content("Node updated")
-      DeviseSessionMock.disable
     end
-    it "shows errors" do
+    it "shows errors", :current_user => true do
       page.fill_in 'node_title', :with =>'' 
       page.click_button 'Update Node'
       page.should have_content("can't be blank")
-      DeviseSessionMock.disable
     end
   end
   describe "index page" do
@@ -67,17 +63,15 @@ describe "new page" do
       page.should have_content(@node.title)
       page.should have_content(node2.title)
     end
-    it "has a working edit link" do
-      page.click_link("editNode_#{@node.id}")
-      page.current_path.should == edit_node_path(@node)
-    end
-    it "has a working delete link" do
-      page.click_link("deleteNode_#{@node.id}")
-    end
   end
   describe "show page" do
     before do
       @node = Fabricate(:node)
+    end
+    it "has a working edit link", :current_user => true do
+      visit node_path(@node)
+      page.click_link("Edit Node")
+      page.current_path.should == edit_node_path(@node)
     end
     it "uses a slug from the title for the URL" do
       @node = Fabricate(:node, :title => "Github")
@@ -169,16 +163,6 @@ describe "new page" do
       end
       after do
         Capybara.use_default_driver
-      end
-    end
-    context "social media links" do
-      it "saves social media pages" do
-        node = Fabricate(:node)
-        visit edit_node_path(node)
-        page.fill_in("Github", :with => "gmassanek")
-        page.click_button("Update Node")
-        visit node_path(node)
-        page.should have_css('img', :id => "githubLinkImage")
       end
     end
     context "nodes have confidences" do

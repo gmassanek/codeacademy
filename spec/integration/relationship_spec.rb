@@ -4,7 +4,7 @@ describe Relationship do
   before do
     @relationship = Fabricate(:relationship)
   end
-  it "can save new relationships" do
+  it "can save new relationships", :current_user => true do
     node = Fabricate(:node)
     visit new_relationship_path
     page.select @relationship.node1.title, :from => 'Node1'
@@ -27,14 +27,14 @@ describe Relationship do
       visit relationships_path 
       page.should have_content(@relationship.node1.title) 
     end
-    it "has a link to edit the relationship" do
+    it "has a link to edit the relationship", :current_user => true do
       visit relationships_path
       page.click_link("editRelationship_#{@relationship.id}")
       page.current_path.should == edit_relationship_path(@relationship)
     end
   end
   describe "has links" do
-    it "saves a relationship with a link" do
+    it "saves a relationship with a link", :current_user => true do
       @relationship = Fabricate(:relationship)
       visit edit_relationship_path(@relationship)
       page.fill_in 'Url',:with => "http://www.google.com"

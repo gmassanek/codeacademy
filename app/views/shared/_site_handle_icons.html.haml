@@ -1,6 +1,0 @@
-- unless item.handles.blank?
-  .mediaLinks.span-5.last.right
-    %ul.right
-      - item.handles.each do |key, value|
-        %li= link_to_site_handle(key, item.site_handle.link_to(key))
-

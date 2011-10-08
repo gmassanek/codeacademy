@@ -2,7 +2,6 @@ Fabricator(:node) do
   title { Faker::Lorem.words(3).join(" ") }
   description {Faker::Lorem.paragraphs(3).join(" ") }
   homepage { |node| "http://www.#{node.title.gsub(" ", "")}.com"}
-  site_handle! {|node, i| Fabricate(:site_handle, :item => node, :github => "node.title")}
   created_by! {Fabricate(:user)}
   last_updated_by! {|node| node.created_by}
 end

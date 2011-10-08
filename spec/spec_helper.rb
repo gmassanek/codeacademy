@@ -1,13 +1,11 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
-ENV["TEST_JS"] ||= 'true'
-ENV["TEST_BUZZ"] ||= 'false'
+ENV["TEST_JS"] ||= 'false'
 ENV["CURRENT_USER"] ||= 'false'
 ENV["BROKEN"] ||= 'false'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
-require 'mock/devise_session_mock'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -39,9 +37,6 @@ RSpec.configure do |config|
   end
   if ENV["TEST_JS"] != 'true'
     config.filter_run_excluding :js => true
-  end
-  if ENV["TEST_BUZZ"] != 'true'
-    config.filter_run_excluding :buzz => true
   end
   if ENV["CURRENT_USER"] != 'true'
     config.filter_run_excluding :current_user => true

@@ -5,7 +5,6 @@ class RelationshipsController < ApplicationController
   def new
     @relationship = Relationship.new
     @relationship.links.build
-    @relationship.build_site_handle
   end
   def edit
     @relationship = Relationship.find(params[:id])

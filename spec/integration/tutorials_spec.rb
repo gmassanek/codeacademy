@@ -6,14 +6,14 @@ describe Tutorial do
       @node = Fabricate(:node)
       visit new_node_tutorial_path(@node)
     end
-    it "saves new tutorials" do
+    it "saves new tutorials", :current_user => true do
       page.fill_in 'Description', :with => "new description la di da"
       page.fill_in 'Title', :with => "new description la di da"
       page.fill_in 'Content', :with => "new description la di da"
       page.click_button 'Create Tutorial'
       page.should have_content("Successfully created tutorial")
     end
-    it "shows errors" do
+    it "shows errors", :current_user => true do
       page.click_button 'Create Tutorial'
       page.should have_content("can't be blank")
     end
@@ -24,12 +24,12 @@ describe Tutorial do
       @tutorial = Fabricate(:node_tutorial, :item => @node)
       visit edit_node_tutorial_path(@node, @tutorial)
     end
-    it "can edit tutorials" do
+    it "can edit tutorials", :current_user => true do
       page.fill_in 'Description', :with => "new description la di da"
       page.click_button 'Update Tutorial'
       page.should have_content("Successfully updated tutorial")
     end
-    it "shows errors" do
+    it "shows errors", :current_user => true do
       page.fill_in 'Title', :with => ''
       page.click_button 'Update Tutorial'
       page.should have_content("can't be blank")
@@ -45,7 +45,7 @@ describe Tutorial do
       page.should have_content(@tutorial.to_s)
       page.should have_content(tutorial2.to_s)
     end
-    it "has a working edit tutorial" do
+    it "has a working edit tutorial", :current_user => true do
       visit node_tutorials_path(@tutorial.item, @tutorial)
       page.click_link("editTutorial_#{@tutorial.id}")
       page.current_path.should == edit_polymorphic_path([@tutorial.item, @tutorial])
@@ -61,7 +61,7 @@ describe Tutorial do
       visit polymorphic_path([@tutorial.item, @tutorial])
     end
     it "shows the tutorial title" do
-      page.should have_css('h1', :text => @tutorial.to_s)
+      page.should have_css('h2', :text => @tutorial.to_s)
     end
     it "shows the tutorial description" do
       page.should have_content("#{@tutorial.description}")

@@ -1,9 +1,0 @@
-.span-8.element
-  .span-2.center
-    = image_tag element['profile_image_url'], :size => "48x48"
-  .span-6.last
-    %span.bold= link_to("@" + element['from_user'], "https://twitter.com/#!/#{element['from_user']}")
-    %br
-    = element['text'].html_safe
-    %br
-    .bottom.right.quiet= distance_of_time_in_words(Time.now, element['created_at']) + " ago"

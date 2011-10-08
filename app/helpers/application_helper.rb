@@ -55,9 +55,4 @@ module ApplicationHelper
     #link_to_function(name, h("add_fields(this, \"#{association}\", \"<hr>\")"))
     #link_to_function(name, "add_fields(this, :link, '<hr>')")
   end
-
-  def link_to_site_handle(handle, link)
-    image = image_tag "#{handle}.png", :id => "#{handle}LinkImage", :height => "32px"
-    link_to image, link
-  end
 end

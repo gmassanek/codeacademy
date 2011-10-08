@@ -11,8 +11,6 @@ class NodesController < ApplicationController
   def show
     @node = Node.find(params[:id])
     @link = @node.links.build
-    @tweets = @node.tweets
-    @stack_results = @node.stack_results
     if current_user
       @knowledge_rating = @node.user_knowledge_ratings.find_by_user_id(current_user.id)
       unless @knowledge_rating
@@ -23,12 +21,10 @@ class NodesController < ApplicationController
   def new
     @node = Node.new
     @node.links.build
-    @node.build_site_handle
   end
   def create
     @node = Node.new(params[:node])
     set_user_tracking_columns(@node, 'create')
-    @node.build_site_handle(params[:node][:site_handle_attributes])
     if @node.save
       redirect_to node_path(@node), :notice => "Node created"
     else

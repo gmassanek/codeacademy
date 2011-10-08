@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'twitter'
 
 describe Node do
   let(:node) {Fabricate(:node)}
@@ -94,51 +93,6 @@ describe Node do
     it "can save with a link" do
       node = Fabricate(:node_with_links)
       node.links.count.should == 3
-    end
-  end
-  describe "site handles" do
-    it "responds to site handles" do
-      node.should respond_to(:site_handle)
-    end
-    it "accepts attributes for a site handle" do
-      node = Fabricate(:node)
-      node.update_attributes :site_handle_attributes => {:github => 'gmassanek'}
-      node.save.should == true
-    end
-    it "responds to .handles" do
-      node.should respond_to(:handles)
-    end
-  end
-  describe "twitter search key", :buzz => true  do
-    it "searches twitter using the twitter search key" do
-      node = Fabricate(:node, :twitter_search_key => "Google")
-      node.tweets.size.should == 5
-    end
-    it "searches twitter using the twitter search key (not title)" do
-      node = Fabricate(:node, :twitter_search_key => "Google")
-      node.tweets.should_not == TwitterHelper.twitter_search_for(node.title)
-    end
-    it "has no twitter_search_key by default" do
-      node = Fabricate(:node)
-      node.twitter_search_key.should be_blank
-    end
-    it "has no tweets by default" do
-      node = Fabricate(:node)
-      node.tweets.should be_blank 
-    end
-  end
-  describe "stack overflow search key", :buzz => true do
-    it "searches stack overflow using the stack overflow search key" do
-      node = Fabricate(:node, :stack_search_key => "Rspec")
-      node.stack_results.size.should == 5
-    end
-    it "has no stack_search_key by default" do
-      node = Fabricate(:node)
-      node.stack_search_key.should be_blank
-    end
-    it "has no stack results by default" do
-      node = Fabricate(:node)
-      node.stack_results.should be_blank 
     end
   end
   describe "tutorials" do

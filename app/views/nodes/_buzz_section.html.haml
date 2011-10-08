@@ -1,6 +1,0 @@
-- unless collection.blank?
-  .buzz_item
-    %h4.head.no_margin= "#{title} (#{collection.count})"
-    .content{:id => attribute_name}
-      - collection.each do |elem|
-        = render "nodes/#{partial_name}", :element => elem
