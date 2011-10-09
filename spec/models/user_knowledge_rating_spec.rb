@@ -21,10 +21,14 @@ describe UserKnowledgeRating do
       user1 = Fabricate(:user)
       user2 = Fabricate(:user)
       user3 = Fabricate(:user)
+      user4 = Fabricate(:user)
+      user5 = Fabricate(:user)
       ukr1 = Fabricate(:user_knowledge_rating, :user => user1, :knowledgeable => node, :knowledge_level => 2)
-      ukr2 = Fabricate(:user_knowledge_rating, :user => user2, :knowledgeable => node, :knowledge_level => 1)
-      ukr3 = Fabricate(:user_knowledge_rating, :user => user3, :knowledgeable => node, :knowledge_level => 5)
-      UserKnowledgeRating.top_users(node).should == [[user3,5], [user1,2], [user2,1]]
+      ukr2 = Fabricate(:user_knowledge_rating, :user => user2, :knowledgeable => node, :knowledge_level => 4)
+      ukr3 = Fabricate(:user_knowledge_rating, :user => user3, :knowledgeable => node, :knowledge_level => 3)
+      ukr4 = Fabricate(:user_knowledge_rating, :user => user4, :knowledgeable => node, :knowledge_level => 1)
+      ukr5 = Fabricate(:user_knowledge_rating, :user => user5, :knowledgeable => node, :knowledge_level => 5)
+      UserKnowledgeRating.top_users(node).should == [[user5,5], [user2,4]]
     end
   end
 end

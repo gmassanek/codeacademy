@@ -22,5 +22,10 @@ describe User do
       tutorial.created_by.should_not be_nil
       tutorial.last_updated_by.should_not be_nil
     end
+    it "requires a name too" do
+      u = Fabricate(:user)
+      u.name = nil
+      u.should_not be_valid
+    end
   end
 end
