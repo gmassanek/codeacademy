@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111008235807) do
+ActiveRecord::Schema.define(:version => 20111009000248) do
 
   create_table "links", :force => true do |t|
     t.string  "url"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20111008235807) do
     t.integer "linkable_id"
     t.integer "created_by_id"
     t.integer "last_updated_by_id"
+    t.text    "description"
   end
 
   create_table "nodes", :force => true do |t|

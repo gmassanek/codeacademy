@@ -18,6 +18,6 @@
   %ul.span-7.last
     - linkable.links.each do |link|
       - unless link.url.blank?
-        %li= link_to link.url, link.url
+        %li= link_to link.to_s, link.url
 
 = render 'links/form', :linkable => linkable, :link => @link

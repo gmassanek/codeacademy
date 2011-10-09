@@ -2,9 +2,10 @@
   %h2 Sign up
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
     = f.error_messages
-    = f.input :email, :autofocus => true
-    = f.input :password
-    = f.input :password_confirmation
+    = f.input :name, :autofocus => true, :as => :string
+    = f.input :email, :as => :string
+    = f.input :password, :input_html => {:class => 'text'}
+    = f.input :password_confirmation, :input_html => {:class => 'text'}
     .actions
       = f.button :submit, "Sign up"
   = render :partial => "devise/shared/links"

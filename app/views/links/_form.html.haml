@@ -3,5 +3,6 @@
     %fieldset
       %legend New Link
       = f.error_messages
-      = f.input :url, :input_html => {:type => "text"}
+      = f.input :url, :input_html => {:type => "text", :class => 'span-9'}
+      = f.input :description, :input_html => {:class => 'text span-9 thinHeightTextArea'}, :label => "Description (140 characters)"
       = f.submit
