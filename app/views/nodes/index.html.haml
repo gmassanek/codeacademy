@@ -2,16 +2,18 @@
   %ul
     %li= link_to 'Add Node', new_node_path
 .span-24.contentBox.last
-  %h3.span-24 All Concepts/Nodes
-  .span-8
-    = render 'pages/home_node', :nodes => @nodes[0]
-  .span-8
-    = render 'pages/home_node', :nodes => @nodes[1]
-  .span-8.last
-    = render 'pages/home_node', :nodes => @nodes[2]
-  .span-11.border
-    %h3.span-11 All Unanswered Questions/Tutorials
-    = render 'pages/home_tutorial', :tutorials => @unanswered
-  .span-11.last
-    %h3.span-11.last Recently answered Questions/Tutorials
-    = render 'pages/home_tutorial', :tutorials => @recently_answered
+  .span-24.last
+    %h3.span-24 All Concepts/Nodes
+    .span-8
+      = render 'pages/home_node', :nodes => @nodes[0]
+    .span-8
+      = render 'pages/home_node', :nodes => @nodes[1]
+    .span-8.last
+      = render 'pages/home_node', :nodes => @nodes[2]
+  .span-24.last
+    .span-11.border
+      %h3.span-11 All Unanswered Questions/Tutorials
+      = render 'pages/home_tutorial', :tutorials => @unanswered
+    .span-11.last
+      %h3.span-11.last Recently answered Questions/Tutorials
+      = render 'pages/home_tutorial', :tutorials => @recently_answered
