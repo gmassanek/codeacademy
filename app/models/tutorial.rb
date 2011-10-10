@@ -1,4 +1,5 @@
-class Tutorial < ActiveRecord::Base
+class Tutorial
+  attr_accessor 
   belongs_to :item, :polymorphic => true
 
   has_one :created_by, :foreign_key => 'id', :class_name => "User"
