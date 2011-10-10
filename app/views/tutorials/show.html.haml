@@ -7,7 +7,7 @@
   .span-24.last
     %h3.clean.bold= @tutorial.title
   .span-24
-    = if @tutorial.created_by_id != nil
+    - if @tutorial.created_by_id != nil
       %span.span-8 Asked by: #{User.find(@tutorial.created_by_id)}
     %span.right
       = simple_form_for [@item, @tutorial] do |f|
@@ -23,7 +23,7 @@
     %em.bold Long Answer:
     %br
     = markdown(@tutorial.content)
-  = if @tutorial.last_updated_by_id != nil
+  - if @tutorial.last_updated_by_id != nil
     .span-24
       %p= "Most recently answered by: #{User.find(@tutorial.last_updated_by_id)}"
     
