@@ -18,7 +18,7 @@ pre {
   background-clip: padding-box;
   background-color: #FAFAFB;
   color: #393939;
-  margin: 0px;
+  margin: 1.5em;
 }
 
 ul + pre {
