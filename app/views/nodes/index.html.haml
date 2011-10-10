@@ -16,3 +16,10 @@
     = render 'pages/home_tutorial', :tutorials => @unanswered[1]
   .span-8.last
     = render 'pages/home_tutorial', :tutorials => @unanswered[2]
+  %h3.span-24 Recently answered Questions/Tutorials
+  .span-8
+    = render 'pages/home_tutorial', :tutorials => @recently_answered[0]
+  .span-8
+    = render 'pages/home_tutorial', :tutorials => @recently_answered[1]
+  .span-8.last
+    = render 'pages/home_tutorial', :tutorials => @recently_answered[2]
