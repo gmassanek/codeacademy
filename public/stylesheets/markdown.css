@@ -25,7 +25,16 @@ ul + pre {
   margin-top: 1em;
 }
 
-pre code {white-space: pre;}
+code {
+	border: 1px solid #cacaca;
+	white-space: pre;
+  	line-height: 1em;
+    padding: 1px;
+    overflow:auto;
+    background-clip: padding-box;
+    background-color: #FAFAFB;
+    color: #393939;
+}
 
 pre span.comment {color: #aaa;}
 
