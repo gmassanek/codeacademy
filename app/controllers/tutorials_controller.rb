@@ -38,6 +38,7 @@ class TutorialsController < ApplicationController
     @item = find_item
     @tutorial = Tutorial.find(params[:id])
     set_user_tracking_columns(@tutorial, 'update')
+    puts params.inspect
     if @tutorial.update_attributes(params[:tutorial])
       redirect_to [@item, @tutorial], :notice  => "Successfully updated tutorial."
     else

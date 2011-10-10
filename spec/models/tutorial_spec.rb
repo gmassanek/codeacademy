@@ -20,4 +20,13 @@ describe Tutorial do
     @tutorial.content = nil
     @tutorial.should_not be_valid
   end
+  it "is either unanswered by default" do
+    @tutorial = Fabricate(:node_tutorial)
+    @tutorial.answered?.should == false
+  end
+  it "can be answered" do
+    @tutorial = Fabricate(:node_tutorial)
+    @tutorial.answered = true
+    @tutorial.save.should == true
+  end
 end

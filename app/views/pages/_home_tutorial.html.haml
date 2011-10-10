@@ -1,0 +1,5 @@
+%ul
+  - tutorials.each do |t|
+    %li
+      = t.item.to_s + " - "
+      =  link_to t.to_s, [t.item, t]  unless t.nil?

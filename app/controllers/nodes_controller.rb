@@ -4,9 +4,7 @@ class NodesController < ApplicationController
 
   def index
     @nodes = Node.all.in_groups(3, false)
-    @nodes1 = @nodes[0]
-    @nodes2 = @nodes[1]
-    @nodes3 = @nodes[2]
+    @unanswered = Tutorial.where(:answered => false).in_groups(3, false)
   end
   def show
     @node = Node.find(params[:id])

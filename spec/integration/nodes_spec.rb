@@ -63,6 +63,14 @@ describe "new page" do
       page.should have_content(@node.title)
       page.should have_content(node2.title)
     end
+    it "shows all unanswered questions" do
+      tutorial = Fabricate(:node_tutorial)
+      tutorial2 = Fabricate(:node_tutorial, :answered => true)
+      tutorial3 = Fabricate(:node_tutorial)
+      visit nodes_path
+      page.should have_content(tutorial)
+      page.should have_content(tutorial3)
+    end
   end
   describe "show page" do
     before do

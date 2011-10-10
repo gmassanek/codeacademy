@@ -5,19 +5,25 @@
     %li= link_to "Destroy", polymorphic_path([@item, @tutorial]), :confirm => 'Are you sure?', :method => :delete
 .span-24.contentBox.last
   .span-24.last
-    %h3.clean= @tutorial.title
+    %h3.clean.bold= @tutorial.title
   .span-24
-    %p.right= "Asked by: #{@tutorial.created_by}"
+    = if @tutorial.created_by_id != nil
+      %span.span-8 Asked by: #{User.find(@tutorial.created_by_id)}
+    %span.right
+      = simple_form_for [@item, @tutorial] do |f|
+        .inputs
+          = f.input :answered, :label => 'Answered?', :input_html => {:class => 'last', :onclick => " $('#edit_tutorial_#{@tutorial.id}').submit();"}, :br => false
   .span-24.last
     %p 
-      %em Short Answer:
+      %em.bold Short Answer:
       %br
       =@tutorial.description
 .span-24.contentBox.last.tutorialContent      
   %p 
-    %em Long Answer:
+    %em.bold Long Answer:
     %br
     = markdown(@tutorial.content)
-  .span-24
-    %p.right= "Most recently answered by: #{@tutorial.created_by}"
+  = if @tutorial.last_updated_by_id != nil
+    .span-24
+      %p= "Most recently answered by: #{User.find(@tutorial.last_updated_by_id)}"
     

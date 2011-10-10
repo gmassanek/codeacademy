@@ -2,7 +2,7 @@
   = simple_form_for [@item, @tutorial] do |f|
     = f.error_notification
     .inputs
-      = f.input :title, :as => :text, :label => 'Question (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}
+      = f.input :title, :as => :text, :label => 'Question (140 chars)', :input_html => {:class => 'span-20 veryThinHeightTextArea'}
       = f.input :description, :label => 'Short Answer (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}
       = f.input :content, :label => "Long Answer (in #{link_to 'Markdown', 'http://en.wikipedia.org/wiki/Markdown'})", :input_html => {:class => 'span-24 XLHeightTextArea'}
     .actions
