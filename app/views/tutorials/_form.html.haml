@@ -4,6 +4,6 @@
     .inputs
       = f.input :title, :as => :text, :label => 'Question (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}
       = f.input :description, :label => 'Short Answer (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}
-      = f.input :content, :label => "Long Answer (in #{link_to 'Markdown', 'http://en.wikipedia.org/wiki/Markdown'})", :input_html => {:class => 'span-24 XLHeightTextArea'}
+      = f.input :content, :label => "Long Answer (in #{link_to 'Markdown', 'http://en.wikipedia.org/wiki/Markdown', :target => '_blank'})", :input_html => {:class => 'span-24 XLHeightTextArea'}
     .actions
       = f.submit
