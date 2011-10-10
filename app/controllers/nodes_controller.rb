@@ -4,8 +4,8 @@ class NodesController < ApplicationController
 
   def index
     @nodes = Node.all.in_groups(3, false)
-    @unanswered = Tutorial.where(:answered => false).in_groups(3, false)
-    @recently_answered = Tutorial.where(:answered => true, :updated_at => (Time.now - 7.days) .. (Time.now)).in_groups(3, false)
+    @unanswered = Tutorial.where(:answered => false)
+    @recently_answered = Tutorial.where(:answered => true, :updated_at => (Time.now - 7.days) .. (Time.now))
   end
   def show
     @node = Node.find(params[:id])
