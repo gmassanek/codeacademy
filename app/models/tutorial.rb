@@ -7,8 +7,8 @@ class Tutorial < ActiveRecord::Base
   attr_accessible :item_id, :item_type, :title, :description, :content, :answered
   
   validates :title, :presence => true
-  validates :description, :presence => true
-  validates :content, :presence => true
+  #validates :description, :presence => true
+  #validates :content, :presence => true
   validates_length_of :title, :description, :maximum => 140
 
   after_initialize :init
