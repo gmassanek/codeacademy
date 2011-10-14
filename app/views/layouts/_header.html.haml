@@ -2,17 +2,18 @@
   %h2.left.strong
     = link_to 'rubeco', root_path
     %span.white.small pre-beta
-  .right  
-    = form_for Node.new, :html => {:id => "node_search", :action => '/nodes/index'} do |f|
-      = f.text_field :id, :type => :hidden, :id => "node_search_slug"
-      = f.autocomplete_field :title, autocomplete_node_title_nodes_path, :class => "text", :update_elements => {:id => '#node_search_slug'}
+  .right
+  
+    %input#node_search_slug{:name=>'node[id]', :size=>"30", :type => :hidden}
+    %input#node_title.text{"data-autocomplete"=>"/nodes/autocomplete_node_title", 'data-update-elements'=>'{"id":"#node_search_slug"}', :name=>"node[title]", :size=>"30", :type=>"text"}
+                            		
     :javascript
-      $("#node_search").submit(function() {
-        var slug = $("#node_search_slug").val();
-        if (slug != "") {
-          window.location = "/nodes/" + slug;
-          return false;
-        }
-        return false;
-      });
+      //$(document).ready(function(){
+        $('#node_title').bind('railsAutocomplete.select', function(event, data){
+          var id = $("#node_search_slug").val();
+          window.location = "#{nodes_path}/" + id;    
+          });    
+        //$('#node_title').autocomplete("option", "autoFocus", true);
+      //});
+          
   %p.right.bottom search

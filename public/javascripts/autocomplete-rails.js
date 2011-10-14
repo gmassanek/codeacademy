@@ -42,6 +42,7 @@ $(document).ready(function(){
   jQuery.railsAutocomplete.fn.extend({
     init: function(e) {
       e.delimiter = $(e).attr('data-delimiter') || null;
+
       function split( val ) {
         return val.split( e.delimiter );
       }
@@ -50,6 +51,7 @@ $(document).ready(function(){
       }
 
       $(e).autocomplete({
+		autoFocus:true,
         source: function( request, response ) {
           $.getJSON( $(e).attr('data-autocomplete'), {
             term: extractLast( request.term )
@@ -91,6 +93,7 @@ $(document).ready(function(){
             if ($(this).attr('data-update-elements')) {
               var data = $(this).data(ui.item.id.toString());
               var update_elements = $.parseJSON($(this).attr("data-update-elements"));
+				console.log(update_elements);
               for (var key in update_elements) {
                 $(update_elements[key]).val(data[key]);
               }
@@ -105,9 +108,7 @@ $(document).ready(function(){
           });
           $(this).trigger('railsAutocomplete.select');
 			
-		  //Inserted this line so that the selector auto-submits the parent node_search form	
-  	      $(this).parent(['form']).submit();
-
+        
           return false;
         }
       });
