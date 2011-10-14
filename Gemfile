@@ -5,6 +5,7 @@ gem 'rails', '3.0.7'
 
 gem 'sqlite3'
 gem 'dynamic_form'
+gem "json", "~> 1.4.6", :require => "json/pure"
 gem 'haml'
 gem 'simple_form'
 gem 'escape_utils'
