@@ -1,5 +1,6 @@
 class NodesController < ApplicationController
-  autocomplete :node, :title
+  autocomplete :node, :title, :full => true
+
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index

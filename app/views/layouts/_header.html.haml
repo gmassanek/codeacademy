@@ -2,7 +2,8 @@
   %h2.left.strong
     = link_to 'rubeco', root_path
     %span.white.small pre-beta
-  .right
-    = form_tag(pages_node_search_by_title_path, :method => :get) do
-      = autocomplete_field_tag 'title', '', nodes_autocomplete_node_title_path, :id_element => "#id_element_placeholder", :class => "text"
+  .right  
+    = form_for (Node.new) do |f|
+      = f.autocomplete_field :title, autocomplete_node_title_nodes_path, :id_element => "#id_element_placeholder", :class => "text"
+      
   %p.right.bottom search

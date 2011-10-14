@@ -1,9 +1,8 @@
 Ecosystem::Application.routes.draw do
   devise_for :users
 
-  match '/home', :to => 'pages#home'
-  get 'nodes/autocomplete_node_title'
-  get 'pages/node_search_by_title'
+  get 'home', :controller => 'pages', :action => 'home'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -19,6 +18,8 @@ Ecosystem::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
       resources :nodes,:relationships do
+        get :autocomplete_node_title, :on => :collection
+        
         resources :links
         resources :site_handles, :except => :index
         resources :tutorials
