@@ -104,6 +104,9 @@ $(document).ready(function(){
             }
           });
           $(this).trigger('railsAutocomplete.select');
+			
+		  //Inserted this line so that the selector auto-submits the parent node_search form	
+  	      $(this).parent(['form']).submit();
 
           return false;
         }
