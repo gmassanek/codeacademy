@@ -6,7 +6,6 @@
     = form_for Node.new, :html => {:id => "node_search", :action => '/nodes/index'} do |f|
       = f.text_field :id, :type => :hidden, :id => "node_search_slug"
       = f.autocomplete_field :title, autocomplete_node_title_nodes_path, :class => "text", :update_elements => {:id => '#node_search_slug'}
-      
     :javascript
       $("#node_search").submit(function() {
         var slug = $("#node_search_slug").val();
