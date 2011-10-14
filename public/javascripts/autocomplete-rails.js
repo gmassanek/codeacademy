@@ -60,6 +60,7 @@ $(document).ready(function(){
               var obj = {};
               obj[el.id] = el;
               $(e).data(obj);
+				console.log(obj);
             });
             response.apply(null, arguments);
           });
@@ -93,7 +94,6 @@ $(document).ready(function(){
             if ($(this).attr('data-update-elements')) {
               var data = $(this).data(ui.item.id.toString());
               var update_elements = $.parseJSON($(this).attr("data-update-elements"));
-				console.log(update_elements);
               for (var key in update_elements) {
                 $(update_elements[key]).val(data[key]);
               }

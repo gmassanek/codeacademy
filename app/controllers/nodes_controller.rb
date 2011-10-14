@@ -1,5 +1,5 @@
 class NodesController < ApplicationController
-  autocomplete :node, :title, :full => true
+  autocomplete :node, :title, :full => true, :extra_data => [:cached_slug]
 
   before_filter :authenticate_user!, :except => [:show, :index]
 
