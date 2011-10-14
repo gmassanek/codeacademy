@@ -9,7 +9,6 @@
     :javascript
       $("#node_search").submit(function() {
         var slug = $("#node_search_slug").val();
-        alert(slug);
         if (slug != "") {
           window.location = "/nodes/" + slug;
           return false;
