@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   
   def home
     @title = "Home"
+    @tutorial = Tutorial.new
   end
   #def node_search_by_title
   #  @node = Node.find_by_title(params[:title])

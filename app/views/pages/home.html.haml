@@ -1,33 +1,13 @@
+= render 'ask'
 .contentBox.span-24.last
-  .span-18.push-3
-    %h3 Welcome Code Academy Students!
-    %p 
-      I hope you find this project to be a helpful tool as we experience the inaugural class at 
-      = link_to('CodeAcademy', 'http://www.codeacademy.org') + "."
-      This is very much not a finished project, but I think it will help us share what we're learning.  Check it out, explore, sent me feedback (good and bad), and help me make it better.  I would love to work with anybody who has any ideas about how this could be more helpful.  I need plenty of help on the UX, content, graphics, styling, planning - pretty much on everything.
-    %p  
-      Here goes nothing.
-    %h4
-      Geoff Massanek
-
-  %hr.span-12.push-6.hr
-  .span-18.push-3
-    %h3 What is Rubeco?
-    %p Rubeco is an application that enables a community to participate in managing and organizing content around the Ruby and Ruby on Rails technology ecosystems. Rubeco is an implementation of a project called Ecosystem designed to help people store, reference, and learn from information about a particular knowledge ecosystem. At the lowest level, Ecosystem organizes information based on two fundamental structures:
-    %h4= link_to 'Nodes', nodes_path, :class => 'bold loud'
-    %p Nodes are used to represent a specific topic, subject, or tool. A Node can be linked to other nodes via explicitly defined Relationships. The node holds basic details as well as resources helpful in learning that node.
-    %h4= link_to 'Relationships', relationships_path, :class => 'bold loud'
-    %p Relationships are used to link nodes to one another when two (or more) nodes share a contextual relationship. The specific context of the Relationship is captured in the Relationship's sentences, one for each direction of the relationship, after all, how A relates to B is of often different than how B relates to A.
-    %h4 Community Content
-    %p
-      =link_to 'Sign up', new_user_registration_path, :class => 'quiet'
-      now and start adding content. Start with links that help you learn something, teach any "aha" moments with short tutorials, or share your expert knowledge in an extensive how-to.  The more you interact, the more you'll discover.
-  %hr.span-12.push-6.hr
-  .span-18.push-3
-    %h3 Contribute
-    %p
-      Help Ecosystem get better. It is still very much a work in progress and the more help the better. If you come across an issue, log it on the github 
-      =link_to('issue tracker', 'https://github.com/gmassanek/ecosystem/issues?sort=created&direction=desc&state=open', :class => 'quiet') + "."
-      Comments, questions, and pull requests are all welcome and encouraged. 
-    %hr.span-12.push-6.hr
-
+  %h1 Learn
+  %input#node_search_slug{:name=>'node[slug]', :size=>"30", :type => :hidden}
+  %input#node_title.text{"data-autocomplete"=>"/nodes/autocomplete_node_title", 'data-update-elements'=>'{"cached_slug":"#node_search_slug"}', :name=>"node[title]", :size=>"30", :type=>"text"}
+                                  
+  :javascript
+    $('#node_title').bind('railsAutocomplete.select', function(event, data){
+      var slug = $("#node_search_slug").val();
+      window.location = "#{nodes_path}/" + slug;    
+    });    
+.contentBox.span-24.last
+  %h1 Contribute
