@@ -145,5 +145,7 @@ pre {
 }
 #login {
   vertical-align: middle;
-  color:white;
+}
+#login input {
+  vertical-align: middle;
 }

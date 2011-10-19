@@ -1,8 +1,8 @@
 Ecosystem::Application.routes.draw do
-  devise_for :users
 
-  get 'home', :controller => 'pages', :action => 'home'
-  
+  root :to => "pages#home"
+
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -62,7 +62,6 @@ Ecosystem::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   #@firstNode = Node.first
-  root :to => "nodes#index"
   #map.root :controller => 'nodes', :action => 'show', :node => @firstNode
 
 
