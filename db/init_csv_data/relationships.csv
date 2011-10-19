@@ -1,0 +1,32 @@
+%1 can be used by %2 for integration tests,%2 can use %1 for integration tests,Cucumber,Rspec,2011-06-18 22:06:51.752091,2011-09-22 02:10:03.252026
+%1 can be used as the front end driver for %2,%2 can use %1 to run automated tests on a browser,Selenium,Capybara,2011-07-20 17:54:25.044934,2011-09-22 02:10:03.263401
+%1 can be converted to HTML by %2,%2 is a Ruby implementation of John Gruber's %1,Markdown,BlueCloth,2011-08-18 05:07:25.1711,2011-09-22 02:10:03.276209
+%1 and %2 both manage ruby local ruby versions,%1 and %2 both manage ruby local ruby versions,RVM,rbenv,2011-10-03 20:18:20.975178,2011-10-03 20:18:21.087587
+"%1 teaches classes, primarily in %2",%2 is the primary coding language for %1,Jumpstart Lab,Ruby,2011-06-21 13:31:37.49579,2011-09-22 02:10:02.913129
+%1 works with %2 to host rails apps,%2 works with %1 to host rails apps,Apache,Passenger,2011-06-24 19:28:45.791666,2011-09-22 02:10:02.928365
+%1 code snippets are hosted by %2,%2 hosts %1 code snippets,Gist,Github,2011-06-24 19:31:52.623294,2011-09-22 02:10:02.941655
+%1 creates instances of %2 classes for testing,%2 can be tested with the help of %1,Fabrication,Ruby,2011-06-24 19:33:06.131456,2011-09-22 02:10:02.954608
+%1 creates instances of %2 classes for testing,%2 can be tested with the help of %1,Factory Girl,Ruby,2011-06-24 19:33:11.374539,2011-09-22 02:10:02.967367
+%1 repositories can be hosted on %2,%2 hosts %1 repositories,Git,Github,2011-06-24 19:33:54.543122,2011-09-22 02:10:02.979298
+%1 can host %2 projects,%2 projects can be hosted on %1,Github,Ruby on Rails,2011-06-24 19:34:28.351265,2011-09-22 02:10:02.992373
+%1 can be used to automatically run tests in %2,%2 can be tested with the help of %1,guard,Ruby,2011-06-24 19:34:59.334814,2011-09-22 02:10:03.005643
+%1 makes view in %2 easier,%2 can use %1 to generate views,Haml,Ruby on Rails,2011-06-24 19:35:42.21571,2011-09-22 02:10:03.017701
+%1 hosts %2 applications,%2 can be deployed to %1,Heroku,Ruby on Rails,2011-06-24 19:36:11.926472,2011-09-22 02:10:03.030408
+%1 teaches %2 classes,%2 is one of the primary languages taught by %1,Jumpstart Lab,Ruby on Rails,2011-06-24 19:37:13.842557,2011-09-22 02:10:03.14454
+%1 teaches %2,Learn %2 from %1,Jumpstart Lab,Capybara,2011-06-27 03:00:07.654851,2011-09-22 02:10:03.157513
+%1 has a large community on %2,%2 is written in %1,Ruby on Rails,Twitter,2011-06-29 03:51:02.723219,2011-09-22 02:10:03.169869
+%1 helps hook databases onto %2 models,%2 ships with %1 for database modeling,Active Record,Ruby on Rails,2011-07-06 03:23:55.799618,2011-09-22 02:10:03.182775
+%1 is a testing framework for %2,%2 can be tested using %1,Rspec,Ruby on Rails,2011-07-20 17:37:54.879063,2011-09-22 02:10:03.196242
+Use %2 for stubbing out models in %1 testing,Use %2 for stubbing out models in %1 testing,Rspec,Fabrication,2011-07-20 17:42:07.35504,2011-09-22 02:10:03.206764
+%1 is an alternative for %2,%2 is an alternative for %1,Fabrication,Factory Girl,2011-06-24 19:30:47.623292,2011-09-22 02:10:03.218038
+%1 can be used as the integration tester for %2,%2 can use %1 for integration tests,Capybara,Rspec,2011-07-20 17:36:08.830159,2011-09-22 02:10:03.229167
+%1 can be used with %2 for integration tests,%2 can use %1 for integration tests,Capybara,Cucumber,2011-06-24 19:29:57.289172,2011-09-22 02:10:03.240682
+%1 has functions to parse %2,%2 can fill data in a %1 library,jquery,JSON,2011-10-04 15:18:37.26134,2011-10-04 15:18:37.28953
+%1 has %2 plugins,Apps can authenticate using %2 through using %1,Devise,OmniAuth,2011-10-04 19:41:18.153321,2011-10-04 19:41:18.182396
+%1 can use %2 for uploading files,%2 uploads files to %1,Ruby on Rails,paperclip,2011-10-04 19:42:46.2409,2011-10-04 19:42:46.255773
+%1 can parse %2 language,%2 can be parsed by %1,Redcarpet,Markdown,2011-10-04 19:44:33.61969,2011-10-04 19:44:33.63561
+%1 is what %2 is,%2 is a type of %1,vps,linode,2011-10-04 19:46:13.749458,2011-10-04 19:46:13.768307
+%1 can be use in %2,%2 can use %1 for database management,mysql,Ruby on Rails,2011-10-07 21:31:49.338385,2011-10-07 21:31:49.372911
+"%1 are like %2, but the keys are ordered numbers","%2 are like %1, but the keys can be any datatype",Arrays,Hashes,"2011-10-08 23:44:06.399893","2011-10-08 23:44:06.415592"
+"%1 can be passed into some %2 as a parameter","Some %2 accept %1 as parameters",Blocks,Methods,"2011-10-11 23:07:13.827044","2011-10-11 23:07:13.845556"
+"%1 are beefed up %2","%2 are like %1 but have less string-like functions you can do",Strings,Symbols,"2011-10-11 23:58:12.159363","2011-10-11 23:58:12.180916"

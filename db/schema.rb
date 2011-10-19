@@ -19,17 +19,19 @@ ActiveRecord::Schema.define(:version => 20111010134034) do
     t.integer "created_by_id"
     t.integer "last_updated_by_id"
     t.text    "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "nodes", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "homepage"
     t.string   "cached_slug"
     t.integer  "created_by_id"
     t.integer  "last_updated_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "relationships", :force => true do |t|
@@ -37,11 +39,11 @@ ActiveRecord::Schema.define(:version => 20111010134034) do
     t.integer  "node2_id"
     t.string   "sentence1"
     t.string   "sentence2"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "key"
     t.integer  "created_by_id"
     t.integer  "last_updated_by_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "relationships", ["node1_id"], :name => "index_relationships_on_node1_id"
@@ -65,11 +67,11 @@ ActiveRecord::Schema.define(:version => 20111010134034) do
     t.string   "title"
     t.text     "description"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "created_by_id"
     t.integer  "last_updated_by_id"
     t.boolean  "answered"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_knowledge_ratings", :force => true do |t|

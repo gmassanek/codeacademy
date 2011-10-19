@@ -42,16 +42,20 @@ $(document).ready(function(){
   jQuery.railsAutocomplete.fn.extend({
     init: function(e) {
       e.delimiter = $(e).attr('data-delimiter') || null;
-
       function split( val ) {
         return val.split( e.delimiter );
       }
       function extractLast( term ) {
         return split( term ).pop().replace(/^\s+/,"");
       }
-
+	  var append_to = $(e).attr('append_to');
       $(e).autocomplete({
-		autoFocus:true,
+		autoFocus: $(e).attr('autofocus') || false,
+		disabled: $(e).attr('disabled') || false,
+		delay: ($(e).attr('delay') || 300),
+		appendTo: append_to || "body",
+		postion: ($(e).attr('position')) || { my: "left top", at: "left bottom", collision: "none" },
+		
         source: function( request, response ) {
           $.getJSON( $(e).attr('data-autocomplete'), {
             term: extractLast( request.term )
@@ -60,15 +64,21 @@ $(document).ready(function(){
               var obj = {};
               obj[el.id] = el;
               $(e).data(obj);
-				console.log(obj);
             });
             response.apply(null, arguments);
           });
         },
+		open: function() {
+		  // when appending the result list to another element, we need to cancel the "position: relative;" css.
+		  if (append_to){
+		    $(append_to + ' ul.ui-autocomplete').css('position', 'static');
+		  } 
+		},
         search: function() {
           // custom minLength
+		  var minLength = $(e).attr('min_length') || 2;
           var term = extractLast( this.value );
-          if ( term.length < 2 ) {
+          if ( term.length < minLength ) {
             return false;
           }
         },
