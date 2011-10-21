@@ -10,10 +10,3 @@
       = render 'pages/home_node', :nodes => @nodes[1]
     .span-8.last
       = render 'pages/home_node', :nodes => @nodes[2]
-  .span-24.last
-    .span-12.border
-      %h3.span-12 All Unanswered Questions/Tutorials
-      = render 'pages/home_tutorial', :tutorials => @unanswered
-    .span-12.last
-      %h3.span-12.last Recently answered Questions/Tutorials
-      = render 'pages/home_tutorial', :tutorials => @recently_answered

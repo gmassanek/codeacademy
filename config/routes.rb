@@ -2,6 +2,9 @@ Ecosystem::Application.routes.draw do
 
   root :to => "pages#home"
 
+  post 'pose_question', :controller => 'pages', :action => 'pose_question', :as => :pose_question
+  post 'post_question', :controller => 'pages', :action => 'post_question', :as => :post_question
+
   devise_for :users
 
   # The priority is based upon order of creation:

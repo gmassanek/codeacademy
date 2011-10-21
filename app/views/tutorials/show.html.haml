@@ -22,7 +22,7 @@
   %p 
     %em.bold Long Answer:
     %br
-    = markdown(@tutorial.content)
+    = markdown(@tutorial.content) if @tutorial.content
   - if @tutorial.last_updated_by_id != nil
     .span-24
       %p= "Most recently answered by: #{User.find(@tutorial.last_updated_by_id)}"

@@ -1,5 +1,5 @@
 #newLinkForm
-  = simple_form_for [@item, @tutorial] do |f|
+  = simple_form_for [@tutorial.item, @tutorial] do |f|
     = f.error_notification
     .inputs
       = f.input :title, :as => :text, :label => 'Question (140 chars)', :input_html => {:class => 'span-24 veryThinHeightTextArea'}

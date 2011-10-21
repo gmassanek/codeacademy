@@ -1,5 +1,10 @@
 .contentBox.span-24.last
   %h1.inline
     Ask
-  %p
+  %p.last
     Ask the ruby community a question.  Keep it conceptual, not particular to your code, so that other folks can learn from the answer too.
+  .span-12.push-6
+    %form{:action => pose_question_path, :method => :post}
+      %input.text{:name => :authenticity_token, :value => form_authenticity_token, :type => :hidden}
+      = text_area :new_question, :question, :class => 'span-8 veryThinHeightTextArea'
+      = submit_tag "Ask"

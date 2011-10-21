@@ -7,7 +7,12 @@ class Link < ActiveRecord::Base
   validates_length_of :description, :maximum => 140
   
   def to_s
-    return description if description
-    url
+    return description unless description.blank?
+    show_width = 40
+    if url.length > show_width
+      url[0, show_width] + "..."
+    else
+      url
+    end
   end
 end
