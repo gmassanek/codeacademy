@@ -3,8 +3,6 @@ class CreateLink < ActiveRecord::Migration
     create_table :links do |t|
       t.string :url
       t.integer :node_id
-
-      t.timestamps
     end
   end
 
