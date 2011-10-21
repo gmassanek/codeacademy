@@ -1,16 +1,5 @@
 #headerDiv
   %h2.left.strong
-    = link_to 'rubeco', root_path
-    %span.white.small pre-beta
-  .right
-  
-    %input#node_search_slug{:name=>'node[slug]', :size=>"30", :type => :hidden}
-    %input#node_title.text{"data-autocomplete"=>"/nodes/autocomplete_node_title", 'data-update-elements'=>'{"cached_slug":"#node_search_slug"}', :name=>"node[title]", :size=>"30", :type=>"text"}
-                            		
-    :javascript
-      $('#node_title').bind('railsAutocomplete.select', function(event, data){
-        var slug = $("#node_search_slug").val();
-        window.location = "#{nodes_path}/" + slug;    
-      });    
-          
-  %p.right.bottom search
+    = link_to 'Ruby in the Ruff', root_path
+    %div.accent Kick Ass Community Rails Learning
+  = render 'shared/authentication'

@@ -1,0 +1,29 @@
+.contentBox.span-24.last
+  %h1 
+    Explore
+    #login.right
+      %input#node_search_slug{:name=>'node[slug]', :size=>"30", :type => :hidden}
+      %input#node_title.text{"data-autocomplete"=>"/nodes/autocomplete_node_title", 'data-update-elements'=>'{"cached_slug":"#node_search_slug"}', :name=>"node[title]", :size=>"30", :type=>"text", :placeholder => "Search"}
+                                     
+      :javascript
+        $('#node_title').bind('railsAutocomplete.select', function(event, data){
+          var slug = $("#node_search_slug").val();
+          window.location = "#{nodes_path}/" + slug;    
+        });    
+  %br
+  .span-8
+    Recently updated concepts
+    %ul
+      - @recent_nodes.each do |n|
+        %li= link_to n, n
+      %li= link_to 'more...', nodes_path
+  .span-8
+    Recently answered questions
+    %ul
+      - @recent_questions.each do |n|
+        %li= link_to n, [n.item, n]
+  .span-8.last
+    Recently posted links
+    %ul
+      - @recent_links.each do |l|
+        %li= link_to l, l.url

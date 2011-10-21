@@ -1,0 +1,16 @@
+.contentBox.span-24.last
+  %h1.inline
+    Ask
+  %p.last
+    Thanks for your question.  Before we post it, look through these to make sure your answer hasn't been asked already:
+    %ul
+      - @node_matches.each do |node|
+        %li= link_to node, node
+  %p.last
+    If you haven't found any help, go ahead and ask your question!
+  .span-12.push-6
+    %form{:action => post_question_path, :method => :post}
+      %input.text{:name => :authenticity_token, :value => form_authenticity_token, :type => :hidden}
+      = text_area :new_question, :question, :class => 'span-8 veryThinHeightTextArea', :value => @question
+      = submit_tag "Ask"
+

@@ -1,0 +1,13 @@
+.contentBox.span-24.last
+  %h1 
+    Learn
+    #login.right
+      %input#node_search_slug{:name=>'node[slug]', :size=>"30", :type => :hidden}
+      %input#node_title.text{"data-autocomplete"=>"/nodes/autocomplete_node_title", 'data-update-elements'=>'{"cached_slug":"#node_search_slug"}', :name=>"node[title]", :size=>"30", :type=>"text", :placeholder => "Search"}
+                                     
+      :javascript
+        $('#node_title').bind('railsAutocomplete.select', function(event, data){
+          var slug = $("#node_search_slug").val();
+          window.location = "#{nodes_path}/" + slug;    
+        });    
+
