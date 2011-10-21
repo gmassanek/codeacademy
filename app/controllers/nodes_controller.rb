@@ -4,10 +4,10 @@ class NodesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index, :autocomplete_node_title]
 
   def index
-    @nodes = Node.all.in_groups(3, false)
+    @nodes = NodeDecorator.decorate(Node.all).in_groups(3, false)
   end
   def show
-    @node = Node.find(params[:id])
+    @node = NodeDecorator.find(params[:id])
     @link = @node.links.build
     if current_user
       @knowledge_rating = @node.user_knowledge_ratings.find_by_user_id(current_user.id)

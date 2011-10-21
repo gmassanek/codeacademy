@@ -12,14 +12,6 @@ module ApplicationHelper
     doc.to_s
   end
   
-  def item_title(item)
-    if item.respond_to?(:homepage) && !item.homepage.blank?
-      link_to item.to_s, item.homepage, :target => '_blank'
-    else
-      item.to_s
-    end
-  end
-
   def relationship_bullet(relationship, node)
     sentence = relationship.sentence_from(node, :filled_with => nil)
     othernode = relationship.other_node(node)
@@ -52,7 +44,5 @@ module ApplicationHelper
       render(association.to_s.singularize + "_fields", :f => builder)
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
-    #link_to_function(name, h("add_fields(this, \"#{association}\", \"<hr>\")"))
-    #link_to_function(name, "add_fields(this, :link, '<hr>')")
   end
 end

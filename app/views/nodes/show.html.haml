@@ -5,7 +5,7 @@
     %li= link_to "Edit Node", edit_node_path(@node)
 .span-24.contentBox.last
   .span-20
-    %h2= item_title(@node)
+    %h2= @node.title
   .span-4.last.right
     = render 'shared/user_knowledge_rating', :knowledgeable => @node, :knowledge_rating => @knowledge_rating
   .span-24.last

@@ -26,4 +26,4 @@
     Recently posted links
     %ul
       - @recent_links.each do |l|
-        %li= link_to l, l.url
+        = link_li(l)

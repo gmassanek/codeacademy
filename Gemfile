@@ -21,6 +21,7 @@ gem 'redcarpet'
 gem 'albino'
 gem 'nokogiri'
 gem 'devise'
+gem 'draper'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.4"

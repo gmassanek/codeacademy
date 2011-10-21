@@ -4,4 +4,4 @@
 - unless item.tutorials.count == 0
   %ul.span-7.last
     - item.tutorials.each do |tutorial|
-      %li= link_to tutorial.to_s, [item, tutorial]
+      %li= link_to tutorial, [item, tutorial]
