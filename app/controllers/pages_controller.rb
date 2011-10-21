@@ -8,7 +8,6 @@ class PagesController < ApplicationController
     @recent_links = Link.order('updated_at DESC').limit(5)
 
     @unanswered_questions = Tutorial.where(:answered => false)
-    @tutorial = @unanswered_questions.shuffle.first
   end
 
   def pose_question

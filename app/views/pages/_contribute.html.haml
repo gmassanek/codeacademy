@@ -3,6 +3,10 @@
     Contribute
   %p Answer questions from other members, or explore the different nodes and add questions, links, descriptions, etc.
   .span-24
-    = render 'tutorials/form'
+    %ul
+    - @unanswered_questions.each do |quest|
+      %li 
+        = quest.title
+        = link_to 'Answer', edit_polymorphic_path([quest.item, quest])
 
 
