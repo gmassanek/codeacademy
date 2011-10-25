@@ -1,4 +1,5 @@
 class Relationship < ActiveRecord::Base
+  require 'myapp/key'
   
   belongs_to :node1, :class_name => "Node"
   belongs_to :node2, :class_name => "Node"
@@ -14,29 +15,18 @@ class Relationship < ActiveRecord::Base
 
   before_validation :fillKey
   validate :has_space_holders, :allow_nil => true
-  validate :not_self_referencing
   validates :node1, :presence => true
   validates :node2, :presence => true
   validates :sentence1, :presence => true
   validates :sentence2, :presence => true
-  validates :key, :uniqueness => true
+  validates :key, :uniqueness => true, :presence => true
 
-  def not_self_referencing
-    errors.add(:node1, 'cannot be the same as node 2') if node1_id == node2_id
-  end
-  
   def to_s
     "#{node1.to_s} and #{node2.to_s}"
   end
 
   def fillKey
-    unless node1.nil? or node2.nil?
-      if node1_id<node2_id
-        self.key = "#{node1_id}:#{node2_id}"
-      else
-        self.key = "#{node2_id}:#{node1_id}"
-      end
-    end
+    self.key = MyApp::Key.create(node1,node2)
   end
 
   def sentence_from(node, options = {:filled_with => 'nodes'})

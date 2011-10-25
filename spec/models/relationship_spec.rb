@@ -52,35 +52,30 @@ describe Relationship do
     @rel.sentence1 = "(%1) %2"
     @rel.should be_valid
   end
+
   describe "relationship key" do
-    it "replies to .key function" do
-      @rel.should respond_to(:key)
+    it "should set the key before validation" do
+      MyApp::Key.should_receive(:create).with(@rel.node1, @rel.node2)
+      @rel.valid?
     end
-    it "has the same key as the opposite relationship" do
-      @rel2 = @rel.clone
-      @rel2.node1 = @rel.node2
-      @rel2.node2 = @rel.node1
-      @rel2.key.should == @rel.key
-    end
+
     it "restricts a key to being unique" do
       @rel2 = @rel.clone
-      @rel2.node1 = @rel.node2
-      @rel2.node2 = @rel.node1
       @rel2.should_not be_valid
     end
-    it "defaults the key and saves it" do
-      @rel.key.should_not be_nil
+
+    it "is invalid if it could not create a key" do
+      @rel.node1 = nil
+      @rel.should_not be_valid
     end
   end
-  it "can't save with the same two nodes" do
-    @rel.node2 = @rel.node1
-    @rel.should_not be_valid
-  end
+
   it "responds to .sentence(node)" do
     @rel.sentence_from(@rel.node1).should == @rel.sent1
   end
   it "responds to .other_node(node)" do
     @rel.other_node(@rel.node1).should == @rel.node2
   end
+
 end
 
