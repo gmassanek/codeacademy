@@ -58,9 +58,6 @@ describe Link do
       @link = Fabricate(:node_link)
       visit polymorphic_path([@link.linkable, @link])
     end
-    it "shows the link title" do
-      page.should have_css('h2', :text => @link.to_s)
-    end
     it "shows the link Url" do
       page.should have_content("#{@link.url}")
     end

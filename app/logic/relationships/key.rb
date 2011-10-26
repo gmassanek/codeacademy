@@ -1,4 +1,4 @@
-module MyApp
+module RelHelper
 
   class Key
 

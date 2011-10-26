@@ -1,5 +1,6 @@
 class Relationship < ActiveRecord::Base
-  require 'myapp/key'
+  require 'relationships/key'
+  require 'relationships/sentences'
   
   belongs_to :node1, :class_name => "Node"
   belongs_to :node2, :class_name => "Node"
@@ -12,69 +13,54 @@ class Relationship < ActiveRecord::Base
   
   accepts_nested_attributes_for :links, :reject_if => :all_blank, :allow_destroy => true
 
-
   before_validation :fillKey
-  validate :has_space_holders, :allow_nil => true
+
+  validates :key, :uniqueness => true, :presence => true
   validates :node1, :presence => true
   validates :node2, :presence => true
-  validates :sentence1, :presence => true
-  validates :sentence2, :presence => true
-  validates :key, :uniqueness => true, :presence => true
+  validate :valid_sentences
 
   def to_s
     "#{node1.to_s} and #{node2.to_s}"
   end
 
   def fillKey
-    self.key = MyApp::Key.create(node1,node2)
+    self.key = RelHelper::Key.create(node1,node2)
   end
 
-  def sentence_from(node, options = {:filled_with => 'nodes'})
-    if node1_id == node.id
-      sent1(options)
+  def sentence_from(node)
+    if node1 == node
+      populated_sentence(:sentence1)
     else
-      sent2(options)
+      populated_sentence(:sentence2)
     end
   end
 
   def other_node(node)
-    if node1_id == node.id
-      return Node.find(node2_id)
+    if node1 == node
+      return node2
     else
-      return Node.find(node1_id)
+      return node1
     end
   end
 
-  def sent1(options = {:filled_with => 'nodes'})
-    if options[:filled_with] == 'nodes'
-      return populate(sentence1)
+  def populated_sentence(which_sentence)
+    sentence = self.send(which_sentence)
+    rescue 
+      return
     else
-      return sentence1
-    end
+      RelHelper::Sentences.populate(sentence, node1.to_s, node2.to_s)
   end
 
-  def sent2(options = {:filled_with => 'nodes'})
-    if options[:filled_with] == 'nodes'
-      return populate(sentence2)
-    else
-      return sentence2
-    end
-  end
+  private
 
-  def has_space_holders
-    if !sentence1.nil? and !sentenceValid?(sentence1)
+  def valid_sentences
+    unless RelHelper::Sentences.valid_sentence?(sentence1) 
       errors.add(:sentence1, ' needs to have %1 and %2')
     end
-    if !sentence2.nil? and !sentenceValid?(sentence2)
+    unless RelHelper::Sentences.valid_sentence?(sentence2)
       errors.add(:sentence2, ' needs to have %1 and %2')
     end
   end
 
-  def populate(sentence, options = {:val1 => node1.to_s, :val2 => node2.to_s})
-    sentence.sub("%1", options[:val1]).sub("%2", options[:val2]).html_safe
-  end
-
-  def sentenceValid?(sentence)
-    sentence.include?('%1') and sentence.include?('%2')
-  end
 end

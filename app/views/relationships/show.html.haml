@@ -8,7 +8,7 @@
     %li= link_to "Edit Relationship", edit_relationship_path(@relationship)
 .span-24.contentBox.last
   .span-20
-    %h2= item_title(@relationship)
+    %h2= "#{@relationship.node1} and #{@relationship.node2}"
   .span-4.last.right
     = render 'shared/user_knowledge_rating', :knowledgeable => @relationship, :knowledge_rating => @knowledge_rating
   .span-24.last

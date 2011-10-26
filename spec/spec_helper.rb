@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= 'test'
 ENV["TEST_JS"] ||= 'false'
 ENV["CURRENT_USER"] ||= 'false'
 ENV["BROKEN"] ||= 'false'
+
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'

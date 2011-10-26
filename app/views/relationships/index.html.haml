@@ -10,6 +10,6 @@
       %tr
         %td= r.node1
         %td= r.node2
-        %td= r.sent1
-        %td= r.sent2
+        %td= r.populated_sentence(:sentence1)
+        %td= r.populated_sentence(:sentence2)
         %td= link_to "Edit Relationship", edit_relationship_path(r), :id => "editRelationship_#{r.id}"
