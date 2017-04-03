@@ -14,11 +14,11 @@ This is an personal, old, probably not working application that enables a commun
 * Information Pages
 * Tutorials
 
-###Information Pages 
+### Information Pages 
 Information Pages display the basic data that is captured for a *Node* or *Relationship*.  On each info page there is basic defining information as well as community defined helpful links, tutorials, and in the case of a *Node* Information Page, and a relationships.
 
-###Tutorials 
+### Tutorials 
 Tutorials allow users to create guides for learning specific tasks related to a particular *Node* or *Relationship*.  Tutorials are written in Markdown.
 
-###Curriculums 
+### Curriculums 
 (advanced feature that is still under construction and not present in the current implementation)
