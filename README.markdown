@@ -1,6 +1,6 @@
 # CodeAcademy
 
-This is an application that enables a community to participate in managing and organizing content with an emphasis on collaborative learning.  At the lowest level, it organizes information based on two fundamental structures:
+This is an personal, old, probably not working application that enables a community to participate in managing and organizing content with an emphasis on collaborative learning.  At the lowest level, it organizes information based on two fundamental structures:
 
 ### Nodes
 *Nodes* are used to represent a specific topic, subject, or tool.  A *Node* can be linked to other nodes via explicitly defined *Relationships*.  The node holds basic details as well as resources helpful in learning that node.
